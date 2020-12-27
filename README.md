@@ -15,8 +15,8 @@ The project was coded and tested on both Android and iOS.
 
 ## To - Do
 
-- [ ] Commit pattern (git-commit-msg-linter)
-- [ ] Husky and lint-staged
+- [x] Commit pattern (git-commit-msg-linter)
+- [x] Husky and lint-staged
 - [ ] Tests implementation
 - [ ] CI (CircleCI or GH Actions)
 - [ ] Deploy
