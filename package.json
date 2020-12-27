@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "prettify": "prettier --check 'src/**/*.{ts,tsx,js,jsx,json}' --write",
+    "lint": "eslint 'src/**' --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -29,6 +30,7 @@
     "jest": "^25.1.0",
     "lint-staged": "^10.5.3",
     "metro-react-native-babel-preset": "^0.59.0",
+    "prettier": "^2.2.1",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
