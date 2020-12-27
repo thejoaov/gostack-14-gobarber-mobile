@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./src/assets/logo.svg" height="300" />
+<img src="./src/assets/images/logo.svg" height="300" />
 
 <h2 style="color:#777">Front End Mobile</h2>
 
