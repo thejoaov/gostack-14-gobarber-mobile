@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StatusBar } from 'react-native';
+import React from 'react'
+import { View, Text, StatusBar } from 'react-native'
 
 const App: React.FC = () => (
   <>
@@ -8,6 +8,6 @@ const App: React.FC = () => (
       <Text>iae</Text>
     </View>
   </>
-);
+)
 
-export default App;
+export default App

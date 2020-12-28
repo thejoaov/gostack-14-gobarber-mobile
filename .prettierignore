@@ -1,0 +1,19 @@
+# Folders that doesn't need to be avaliated
+/.circleci
+/android
+/ios
+/node_modules
+/coverage
+/src/assets
+/styleguide
+/src/**/*.md
+
+# Root files
+.editorconfig
+.eslintignore
+.buckconfig
+.gitattributes
+.gitignore
+.prettierignore
+.watchmanconfig
+yarn.lock
