@@ -1,7 +1,5 @@
 import React from 'react'
-import { Container } from 'components'
-
-import { Text } from 'react-native'
+import { Container, Text } from 'components'
 
 const SignIn: React.FC = () => (
   <Container flex={1}>
