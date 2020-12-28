@@ -17,6 +17,7 @@ The project was coded and tested on both Android and iOS.
 
 - [x] Commit pattern (git-commit-msg-linter)
 - [x] Husky and lint-staged
+- [ ] Internationalization (i18n)
 - [ ] Tests implementation
 - [ ] CI (CircleCI or GH Actions)
 - [ ] Deploy
