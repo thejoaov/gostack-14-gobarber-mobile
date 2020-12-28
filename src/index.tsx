@@ -1,12 +1,13 @@
+import { Container } from 'components'
 import React from 'react'
-import { View, Text, StatusBar } from 'react-native'
+import { Text, StatusBar } from 'react-native'
 
 const App: React.FC = () => (
   <>
     <StatusBar barStyle="light-content" backgroundColor="#312e38" />
-    <View style={{ flex: 1, backgroundColor: '#312e38' }}>
-      <Text>iae</Text>
-    </View>
+    <Container>
+      <Text>App</Text>
+    </Container>
   </>
 )
 
