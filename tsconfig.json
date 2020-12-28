@@ -67,6 +67,6 @@
     "prettier.config.js",
     "enzyme.config.js",
     ".circleci",
-    "scripts"
+    "scripts",
   ]
 }

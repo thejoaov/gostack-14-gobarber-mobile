@@ -1,4 +1,7 @@
-**/*.js
+/.git
+/.vscode
+/android
+/ios
 node_modules
 build
 /*.js
@@ -6,3 +9,13 @@ build
 **/*.jpg
 **/*.png
 **/*.svg
+yarn.lock
+coverage/
+.jest
+.buckconfig
+.editorconfig
+.flowconfig
+.gitattributes
+.gitignore
+*.json
+*.md
