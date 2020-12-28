@@ -1,14 +1,13 @@
-import { Container } from 'components'
+import { StatusBar, StylesProvider } from 'components'
 import React from 'react'
-import { Text, StatusBar } from 'react-native'
+
+import SignIn from 'screens/Auth/SignIn'
 
 const App: React.FC = () => (
-  <>
-    <StatusBar barStyle="light-content" backgroundColor="#312e38" />
-    <Container>
-      <Text>App</Text>
-    </Container>
-  </>
+  <StylesProvider>
+    <StatusBar barStyle="light-content" />
+    <SignIn />
+  </StylesProvider>
 )
 
 export default App
