@@ -1,5 +1,6 @@
-import { StatusBar, StylesProvider } from 'components'
+import 'react-native-gesture-handler'
 import React from 'react'
+import { StatusBar, StylesProvider } from 'components'
 
 import SignIn from 'screens/Auth/SignIn'
 
