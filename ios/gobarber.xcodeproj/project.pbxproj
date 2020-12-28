@@ -19,6 +19,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* gobarberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* gobarberTests.m */; };
 		7AA141847C69000E9519B5DC /* libPods-gobarber-gobarberTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 386C989FB7E386C3E6C3A641 /* libPods-gobarber-gobarberTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AC26B47A2599A9F8002718D7 /* RobotoSlab-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC26B4762599A9F8002718D7 /* RobotoSlab-Medium.ttf */; };
+		AC26B47B2599A9F8002718D7 /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC26B4772599A9F8002718D7 /* RobotoSlab-Light.ttf */; };
+		AC26B47C2599A9F8002718D7 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC26B4782599A9F8002718D7 /* RobotoSlab-Bold.ttf */; };
+		AC26B47D2599A9F8002718D7 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC26B4792599A9F8002718D7 /* RobotoSlab-Regular.ttf */; };
 		C41D9D20753B7E0D710B0B7C /* libPods-gobarber.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70BC8B384988C30C30053CE /* libPods-gobarber.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +64,10 @@
 		873E4430EEBE4A00B728E734 /* Pods-gobarber-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gobarber-tvOS.release.xcconfig"; path = "Target Support Files/Pods-gobarber-tvOS/Pods-gobarber-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		9C84D7B21AC818AAAF1281AD /* libPods-gobarber-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gobarber-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70BC8B384988C30C30053CE /* libPods-gobarber.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gobarber.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC26B4762599A9F8002718D7 /* RobotoSlab-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Medium.ttf"; path = "../src/assets/fonts/RobotoSlab-Medium.ttf"; sourceTree = "<group>"; };
+		AC26B4772599A9F8002718D7 /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Light.ttf"; path = "../src/assets/fonts/RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
+		AC26B4782599A9F8002718D7 /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Bold.ttf"; path = "../src/assets/fonts/RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
+		AC26B4792599A9F8002718D7 /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoSlab-Regular.ttf"; path = "../src/assets/fonts/RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
 		BE931C501FC0C1B3DA850D38 /* Pods-gobarber-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gobarber-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-gobarber-tvOSTests/Pods-gobarber-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C84D32D3E28064F007228E61 /* Pods-gobarber-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gobarber-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-gobarber-tvOSTests/Pods-gobarber-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8587B2EB797889930A06CB0 /* Pods-gobarber-gobarberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gobarber-gobarberTests.release.xcconfig"; path = "Target Support Files/Pods-gobarber-gobarberTests/Pods-gobarber-gobarberTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +133,10 @@
 		13B07FAE1A68108700A75B9A /* gobarber */ = {
 			isa = PBXGroup;
 			children = (
+				AC26B4782599A9F8002718D7 /* RobotoSlab-Bold.ttf */,
+				AC26B4772599A9F8002718D7 /* RobotoSlab-Light.ttf */,
+				AC26B4762599A9F8002718D7 /* RobotoSlab-Medium.ttf */,
+				AC26B4792599A9F8002718D7 /* RobotoSlab-Regular.ttf */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -161,7 +173,6 @@
 				BE931C501FC0C1B3DA850D38 /* Pods-gobarber-tvOSTests.debug.xcconfig */,
 				C84D32D3E28064F007228E61 /* Pods-gobarber-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -340,6 +351,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC26B47D2599A9F8002718D7 /* RobotoSlab-Regular.ttf in Resources */,
+				AC26B47B2599A9F8002718D7 /* RobotoSlab-Light.ttf in Resources */,
+				AC26B47C2599A9F8002718D7 /* RobotoSlab-Bold.ttf in Resources */,
+				AC26B47A2599A9F8002718D7 /* RobotoSlab-Medium.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
