@@ -1,3 +1,4 @@
+import theme from 'core/styles/theme'
 import React from 'react'
 
 import { TextContainer } from './styles'
@@ -9,6 +10,7 @@ const Text: React.FC<Props> = ({ children, ...props }) => (
 
 Text.defaultProps = {
   variant: 'regular',
+  color: theme.colors.white,
 }
 
 export default Text
