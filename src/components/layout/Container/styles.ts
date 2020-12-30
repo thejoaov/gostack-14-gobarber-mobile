@@ -9,10 +9,10 @@ export const View = styled.SafeAreaView<{ center?: boolean }>`
       justify-content: center;
     `}
 
-  background-color: ${({ theme }) => theme.colors.background}
+  background-color: ${({ theme }) => theme.colors.background};
 
-  ${space}
-  ${layout}
-  ${flexbox}
-  ${position}
+  ${space};
+  ${layout};
+  ${flexbox};
+  ${position};
 `
