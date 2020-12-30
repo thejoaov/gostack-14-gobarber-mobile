@@ -5,7 +5,6 @@ export interface StyledeTextProps {
   children: React.ReactNode
   isBold?: boolean
   variant?: 'light' | 'bold' | 'medium' | 'regular'
-  mh?: number
 }
 
 export type Props = StyledeTextProps &
