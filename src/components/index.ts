@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 export { default as Container } from './layout/Container'
 export { default as StylesProvider } from './style/StylesProvider'
 export { default as StatusBar } from './style/StatusBar'
