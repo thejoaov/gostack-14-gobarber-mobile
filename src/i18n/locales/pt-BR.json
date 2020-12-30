@@ -1,0 +1,9 @@
+{
+  "common": {},
+  "sign_in": {
+    "title": "Faça seu login",
+    "login_button": "Entrar",
+    "forgot_password": "Esqueci minha senha",
+    "create_account": "Criar uma conta"
+  }
+}
