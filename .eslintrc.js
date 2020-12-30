@@ -19,7 +19,6 @@ module.exports = {
     },
   },
   env: { jest: true },
-
   parserOptions: {
     project: './tsconfig.json',
     ecmaVersion: 6,
@@ -60,20 +59,29 @@ module.exports = {
     complexity: ['error', { max: 5 }],
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: true, optionalDependencies: false, peerDependencies: false },
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
     ],
     'import/no-unresolved': [2, { ignore: ['StoreTypes$'] }],
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-      { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
     ],
     'react/boolean-prop-naming': [
       'error',
       {
         propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
         rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
-        message: 'It is better if your prop ({{ propName }}) matches this pattern: ({{ pattern }})',
+        message:
+          'It is better if your prop ({{ propName }}) matches this pattern: ({{ pattern }})',
       },
     ],
   },
