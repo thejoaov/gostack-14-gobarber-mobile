@@ -1,35 +1,48 @@
 import React from 'react'
-import { Button, Container, FooterButton, Image, LinkButton, Text, TextInput } from 'components'
+import {
+  Button,
+  Container,
+  FooterButton,
+  Image,
+  LinkButton,
+  Text,
+  TextInput,
+} from 'components'
+import { KeyboardAvoidingView } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 import logoImg from 'assets/images/logo.png'
-import { KeyboardAvoidingView } from 'react-native'
 import Device from 'core/helpers/Device'
 
-const SignIn: React.FC = () => (
-  <>
-    <Container
-      as={KeyboardAvoidingView}
-      behavior={Device.keyboardBehavior()}
-      flex={1}
-      paddingX={40}
-      center>
-      <Image source={logoImg} />
+const SignIn: React.FC = () => {
+  const { t } = useTranslation('sign_in')
 
-      <Text mt={64} mx={24} fontSize={24} variant="medium">
-        Faça seu login
-      </Text>
+  return (
+    <>
+      <Container
+        as={KeyboardAvoidingView}
+        behavior={Device.keyboardBehavior()}
+        flex={1}
+        paddingX={40}
+        center>
+        <Image source={logoImg} />
 
-      <TextInput mt={24} />
+        <Text mt={64} mx={24} fontSize={24} variant="medium">
+          {t('title')}
+        </Text>
 
-      <TextInput mt={10} />
+        <TextInput mt={24} />
 
-      <Button title="Entrar" mt={12} />
+        <TextInput mt={10} />
 
-      <LinkButton title="Esqueci minha senha" mt={24} />
-    </Container>
+        <Button title={t('login_button')} mt={12} />
 
-    <FooterButton title="Criar uma conta" />
-  </>
-)
+        <LinkButton title={t('forgot_password')} mt={24} />
+      </Container>
+
+      <FooterButton title={t('create_account')} />
+    </>
+  )
+}
 
 export default SignIn

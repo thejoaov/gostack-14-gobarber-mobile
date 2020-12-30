@@ -1,5 +1,8 @@
 import React from 'react'
-import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import theme from 'core/styles/theme'
 import { AuthRouter } from './Routes'

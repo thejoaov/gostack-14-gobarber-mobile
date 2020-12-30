@@ -5,4 +5,8 @@ type Props = {
   title: string
 }
 
-export type FooterButtonProps = Props & ViewProps & WidthProps & SpaceProps & ColorProps
+export type FooterButtonProps = Props &
+  ViewProps &
+  WidthProps &
+  SpaceProps &
+  ColorProps

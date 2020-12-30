@@ -3,7 +3,9 @@ import React from 'react'
 import { Container } from './styles'
 import { InputProps } from './types'
 
-const TextInput: React.FC<InputProps> = ({ ...props }) => <Container {...props} />
+const TextInput: React.FC<InputProps> = ({ ...props }) => (
+  <Container {...props} />
+)
 
 TextInput.defaultProps = {
   width: '100%',

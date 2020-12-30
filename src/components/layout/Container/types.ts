@@ -1,5 +1,10 @@
 import { KeyboardAvoidingViewProps, ViewProps } from 'react-native'
-import { SpaceProps, LayoutProps, FlexboxProps, PositionProps } from 'styled-system'
+import {
+  SpaceProps,
+  LayoutProps,
+  FlexboxProps,
+  PositionProps,
+} from 'styled-system'
 
 export interface Props {
   children?: React.ReactNode

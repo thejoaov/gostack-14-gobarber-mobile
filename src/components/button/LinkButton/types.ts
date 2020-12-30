@@ -6,4 +6,8 @@ type Props = {
   textColor?: string
 }
 
-export type LinkButtonProps = Props & TouchableOpacityProps & WidthProps & SpaceProps & ColorProps
+export type LinkButtonProps = Props &
+  TouchableOpacityProps &
+  WidthProps &
+  SpaceProps &
+  ColorProps

@@ -1,5 +1,10 @@
 import { TextProps } from 'react-native'
-import { SpaceProps, ColorProps, FlexboxProps, FontSizeProps } from 'styled-system'
+import {
+  SpaceProps,
+  ColorProps,
+  FlexboxProps,
+  FontSizeProps,
+} from 'styled-system'
 
 export interface StyledeTextProps {
   children: React.ReactNode
