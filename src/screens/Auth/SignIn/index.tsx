@@ -1,9 +1,11 @@
 import React from 'react'
-import { Container, Text } from 'components'
+import { Container, Image, Text } from 'components'
+
+import logoImg from 'assets/images/logo.png'
 
 const SignIn: React.FC = () => (
   <Container>
-    <Text>SignIn</Text>
+    <Image source={logoImg} />
   </Container>
 )
 
