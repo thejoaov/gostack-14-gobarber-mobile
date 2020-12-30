@@ -5,7 +5,7 @@ import logoImg from 'assets/images/logo.png'
 import theme from 'core/styles/theme'
 
 const SignIn: React.FC = () => (
-  <Container flex={1} alignItems="center" justifyContent="center">
+  <Container flex={1} center>
     <Image source={logoImg} />
 
     <Text fontSize={24} mt={64} color={theme.colors.white} variant="medium">
