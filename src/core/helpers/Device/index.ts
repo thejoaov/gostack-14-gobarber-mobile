@@ -1,4 +1,8 @@
-import { KeyboardAvoidingViewProps, Platform, PlatformOSType } from 'react-native'
+import {
+  KeyboardAvoidingViewProps,
+  Platform,
+  PlatformOSType,
+} from 'react-native'
 
 const Device = {
   /**
@@ -21,7 +25,7 @@ const Device = {
    * Disabled on Android
    */
   keyboardBehavior: (): 'padding' | 'height' | 'position' | undefined =>
-    Platform.OS === 'ios' ? 'padding' : undefined,
+    Platform.OS === 'ios' ? 'padding' : 'padding',
 }
 
 export default Device
