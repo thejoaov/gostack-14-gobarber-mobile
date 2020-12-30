@@ -1,4 +1,4 @@
-import { ViewProps } from 'react-native'
+import { KeyboardAvoidingViewProps, ViewProps } from 'react-native'
 import { SpaceProps, LayoutProps, FlexboxProps, PositionProps } from 'styled-system'
 
 export interface Props {
@@ -8,6 +8,7 @@ export interface Props {
 }
 
 export type ContainerProps = Props &
+  KeyboardAvoidingViewProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
