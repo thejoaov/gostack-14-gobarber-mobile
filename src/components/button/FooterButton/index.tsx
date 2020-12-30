@@ -5,9 +5,13 @@ import { Container } from './styles'
 import { FooterButtonProps } from './types'
 import LinkButton from '../LinkButton'
 
-const FooterButton: React.FC<FooterButtonProps> = ({ color, title, ...props }) => (
+const FooterButton: React.FC<FooterButtonProps> = ({
+  color,
+  title,
+  ...props
+}) => (
   <Container {...props}>
-    <LinkButton title="Criar uma conta" color={color} />
+    <LinkButton title={title} color={color} />
   </Container>
 )
 
