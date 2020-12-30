@@ -4,6 +4,7 @@ import { SpaceProps, LayoutProps, FlexboxProps, PositionProps } from 'styled-sys
 export interface Props {
   children?: React.ReactNode
   as?: React.ElementType
+  center?: boolean
 }
 
 export type ContainerProps = Props &
