@@ -1,16 +1,21 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import ScheduleSuccess from '../index'
+import Routes from '../index'
+
+jest.mock('@react-navigation/stack', () => ({
+  createNavigatorFactory: jest.fn(),
+  createStackNavigator: jest.fn(),
+}))
 
 let wrapper: ReactTestRenderer
 
-describe('ScheduleSuccess test suite', () => {
+describe('Routes test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <ScheduleSuccess />
+          <Routes />
         </StylesProvider>,
       )
     })

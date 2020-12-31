@@ -1,4 +1,4 @@
-import { TextProps } from 'react-native'
+import { TextProps as NativeTextProps } from 'react-native'
 import {
   SpaceProps,
   ColorProps,
@@ -6,15 +6,15 @@ import {
   FontSizeProps,
 } from 'styled-system'
 
-export interface StyledeTextProps {
+type Props = {
   children: React.ReactNode
   isBold?: boolean
   variant?: 'light' | 'bold' | 'medium' | 'regular'
 }
 
-export type Props = StyledeTextProps &
+export type TextProps = Props &
+  NativeTextProps &
   SpaceProps &
   ColorProps &
   FlexboxProps &
-  TextProps &
   FontSizeProps

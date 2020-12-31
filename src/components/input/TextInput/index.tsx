@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { Container, IconView, StyledIcon, StyledInput } from './styles'
-import { InputProps } from './types'
+import { TextInputProps } from './types'
 
-const TextInput: React.FC<InputProps> = ({ icon, ...props }) => (
+const TextInput: React.FC<TextInputProps> = ({ icon, ...props }) => (
   <Container {...props}>
     {!!icon && (
       <IconView>
