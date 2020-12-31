@@ -29,7 +29,7 @@ export const StyledInput = styled.TextInput.attrs<{
   placeholderTextColor: theme.colors.gray.grayHard,
 }))`
   height: 50px;
-  color: ${({ theme }) => theme.colors.gray.grayHard};
+  color: ${({ theme }) => theme.colors.white};
 
   flex: 1;
 `
