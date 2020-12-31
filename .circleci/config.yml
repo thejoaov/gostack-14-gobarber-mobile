@@ -6,6 +6,9 @@ jobs:
       - image: circleci/node:12
     steps:
       - run:
+          name: 'Where we are?'
+          command: 'ls'
+      - run:
           name: 'Setup Environment Variables'
           command: |
             echo 'export CODECOV_TOKEN="$CODECOV_TOKEN"' >> $BASH_ENV
