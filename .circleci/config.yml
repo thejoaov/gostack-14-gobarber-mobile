@@ -3,7 +3,7 @@ version: 2.1
 workflows:
   test:
     jobs:
-      - test:
+      - build-and-test:
           docker:
             - image: circleci/node:12
           steps:
