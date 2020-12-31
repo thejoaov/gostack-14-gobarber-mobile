@@ -3,6 +3,8 @@
   "sign_in": {
     "title": "Sign In",
     "login_button": "Login",
+    "input_mail_placeholder": "E-mail",
+    "input_password_placeholder": "Password",
     "forgot_password": "Forgot my password",
     "create_account": "Create account"
   }

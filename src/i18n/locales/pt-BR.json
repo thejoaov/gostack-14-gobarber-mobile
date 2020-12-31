@@ -3,6 +3,8 @@
   "sign_in": {
     "title": "Faça seu login",
     "login_button": "Entrar",
+    "input_mail_placeholder": "E-mail",
+    "input_password_placeholder": "Senha",
     "forgot_password": "Esqueci minha senha",
     "create_account": "Criar uma conta"
   }
