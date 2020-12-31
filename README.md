@@ -23,7 +23,7 @@ The project was coded and tested on both Android and iOS.
 - [x] Husky and lint-staged
 - [x] Internationalization (i18n)
 - [x] Tests implementation
-- [ ] CI (CircleCI or GH Actions)
+- [x] CI (CircleCI)
 - [ ] Deploy
 
 [gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos/tree/master/nivel-03/03-iniciando-aplicativo-mobile
