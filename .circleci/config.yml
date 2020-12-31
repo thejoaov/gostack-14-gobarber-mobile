@@ -5,9 +5,7 @@ jobs:
     docker:
       - image: circleci/node:12
     steps:
-      - run:
-          name: 'Where we are?'
-          command: 'ls'
+      - checkout
       - run:
           name: 'Setup Environment Variables'
           command: |
