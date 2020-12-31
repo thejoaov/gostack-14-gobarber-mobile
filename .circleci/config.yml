@@ -1,7 +1,17 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
-workflows:
-  tests:
-    jobs:
-      - node/test
+
+jobs:
+  test:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - common-config
+      - run:
+          name: 'Setup Environment Variables'
+          command: |
+            echo 'export CODECOV_TOKEN="$CODECOV_TOKEN"' >> $BASH_ENV
+      - run:
+          name: 'Jest tests and send report to codecov'
+          command: 'yarn test:ci && bash <(curl -s https://codecov.io/bash)'
+
+

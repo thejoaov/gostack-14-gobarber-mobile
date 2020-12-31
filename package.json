@@ -7,6 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --runInBand",
+    "test:ci": "TZ=America/Fortaleza jest --ci --runInBand --collectCoverage",
+    "test:cov": "jest --coverage --colors",
     "prettify": "prettier --check 'src/**/*.{ts,tsx,js,jsx,json}' --write",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --ext '.js,.jsx,.ts,.tsx' --fix"
   },
