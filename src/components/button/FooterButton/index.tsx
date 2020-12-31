@@ -8,10 +8,11 @@ import LinkButton from '../LinkButton'
 const FooterButton: React.FC<FooterButtonProps> = ({
   color,
   title,
+  icon,
   ...props
 }) => (
   <Container {...props}>
-    <LinkButton title={title} color={color} />
+    <LinkButton title={title} color={color} icon={icon} />
   </Container>
 )
 
