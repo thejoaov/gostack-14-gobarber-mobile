@@ -17,7 +17,7 @@ jobs:
           command: 'yarn test:ci && bash <(curl -s https://codecov.io/bash)'
 
 workflows:
-  test:
+  testing:
     jobs:
       - test:
           filters:
