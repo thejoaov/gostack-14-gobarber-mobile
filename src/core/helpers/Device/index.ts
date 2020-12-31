@@ -1,8 +1,4 @@
-import {
-  KeyboardAvoidingViewProps,
-  Platform,
-  PlatformOSType,
-} from 'react-native'
+import { Platform, PlatformOSType } from 'react-native'
 
 const Device = {
   /**
