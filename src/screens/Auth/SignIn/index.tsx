@@ -31,16 +31,28 @@ const SignIn: React.FC = () => {
           {t('title')}
         </Text>
 
-        <TextInput mt={24} />
+        <TextInput
+          mt={24}
+          icon="mail"
+          placeholder={t('input_mail_placeholder')}
+          keyboardType="email-address"
+          autoCompleteType="email"
+        />
 
-        <TextInput mt={10} />
+        <TextInput
+          mt={10}
+          icon="lock"
+          placeholder={t('input_password_placeholder')}
+          secureTextEntry
+          autoCompleteType="password"
+        />
 
         <Button title={t('login_button')} mt={12} />
 
         <LinkButton title={t('forgot_password')} mt={24} />
       </Container>
 
-      <FooterButton title={t('create_account')} />
+      <FooterButton icon="log-in" title={t('create_account')} />
     </>
   )
 }
