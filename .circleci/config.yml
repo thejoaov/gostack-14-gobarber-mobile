@@ -25,3 +25,7 @@ workflows:
             branches:
               only:
                 - main
+                - '/^feat.*/'
+                - '/^fix.*/'
+                - '/^style.*/'
+                - '/^docs.*/'
