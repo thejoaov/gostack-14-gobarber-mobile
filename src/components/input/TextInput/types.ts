@@ -1,8 +1,10 @@
 import { TextInputProps } from 'react-native'
 import { SpaceProps, LayoutProps } from 'styled-system'
+import FeatherGlyphs from 'react-native-vector-icons/glyphmaps/Feather.json'
 
-// type Props = {
-//   mh?: number | string
-// }
+type Props = {
+  icon?: keyof typeof FeatherGlyphs
+  placeholder?: string
+}
 
-export type InputProps = TextInputProps & SpaceProps & LayoutProps
+export type InputProps = Props & TextInputProps & SpaceProps & LayoutProps
