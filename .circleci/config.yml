@@ -20,8 +20,4 @@ jobs:
 workflows:
   testing:
     jobs:
-      - test:
-          filters:
-            branches:
-              only:
-                - main
+      - test
