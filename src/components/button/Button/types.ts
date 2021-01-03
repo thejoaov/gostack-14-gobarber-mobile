@@ -1,4 +1,4 @@
-import { TouchableOpacityProps } from 'react-native'
+import { RectButtonProperties } from 'react-native-gesture-handler'
 import { SpaceProps, WidthProps } from 'styled-system'
 
 type Props = {
@@ -6,7 +6,4 @@ type Props = {
   textColor?: string
 }
 
-export type ButtonProps = Props &
-  TouchableOpacityProps &
-  WidthProps &
-  SpaceProps
+export type ButtonProps = Props & RectButtonProperties & WidthProps & SpaceProps
