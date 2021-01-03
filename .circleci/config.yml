@@ -20,4 +20,7 @@ jobs:
 workflows:
   testing:
     jobs:
-      - test
+      - test:
+          filters:
+              ignore:
+                - main
