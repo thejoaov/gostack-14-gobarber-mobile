@@ -26,6 +26,7 @@ const AuthRoutes: React.FC = () => (
     initialRouteName="SignIn"
     screenOptions={{
       cardStyle: { backgroundColor: theme.colors.background },
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}>
     <AuthStack.Screen name="SignIn" component={SignIn} />
     <AuthStack.Screen name="SignUp" component={SignUp} />

@@ -9,13 +9,15 @@ import {
   Text,
   TextInput,
 } from 'components'
-import { KeyboardAvoidingView, View } from 'react-native'
+import { KeyboardAvoidingView, Platform, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useNavigation } from '@react-navigation/native'
 
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation()
   const { t } = useTranslation('sign_in')
 
   return (
@@ -25,7 +27,11 @@ const SignIn: React.FC = () => {
         behavior={Device.keyboardBehavior()}
         enabled>
         <ScrollView center keyboardShouldPersistTaps="handled">
-          <Container as={View} center paddingX={40}>
+          <Container
+            as={View}
+            center
+            paddingX={40}
+            paddingBottom={Platform.select({ android: 100, ios: 40 })}>
             <Image source={logoImg} />
 
             <View>
@@ -52,15 +58,20 @@ const SignIn: React.FC = () => {
 
             <Button title={t('login_button')} mt={12} />
 
-            <LinkButton title={t('forgot_password')} mt={24} />
+            <LinkButton
+              title={t('forgot_password')}
+              mt={24}
+              onPress={() => navigation.navigate('ForgotPassword')}
+            />
           </Container>
         </ScrollView>
       </Container>
 
       <FooterButton
         icon="log-in"
-        title={t('create_account')}
+        title={t('footer_button')}
         hideOnKeyboard={Device.isAndroid()}
+        onPress={() => navigation.navigate('SignUp')}
       />
     </>
   )

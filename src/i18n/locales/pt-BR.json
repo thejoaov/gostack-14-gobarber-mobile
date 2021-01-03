@@ -6,6 +6,14 @@
     "input_mail_placeholder": "E-mail",
     "input_password_placeholder": "Senha",
     "forgot_password": "Esqueci minha senha",
-    "create_account": "Criar uma conta"
+    "footer_button": "Criar uma conta"
+  },
+  "sign_up": {
+    "title": "Crie sua conta",
+    "create_account_button": "Cadastrar",
+    "input_name_placeholder": "Nome",
+    "input_mail_placeholder": "E-mail",
+    "input_password_placeholder": "Senha",
+    "footer_button": "Voltar para o login"
   }
 }

@@ -12,6 +12,7 @@ const FooterButton: React.FC<FooterButtonProps> = ({
   icon,
   fontSize,
   hideOnKeyboard,
+  onPress,
   ...props
 }) => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false)
@@ -40,7 +41,13 @@ const FooterButton: React.FC<FooterButtonProps> = ({
     <></>
   ) : (
     <Container {...props}>
-      <LinkButton title={title} color={color} icon={icon} fontSize={fontSize} />
+      <LinkButton
+        title={title}
+        color={color}
+        icon={icon}
+        fontSize={fontSize}
+        onPress={onPress}
+      />
     </Container>
   )
 }

@@ -6,6 +6,14 @@
     "input_mail_placeholder": "E-mail",
     "input_password_placeholder": "Password",
     "forgot_password": "Forgot my password",
-    "create_account": "Create account"
+    "footer_button": "Create account"
+  },
+  "sign_up": {
+    "title": "Create your account",
+    "create_account_button": "Create account",
+    "input_name_placeholder": "Name",
+    "input_mail_placeholder": "E-mail",
+    "input_password_placeholder": "Password",
+    "footer_button": "Back to login"
   }
 }

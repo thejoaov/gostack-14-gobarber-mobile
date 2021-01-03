@@ -11,6 +11,7 @@ type Props = {
   title: string
   icon?: keyof typeof FeatherGlyphs
   hideOnKeyboard?: boolean
+  onPress?(): void
 }
 
 export type FooterButtonProps = Props &
