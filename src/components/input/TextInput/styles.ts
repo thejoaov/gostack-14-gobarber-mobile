@@ -1,7 +1,9 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 import { layout, space } from 'styled-system'
 import Icon from 'react-native-vector-icons/Feather'
 import FeatherGlyphs from 'react-native-vector-icons/glyphmaps/Feather.json'
+
+export const OuterContainer = styled.View``
 
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.black.inputs};
@@ -15,9 +17,15 @@ export const Container = styled.View`
   ${layout};
 `
 
-export const StyledIcon = styled(Icon)<{ isFocused: boolean }>`
-  color: ${({ theme, isFocused }) =>
-    isFocused ? theme.colors.primary : theme.colors.gray.grayHard};
+export const ErrorView = styled.View`
+  align-self: flex-start;
+  height: 14px;
+`
+
+export const StyledIcon = styled(Icon)<{ isFocused: boolean; error: boolean }>`
+  color: ${({ theme, isFocused, error }) =>
+    (!!error && theme.colors.semantic.error) ||
+    (isFocused ? theme.colors.primary : theme.colors.gray.grayHard)};
 `
 
 export const IconView = styled.View`

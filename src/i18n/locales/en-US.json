@@ -14,6 +14,11 @@
     "input_name_placeholder": "Name",
     "input_mail_placeholder": "E-mail",
     "input_password_placeholder": "Password",
-    "footer_button": "Back to login"
+    "footer_button": "Back to login",
+    "input_name_error_required": "Name is required",
+    "input_mail_error_valid": "Insert a valid email address",
+    "input_mail_error_required": "Email is required",
+    "input_password_error_required": "Password is required",
+    "input_password_error_min": "Minimum 6 characters"
   }
 }

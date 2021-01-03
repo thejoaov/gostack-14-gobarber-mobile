@@ -5,6 +5,7 @@ import FeatherGlyphs from 'react-native-vector-icons/glyphmaps/Feather.json'
 type Props = {
   icon?: keyof typeof FeatherGlyphs
   placeholder?: string
+  error?: string
 }
 
 export type TextInputProps = Props & InputProps & SpaceProps & LayoutProps

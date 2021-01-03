@@ -4,6 +4,10 @@ import { SpaceProps, WidthProps } from 'styled-system'
 type Props = {
   title: string
   textColor?: string
+  onPress?(): void
 }
 
-export type ButtonProps = Props & RectButtonProperties & WidthProps & SpaceProps
+export type ButtonProps = Omit<RectButtonProperties, 'onPress'> &
+  Props &
+  WidthProps &
+  SpaceProps

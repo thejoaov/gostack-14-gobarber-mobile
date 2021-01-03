@@ -8,17 +8,34 @@ import {
   Text,
   TextInput,
 } from 'components'
-import { KeyboardAvoidingView, Platform, View } from 'react-native'
+import { Alert, KeyboardAvoidingView, Platform, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
 
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import theme from 'core/styles/theme'
+import { signUpDefaultValues } from 'core/constants/signup'
 
 const SignUp: React.FC = () => {
   const { t } = useTranslation('sign_up')
   const navigation = useNavigation()
+
+  const schema = Yup.object().shape({
+    name: Yup.string().required(t('input_name_error_required')),
+    email: Yup.string()
+      .required(t('input_mail_error_required'))
+      .email(t('input_mail_error_valid')),
+    password: Yup.string()
+      .required(t('input_password_error_required'))
+      .min(6, t('input_password_error_min')),
+  })
+
+  const submit = (values: typeof signUpDefaultValues): void => {
+    Alert.alert('SignUp', JSON.stringify(values))
+  }
 
   return (
     <>
@@ -40,31 +57,74 @@ const SignUp: React.FC = () => {
               </Text>
             </View>
 
-            <TextInput
-              mt={24}
-              icon="user"
-              placeholder={t('input_name_placeholder')}
-              keyboardType="email-address"
-              autoCompleteType="email"
-            />
+            <Formik
+              validationSchema={schema}
+              onSubmit={submit}
+              initialValues={signUpDefaultValues}>
+              {({
+                handleBlur,
+                handleSubmit,
+                setFieldValue,
+                values,
+                isValid,
+                errors,
+              }) => (
+                <>
+                  <TextInput
+                    mt={24}
+                    icon="user"
+                    placeholder={t('input_name_placeholder')}
+                    autoCompleteType="name"
+                    defaultValue={values.name}
+                    error={errors.name}
+                    onBlur={handleBlur('name')}
+                    onChangeText={(value: string): void => {
+                      setFieldValue('name', value)
+                    }}
+                  />
 
-            <TextInput
-              mt={10}
-              icon="mail"
-              placeholder={t('input_mail_placeholder')}
-              keyboardType="email-address"
-              autoCompleteType="email"
-            />
+                  <TextInput
+                    mt={10}
+                    icon="mail"
+                    placeholder={t('input_mail_placeholder')}
+                    keyboardType="email-address"
+                    autoCompleteType="email"
+                    error={errors.email}
+                    defaultValue={values.email}
+                    onBlur={handleBlur('email')}
+                    onChangeText={(value: string): void => {
+                      setFieldValue('email', value)
+                    }}
+                  />
 
-            <TextInput
-              mt={10}
-              icon="lock"
-              placeholder={t('input_password_placeholder')}
-              secureTextEntry
-              autoCompleteType="password"
-            />
+                  <TextInput
+                    mt={10}
+                    icon="lock"
+                    placeholder={t('input_password_placeholder')}
+                    secureTextEntry
+                    autoCompleteType="password"
+                    error={errors.password}
+                    defaultValue={values.password}
+                    onBlur={handleBlur('password')}
+                    onChangeText={(value: string): void => {
+                      setFieldValue('password', value)
+                    }}
+                  />
 
-            <Button title={t('create_account_button')} mt={16} />
+                  <Button
+                    title={t('create_account_button')}
+                    mt={16}
+                    onPress={handleSubmit}
+                    enabled={
+                      isValid &&
+                      !!values.email &&
+                      !!values.name &&
+                      !!values.password
+                    }
+                  />
+                </>
+              )}
+            </Formik>
           </Container>
         </ScrollView>
       </Container>

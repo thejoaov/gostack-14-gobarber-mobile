@@ -18,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({ textColor, title, ...props }) => (
 Button.defaultProps = {
   textColor: theme.colors.background,
   width: '100%',
+  enabled: true,
 }
 
 export default Button
