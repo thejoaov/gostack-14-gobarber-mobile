@@ -1,6 +1,6 @@
-import { Text } from 'components'
-import React, { useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 
+import { Text } from 'components'
 import {
   Container,
   IconView,
@@ -10,16 +10,21 @@ import {
   IconEyeView,
   ErrorView,
 } from './styles'
-import { TextInputProps } from './types'
+import { InputRef, TextInputProps } from './types'
 
-const TextInput: React.FC<TextInputProps> = ({
-  icon,
-  secureTextEntry,
-  error,
-  ...props
-}) => {
+const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
+  { icon, secureTextEntry, error, ...props },
+  ref,
+) => {
   const [isFocused, setIsFocused] = useState(false)
   const [isSecured, setIsSecured] = useState(secureTextEntry)
+  const inputElementRef = useRef<any>(null)
+
+  useImperativeHandle(ref, () => ({
+    focus() {
+      inputElementRef.current.focus()
+    },
+  }))
 
   return (
     <>
@@ -37,6 +42,7 @@ const TextInput: React.FC<TextInputProps> = ({
 
         <StyledInput
           {...props}
+          ref={inputElementRef}
           secureTextEntry={isSecured}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
@@ -55,10 +61,4 @@ const TextInput: React.FC<TextInputProps> = ({
   )
 }
 
-TextInput.defaultProps = {
-  width: '100%',
-  autoCapitalize: 'none',
-  keyboardAppearance: 'dark',
-}
-
-export default TextInput
+export default forwardRef(TextInput)

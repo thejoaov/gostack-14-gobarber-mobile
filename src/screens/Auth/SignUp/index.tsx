@@ -1,4 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  View,
+  TextInput as Input,
+} from 'react-native'
+import { useTranslation } from 'react-i18next'
+import { useNavigation } from '@react-navigation/native'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+
 import {
   Button,
   Container,
@@ -8,11 +20,6 @@ import {
   Text,
   TextInput,
 } from 'components'
-import { Alert, KeyboardAvoidingView, Platform, View } from 'react-native'
-import { useTranslation } from 'react-i18next'
-import { useNavigation } from '@react-navigation/native'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
 
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
@@ -22,6 +29,9 @@ import { signUpDefaultValues } from 'core/constants/signup'
 const SignUp: React.FC = () => {
   const { t } = useTranslation('sign_up')
   const navigation = useNavigation()
+
+  const emailInputRef = useRef<Input>(null)
+  const passwordInputRef = useRef<Input>(null)
 
   const schema = Yup.object().shape({
     name: Yup.string().required(t('input_name_error_required')),
@@ -73,42 +83,63 @@ const SignUp: React.FC = () => {
                   <TextInput
                     mt={24}
                     icon="user"
+                    autoCorrect={false}
+                    keyboardAppearance="dark"
                     placeholder={t('input_name_placeholder')}
                     autoCompleteType="name"
                     defaultValue={values.name}
                     error={errors.name}
                     onBlur={handleBlur('name')}
+                    returnKeyType="next"
                     onChangeText={(value: string): void => {
                       setFieldValue('name', value)
+                    }}
+                    onSubmitEditing={() => {
+                      emailInputRef.current?.focus()
                     }}
                   />
 
                   <TextInput
                     mt={10}
+                    ref={emailInputRef}
                     icon="mail"
+                    keyboardAppearance="dark"
+                    autoCorrect={false}
+                    autoCapitalize="none"
                     placeholder={t('input_mail_placeholder')}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     error={errors.email}
                     defaultValue={values.email}
+                    returnKeyType="next"
                     onBlur={handleBlur('email')}
                     onChangeText={(value: string): void => {
                       setFieldValue('email', value)
+                    }}
+                    onSubmitEditing={() => {
+                      passwordInputRef.current?.focus()
                     }}
                   />
 
                   <TextInput
                     mt={10}
+                    ref={passwordInputRef}
                     icon="lock"
+                    keyboardAppearance="dark"
+                    autoCorrect={false}
+                    autoCapitalize="none"
                     placeholder={t('input_password_placeholder')}
                     secureTextEntry
                     autoCompleteType="password"
                     error={errors.password}
                     defaultValue={values.password}
                     onBlur={handleBlur('password')}
+                    textContentType="newPassword"
+                    returnKeyType="send"
                     onChangeText={(value: string): void => {
                       setFieldValue('password', value)
                     }}
+                    onSubmitEditing={handleSubmit}
                   />
 
                   <Button

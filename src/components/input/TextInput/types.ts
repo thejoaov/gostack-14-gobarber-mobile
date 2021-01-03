@@ -8,4 +8,8 @@ type Props = {
   error?: string
 }
 
+export type InputRef = {
+  focus?(): void
+}
+
 export type TextInputProps = Props & InputProps & SpaceProps & LayoutProps
