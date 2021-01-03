@@ -20,4 +20,6 @@ jobs:
 workflows:
   testing:
     jobs:
-      - test
+      - test:
+          branches:
+            ignore: main
