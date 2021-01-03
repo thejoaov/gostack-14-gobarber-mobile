@@ -6,6 +6,7 @@ type Props = {
   icon?: keyof typeof FeatherGlyphs
   placeholder?: string
   error?: string
+  isFilled?: boolean
 }
 
 export type InputRef = {

@@ -1,4 +1,10 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+  useCallback,
+} from 'react'
 
 import { Text } from 'components'
 import {
@@ -13,11 +19,13 @@ import {
 import { InputRef, TextInputProps } from './types'
 
 const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
-  { icon, secureTextEntry, error, ...props },
+  { icon, secureTextEntry, error, isFilled, ...props },
   ref,
 ) => {
   const [isFocused, setIsFocused] = useState(false)
+  const [filed, setFilled] = useState(isFilled)
   const [isSecured, setIsSecured] = useState(secureTextEntry)
+
   const inputElementRef = useRef<any>(null)
 
   useImperativeHandle(ref, () => ({
@@ -26,9 +34,20 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
     },
   }))
 
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true)
+  }, [])
+
+  const handleInputBlur = useCallback(() => {
+    if (!!isFilled) {
+      setFilled(true)
+    }
+    setIsFocused(false)
+  }, [isFilled])
+
   return (
     <>
-      <Container {...props}>
+      <Container {...props} isFocused={isFocused} isFilled={filed}>
         {!!icon && (
           <IconView>
             <StyledIcon
@@ -36,6 +55,7 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
               error={!!error}
               size={18}
               isFocused={isFocused}
+              isFilled={!!isFilled}
             />
           </IconView>
         )}
@@ -44,8 +64,8 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
           {...props}
           ref={inputElementRef}
           secureTextEntry={isSecured}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
         />
 
         {!!secureTextEntry && (

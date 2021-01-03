@@ -91,6 +91,7 @@ const SignUp: React.FC = () => {
                     error={errors.name}
                     onBlur={handleBlur('name')}
                     returnKeyType="next"
+                    isFilled={!!values.name}
                     onChangeText={(value: string): void => {
                       setFieldValue('name', value)
                     }}
@@ -103,6 +104,7 @@ const SignUp: React.FC = () => {
                     mt={10}
                     ref={emailInputRef}
                     icon="mail"
+                    isFilled={!!values.email}
                     keyboardAppearance="dark"
                     autoCorrect={false}
                     autoCapitalize="none"
@@ -132,6 +134,7 @@ const SignUp: React.FC = () => {
                     secureTextEntry
                     autoCompleteType="password"
                     error={errors.password}
+                    isFilled={!!values.password}
                     defaultValue={values.password}
                     onBlur={handleBlur('password')}
                     textContentType="newPassword"

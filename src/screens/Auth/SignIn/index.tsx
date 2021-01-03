@@ -73,6 +73,7 @@ const SignIn: React.FC = () => {
               onChangeText={setEmail}
               defaultValue={email}
               returnKeyType="next"
+              isFilled={!!email}
               onSubmitEditing={() => {
                 passwordInputRef.current?.focus()
               }}
@@ -89,6 +90,7 @@ const SignIn: React.FC = () => {
               secureTextEntry
               autoCompleteType="password"
               returnKeyType="send"
+              isFilled={!!password}
               onChangeText={setPassword}
               defaultValue={password}
               onSubmitEditing={submit}
