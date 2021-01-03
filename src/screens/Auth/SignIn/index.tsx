@@ -8,23 +8,17 @@ import {
   Text,
   TextInput,
 } from 'components'
-import { KeyboardAvoidingView } from 'react-native'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
 import logoImg from 'assets/images/logo.png'
-import Device from 'core/helpers/Device'
 
 const SignIn: React.FC = () => {
   const { t } = useTranslation('sign_in')
 
   return (
     <>
-      <Container
-        as={KeyboardAvoidingView}
-        behavior={Device.keyboardBehavior()}
-        flex={1}
-        paddingX={40}
-        center>
+      <Container as={View} flex={1} paddingX={40} center>
         <Image source={logoImg} />
 
         <Text mt={64} mx={24} fontSize={24} variant="medium">
