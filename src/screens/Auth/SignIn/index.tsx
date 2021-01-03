@@ -5,10 +5,11 @@ import {
   FooterButton,
   Image,
   LinkButton,
+  ScrollView,
   Text,
   TextInput,
 } from 'components'
-import { KeyboardAvoidingView } from 'react-native'
+import { KeyboardAvoidingView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
 import logoImg from 'assets/images/logo.png'
@@ -22,37 +23,45 @@ const SignIn: React.FC = () => {
       <Container
         as={KeyboardAvoidingView}
         behavior={Device.keyboardBehavior()}
-        flex={1}
-        paddingX={40}
-        center>
-        <Image source={logoImg} />
+        enabled>
+        <ScrollView center keyboardShouldPersistTaps="handled">
+          <Container as={View} center paddingX={40}>
+            <Image source={logoImg} />
 
-        <Text mt={64} mx={24} fontSize={24} variant="medium">
-          {t('title')}
-        </Text>
+            <View>
+              <Text mt={64} mx={24} fontSize={24} variant="medium">
+                {t('title')}
+              </Text>
+            </View>
 
-        <TextInput
-          mt={24}
-          icon="mail"
-          placeholder={t('input_mail_placeholder')}
-          keyboardType="email-address"
-          autoCompleteType="email"
-        />
+            <TextInput
+              mt={24}
+              icon="mail"
+              placeholder={t('input_mail_placeholder')}
+              keyboardType="email-address"
+              autoCompleteType="email"
+            />
 
-        <TextInput
-          mt={10}
-          icon="lock"
-          placeholder={t('input_password_placeholder')}
-          secureTextEntry
-          autoCompleteType="password"
-        />
+            <TextInput
+              mt={10}
+              icon="lock"
+              placeholder={t('input_password_placeholder')}
+              secureTextEntry
+              autoCompleteType="password"
+            />
 
-        <Button title={t('login_button')} mt={12} />
+            <Button title={t('login_button')} mt={12} />
 
-        <LinkButton title={t('forgot_password')} mt={24} />
+            <LinkButton title={t('forgot_password')} mt={24} />
+          </Container>
+        </ScrollView>
       </Container>
 
-      <FooterButton icon="log-in" title={t('create_account')} />
+      <FooterButton
+        icon="log-in"
+        title={t('create_account')}
+        hideOnKeyboard={Device.isAndroid()}
+      />
     </>
   )
 }

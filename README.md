@@ -24,6 +24,7 @@ The project was coded and tested on both Android and iOS.
 - [x] Internationalization (i18n)
 - [x] Tests implementation
 - [x] CI (CircleCI)
+- [x] Code Coverage (CodeCov)
 - [ ] Deploy
 
 
