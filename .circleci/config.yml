@@ -20,12 +20,4 @@ jobs:
 workflows:
   testing:
     jobs:
-      - test:
-          filters:
-            branches:
-              only:
-                - main
-                - '/^feat/.*/'
-                - '/^fix/.*/'
-                - '/^style/.*/'
-                - '/^docs/.*/'
+      - test
