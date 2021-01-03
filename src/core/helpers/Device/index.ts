@@ -21,7 +21,7 @@ const Device = {
    * Disabled on Android
    */
   keyboardBehavior: (): 'padding' | 'height' | 'position' | undefined =>
-    Platform.OS === 'ios' ? 'padding' : 'padding',
+    Platform.OS === 'ios' ? 'padding' : undefined,
 }
 
 export default Device

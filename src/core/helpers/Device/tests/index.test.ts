@@ -31,6 +31,6 @@ describe('Device test suite', () => {
   describe('keyboardBehavior', () => {
     Platform.OS = 'android'
 
-    expect(Device.keyboardBehavior()).toBe('padding')
+    expect(Device.keyboardBehavior()).toBeFalsy()
   })
 })

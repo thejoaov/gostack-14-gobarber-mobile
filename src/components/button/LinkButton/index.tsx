@@ -10,6 +10,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   color,
   title,
   icon,
+  fontSize,
   ...props
 }) => (
   <Container {...props}>
@@ -17,7 +18,9 @@ const LinkButton: React.FC<LinkButtonProps> = ({
       <StyledIcon name={icon} color={color as IconProps['color']} size={18} />
     )}
 
-    <Text color={color}>{title}</Text>
+    <Text fontSize={fontSize} color={color} variant="regular">
+      {title}
+    </Text>
   </Container>
 )
 

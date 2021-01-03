@@ -6,7 +6,7 @@ import {
   PositionProps,
 } from 'styled-system'
 
-export interface Props {
+type Props = {
   children?: React.ReactNode
   as?: React.ElementType
   center?: boolean
