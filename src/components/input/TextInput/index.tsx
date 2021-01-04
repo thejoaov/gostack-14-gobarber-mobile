@@ -21,7 +21,6 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
   ref,
 ) => {
   const [isFocused, setIsFocused] = useState(false)
-  const [filed, setFilled] = useState(isFilled)
   const [isSecured, setIsSecured] = useState(secureTextEntry)
 
   const inputElementRef = useRef<any>(null)
@@ -37,11 +36,8 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
   }, [])
 
   const handleInputBlur = useCallback(() => {
-    if (!!isFilled) {
-      setFilled(true)
-    }
     setIsFocused(false)
-  }, [isFilled])
+  }, [])
 
   return (
     <>
