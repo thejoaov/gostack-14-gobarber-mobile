@@ -6,7 +6,6 @@ import React, {
   useCallback,
 } from 'react'
 
-import { Text } from 'components'
 import {
   Container,
   IconView,
@@ -14,7 +13,6 @@ import {
   StyledInput,
   StyledEyeIcon,
   IconEyeView,
-  ErrorView,
 } from './styles'
 import { InputRef, TextInputProps } from './types'
 
@@ -47,7 +45,7 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
 
   return (
     <>
-      <Container {...props} isFocused={isFocused} isFilled={filed}>
+      <Container {...props} isFocused={isFocused} error={!!error}>
         {!!icon && (
           <IconView>
             <StyledIcon
@@ -74,9 +72,6 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
           </IconEyeView>
         )}
       </Container>
-      <ErrorView>
-        <Text fontSize={12}>{error}</Text>
-      </ErrorView>
     </>
   )
 }
