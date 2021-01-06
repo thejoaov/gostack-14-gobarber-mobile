@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { space, color, flexbox, fontSize } from 'styled-system'
+import { space, color, flexbox, fontSize, textAlign } from 'styled-system'
 
 export const TextContainer = styled.Text<{
   variant?: 'medium' | 'regular' | 'light' | 'bold'
@@ -10,4 +10,5 @@ export const TextContainer = styled.Text<{
   ${color};
   ${flexbox};
   ${fontSize};
+  ${textAlign}
 `

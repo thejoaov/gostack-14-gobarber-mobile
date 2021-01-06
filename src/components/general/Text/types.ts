@@ -4,6 +4,7 @@ import {
   ColorProps,
   FlexboxProps,
   FontSizeProps,
+  TextAlignProps,
 } from 'styled-system'
 
 type Props = {
@@ -17,4 +18,5 @@ export type TextProps = Props &
   SpaceProps &
   ColorProps &
   FlexboxProps &
-  FontSizeProps
+  FontSizeProps &
+  TextAlignProps
