@@ -1,10 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   View,
   TextInput as Input,
+  Alert,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
@@ -25,27 +25,43 @@ import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import theme from 'core/styles/theme'
 import { signUpDefaultValues } from 'core/constants/signup'
+import { useAuth } from 'core/hooks/AuthContext'
 
 const SignUp: React.FC = () => {
-  const { t } = useTranslation('sign_up')
+  const { t } = useTranslation(['sign_up'])
   const navigation = useNavigation()
-
   const emailInputRef = useRef<Input>(null)
   const passwordInputRef = useRef<Input>(null)
+  const { signUp, loading } = useAuth()
 
   const schema = Yup.object().shape({
-    name: Yup.string().required(t('input_name_error_required')),
+    name: Yup.string().required(t('inputs.name_error_required')),
     email: Yup.string()
-      .required(t('input_mail_error_required'))
-      .email(t('input_mail_error_valid')),
+      .required(t('inputs.mail_error_required'))
+      .email(t('inputs.mail_error_valid')),
     password: Yup.string()
-      .required(t('input_password_error_required'))
-      .min(6, t('input_password_error_min')),
+      .required(t('inputs.password_error_required'))
+      .min(6, t('inputs.password_error_min')),
   })
 
-  const submit = (values: typeof signUpDefaultValues): void => {
-    Alert.alert('SignUp', JSON.stringify(values))
-  }
+  const submit = useCallback(
+    async (values: typeof signUpDefaultValues): Promise<void> => {
+      try {
+        await signUp(values)
+        Alert.alert(
+          t('alerts.success_signup_title'),
+          t('alerts.success_signup_message'),
+          [{ onPress: () => navigation.navigate('SignIn') }],
+        )
+      } catch (error) {
+        Alert.alert(
+          t('alerts.error_signup_title'),
+          t('alerts.error_signup_message'),
+        )
+      }
+    },
+    [navigation, signUp, t],
+  )
 
   return (
     <>
@@ -85,8 +101,9 @@ const SignUp: React.FC = () => {
                     icon="user"
                     autoCorrect={false}
                     keyboardAppearance="dark"
-                    placeholder={t('input_name_placeholder')}
+                    placeholder={t('inputs.name_placeholder')}
                     autoCompleteType="name"
+                    autoCapitalize="words"
                     defaultValue={values.name}
                     error={errors.name}
                     onBlur={handleBlur('name')}
@@ -108,7 +125,7 @@ const SignUp: React.FC = () => {
                     keyboardAppearance="dark"
                     autoCorrect={false}
                     autoCapitalize="none"
-                    placeholder={t('input_mail_placeholder')}
+                    placeholder={t('inputs.mail_placeholder')}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     error={errors.email}
@@ -130,7 +147,7 @@ const SignUp: React.FC = () => {
                     keyboardAppearance="dark"
                     autoCorrect={false}
                     autoCapitalize="none"
-                    placeholder={t('input_password_placeholder')}
+                    placeholder={t('inputs.password_placeholder')}
                     secureTextEntry
                     autoCompleteType="password"
                     error={errors.password}
@@ -148,13 +165,9 @@ const SignUp: React.FC = () => {
                   <Button
                     title={t('create_account_button')}
                     mt={16}
+                    isLoading={loading}
                     onPress={handleSubmit}
-                    enabled={
-                      isValid &&
-                      !!values.email &&
-                      !!values.name &&
-                      !!values.password
-                    }
+                    enabled={isValid}
                   />
                 </>
               )}
