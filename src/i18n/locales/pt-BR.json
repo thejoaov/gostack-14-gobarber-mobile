@@ -37,6 +37,18 @@
       "success_signup_message": "Bem vindo ao GoBarber. Por favor, faça login na sua nova conta."
     }
   },
+  "sign_up_status": {
+    "success": {
+      "title": "Cadastramento concluído!",
+      "message": "Sua conta foi cadastrada!",
+      "button": "Ok"
+    },
+    "error": {
+      "title": "Erro no cadastro",
+      "message": "Ocorreu um erro no seu cadastro :/ \n\nVerifique suas informações e tente novamente.",
+      "button": "Tentar novamente"
+    }
+  },
   "home": {
     "provisory_title": "Home, usuário logado.",
     "provisory_logout_button": "Deslogar"
