@@ -15,6 +15,7 @@ import Schedule from 'screens/Dashboard/Schedule'
 import ScheduleSuccess from 'screens/Dashboard/SheduleSuccess'
 import Profile from 'screens/Settings/Profile'
 import Logout from 'screens/Settings/Logout'
+import { useAuth } from 'core/hooks/AuthContext'
 
 const AppStack = createStackNavigator()
 const AuthStack = createStackNavigator()
@@ -48,22 +49,31 @@ const MainRoutes: React.FC = () => (
   </MainStack.Navigator>
 )
 
-const App: React.FC = () => (
-  <AppStack.Navigator headerMode="none">
-    <AppStack.Screen
-      name="Auth"
-      component={AuthRoutes}
-      options={{
-        cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-      }}
-    />
-    <AppStack.Screen
-      name="Main"
-      component={MainRoutes}
-      options={{ cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }}
-    />
-  </AppStack.Navigator>
-)
+const App: React.FC = () => {
+  const { user } = useAuth()
+
+  return (
+    <AppStack.Navigator headerMode="none">
+      {!!user ? (
+        <AppStack.Screen
+          name="Main"
+          component={MainRoutes}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+          }}
+        />
+      ) : (
+        <AppStack.Screen
+          name="Auth"
+          component={AuthRoutes}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+          }}
+        />
+      )}
+    </AppStack.Navigator>
+  )
+}
 
 const Routes: React.FC = () => (
   <NavigationContainer>
