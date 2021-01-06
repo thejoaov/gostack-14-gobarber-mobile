@@ -1,12 +1,22 @@
 import React from 'react'
-import { Container } from 'components'
+import { Container, Text, Button } from 'components'
+import { useAuth } from 'core/hooks/AuthContext'
+import { useTranslation } from 'react-i18next'
 
-import { Text } from 'react-native'
+const Home: React.FC = () => {
+  const { signOut } = useAuth()
+  const { t } = useTranslation('home')
 
-const Home: React.FC = () => (
-  <Container>
-    <Text>Home</Text>
-  </Container>
-)
+  const handleLogout = () => {
+    signOut()
+  }
+
+  return (
+    <Container center>
+      <Text>{t('provisory_title')}</Text>
+      <Button onPress={handleLogout} title={t('provisory_logout_button')} />
+    </Container>
+  )
+}
 
 export default Home
