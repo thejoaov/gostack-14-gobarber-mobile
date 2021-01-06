@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import {
   Alert,
   KeyboardAvoidingView,
@@ -8,6 +8,8 @@ import {
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
 
 import {
   Button,
@@ -22,24 +24,44 @@ import {
 
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
+import { useAuth } from 'core/hooks/AuthContext'
+import { signInDefaultValues } from 'core/constants/signin'
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation()
-  const { t } = useTranslation('sign_in')
+  const { t } = useTranslation(['sign_in'])
+  const { loading, signIn } = useAuth()
 
   const passwordInputRef = useRef<Input>(null)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
-  const submit = () => {
-    Alert.alert(
-      'SignIn',
-      `
-    email: ${email}
-    password: ${password}
-    `,
-    )
-  }
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .required(t('inputs.mail_error_required'))
+      .email(t('inputs.mail_error_valid')),
+    password: Yup.string()
+      .required(t('inputs.password_error_required'))
+      .min(6, t('inputs.password_error_min')),
+  })
+
+  const submit = useCallback(
+    async (values: typeof signInDefaultValues) => {
+      try {
+        if (!values.email && !values.password) {
+          Alert.alert(
+            t('alerts.error_signin_title'),
+            t('alerts.error_signin_message'),
+          )
+        }
+        await signIn(values)
+      } catch (error) {
+        Alert.alert(
+          t('alerts.error_signin_title'),
+          t('alerts.error_signin_message'),
+        )
+      }
+    },
+    [signIn, t],
+  )
 
   return (
     <>
@@ -60,44 +82,72 @@ const SignIn: React.FC = () => {
                 {t('title')}
               </Text>
             </View>
+            <Formik
+              initialValues={signInDefaultValues}
+              validationSchema={validationSchema}
+              validateOnBlur={false}
+              onSubmit={submit}>
+              {({
+                isValid,
+                errors,
+                values,
+                handleBlur,
+                handleSubmit,
+                setFieldValue,
+              }) => (
+                <>
+                  <TextInput
+                    mt={24}
+                    icon="mail"
+                    isFilled={!!values.email}
+                    keyboardAppearance="dark"
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    placeholder={t('inputs.mail_placeholder')}
+                    keyboardType="email-address"
+                    autoCompleteType="email"
+                    error={errors.email}
+                    defaultValue={values.email}
+                    returnKeyType="next"
+                    onBlur={handleBlur('email')}
+                    onChangeText={(value: string): void => {
+                      setFieldValue('email', value)
+                    }}
+                    onSubmitEditing={() => {
+                      passwordInputRef.current?.focus()
+                    }}
+                  />
 
-            <TextInput
-              mt={24}
-              autoCapitalize="none"
-              autoCorrect={false}
-              keyboardAppearance="dark"
-              icon="mail"
-              placeholder={t('input_mail_placeholder')}
-              keyboardType="email-address"
-              autoCompleteType="email"
-              onChangeText={setEmail}
-              defaultValue={email}
-              returnKeyType="next"
-              isFilled={!!email}
-              onSubmitEditing={() => {
-                passwordInputRef.current?.focus()
-              }}
-            />
+                  <TextInput
+                    mt={10}
+                    ref={passwordInputRef}
+                    icon="lock"
+                    keyboardAppearance="dark"
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    placeholder={t('inputs.password_placeholder')}
+                    secureTextEntry
+                    autoCompleteType="password"
+                    error={errors.password}
+                    isFilled={!!values.password}
+                    defaultValue={values.password}
+                    onBlur={handleBlur('password')}
+                    returnKeyType="send"
+                    onChangeText={(value: string): void => {
+                      setFieldValue('password', value)
+                    }}
+                    onSubmitEditing={handleSubmit}
+                  />
 
-            <TextInput
-              mt={10}
-              ref={passwordInputRef}
-              icon="lock"
-              keyboardAppearance="dark"
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder={t('input_password_placeholder')}
-              secureTextEntry
-              autoCompleteType="password"
-              returnKeyType="send"
-              isFilled={!!password}
-              onChangeText={setPassword}
-              defaultValue={password}
-              onSubmitEditing={submit}
-            />
-
-            <Button title={t('login_button')} mt={12} onPress={submit} />
-
+                  <Button
+                    isLoading={loading}
+                    title={t('login_button')}
+                    mt={12}
+                    onPress={handleSubmit}
+                  />
+                </>
+              )}
+            </Formik>
             <LinkButton
               title={t('forgot_password')}
               mt={24}
