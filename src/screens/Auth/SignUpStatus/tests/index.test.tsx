@@ -3,18 +3,18 @@ import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import { createTestProps } from 'core/utils'
 
-import Schedule from '../index'
+import SignUpSuccess from '../index'
 
 let wrapper: ReactTestRenderer
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const props: any = createTestProps({})
+const props: any = createTestProps({ params: { status: 'success' } })
 
-describe('Schedule test suite', () => {
+describe('SignUpSuccess test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <Schedule {...props} />
+          <SignUpSuccess {...props} />
         </StylesProvider>,
       )
     })

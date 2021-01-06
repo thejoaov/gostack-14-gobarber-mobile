@@ -4,22 +4,54 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
+
 import theme from 'core/styles/theme'
+import { useAuth } from 'core/hooks/AuthContext'
 
 import SignIn from 'screens/Auth/SignIn'
 import SignUp from 'screens/Auth/SignUp'
-import SignUpSuccess from 'screens/Auth/SignUpSuccess'
+import SignUpStatus from 'screens/Auth/SignUpStatus'
 import ForgotPassword from 'screens/Auth/ForgotPassword'
 import Home from 'screens/Dashboard/Home'
 import Schedule from 'screens/Dashboard/Schedule'
-import ScheduleSuccess from 'screens/Dashboard/SheduleSuccess'
+import ScheduleStatus from 'screens/Dashboard/ScheduleStatus'
 import Profile from 'screens/Settings/Profile'
 import Logout from 'screens/Settings/Logout'
-import { useAuth } from 'core/hooks/AuthContext'
 
-const AppStack = createStackNavigator()
-const AuthStack = createStackNavigator()
-const MainStack = createStackNavigator()
+import {
+  AuthStackParams,
+  AppStackParams,
+  MainStackParams,
+  DashboardStackParams,
+  SettingsStackParams,
+} from './types'
+
+const AppStack = createStackNavigator<AppStackParams>()
+const AuthStack = createStackNavigator<AuthStackParams>()
+const MainStack = createStackNavigator<MainStackParams>()
+const DashboardStack = createStackNavigator<DashboardStackParams>()
+const SettingsStack = createStackNavigator<SettingsStackParams>()
+
+const DashboardRoutes: React.FC = () => (
+  <DashboardStack.Navigator
+    headerMode="none"
+    initialRouteName="Home"
+    screenOptions={{ cardStyle: { backgroundColor: theme.colors.background } }}>
+    <DashboardStack.Screen name="Home" component={Home} />
+    <DashboardStack.Screen name="Schedule" component={Schedule} />
+    <DashboardStack.Screen name="ScheduleStatus" component={ScheduleStatus} />
+  </DashboardStack.Navigator>
+)
+
+const SettingsRoutes: React.FC = () => (
+  <SettingsStack.Navigator
+    headerMode="none"
+    initialRouteName="Profile"
+    screenOptions={{ cardStyle: { backgroundColor: theme.colors.background } }}>
+    <SettingsStack.Screen name="Profile" component={Profile} />
+    <SettingsStack.Screen name="Logout" component={Logout} />
+  </SettingsStack.Navigator>
+)
 
 const AuthRoutes: React.FC = () => (
   <AuthStack.Navigator
@@ -31,7 +63,7 @@ const AuthRoutes: React.FC = () => (
     }}>
     <AuthStack.Screen name="SignIn" component={SignIn} />
     <AuthStack.Screen name="SignUp" component={SignUp} />
-    <AuthStack.Screen name="SignUpSuccess" component={SignUpSuccess} />
+    <AuthStack.Screen name="SignUpStatus" component={SignUpStatus} />
     <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
   </AuthStack.Navigator>
 )
@@ -39,13 +71,10 @@ const AuthRoutes: React.FC = () => (
 const MainRoutes: React.FC = () => (
   <MainStack.Navigator
     headerMode="none"
-    initialRouteName="Home"
+    initialRouteName="Dashboard"
     screenOptions={{ cardStyle: { backgroundColor: theme.colors.background } }}>
-    <MainStack.Screen name="Home" component={Home} />
-    <MainStack.Screen name="Schedule" component={Schedule} />
-    <MainStack.Screen name="ScheduleSuccess" component={ScheduleSuccess} />
-    <MainStack.Screen name="Profile" component={Profile} />
-    <MainStack.Screen name="Logout" component={Logout} />
+    <MainStack.Screen name="Dashboard" component={DashboardRoutes} />
+    <MainStack.Screen name="Settings" component={SettingsRoutes} />
   </MainStack.Navigator>
 )
 

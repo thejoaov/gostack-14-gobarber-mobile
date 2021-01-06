@@ -37,6 +37,18 @@
       "success_signup_message": "Welcome to GoBarber. Please login into your new account."
     }
   },
+  "sign_up_status": {
+    "success": {
+      "title": "Signup complete!",
+      "messsage": "Your account was sucessfuly registered!",
+      "button": "Ok"
+    },
+    "error": {
+      "title": "Signup error",
+      "message": "An error ocurred in your registering :/ \n\nVerify your information and try again.",
+      "button": "Try again"
+    }
+  },
   "home": {
     "provisory_title": "Home, user logged in",
     "provisory_logout_button": "Logout"

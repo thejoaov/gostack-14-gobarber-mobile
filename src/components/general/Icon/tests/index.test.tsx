@@ -1,16 +1,18 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import ScheduleSuccess from '../index'
+import Text from '../index'
+import { TextProps } from '../types'
 
 let wrapper: ReactTestRenderer
+const initialProps: TextProps = { children: 'test' }
 
-describe('ScheduleSuccess test suite', () => {
+describe('Text test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <ScheduleSuccess />
+          <Text {...initialProps} />
         </StylesProvider>,
       )
     })
