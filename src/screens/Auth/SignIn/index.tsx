@@ -26,8 +26,9 @@ import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import { useAuth } from 'core/hooks/AuthContext'
 import { signInDefaultValues } from 'core/constants/signin'
+import { Props } from './types'
 
-const SignIn: React.FC = () => {
+const SignIn: React.FC<Props> = () => {
   const navigation = useNavigation()
   const { t } = useTranslation(['sign_in'])
   const { loading, signIn } = useAuth()

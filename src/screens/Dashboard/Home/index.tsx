@@ -2,8 +2,9 @@ import React from 'react'
 import { Container, Text, Button } from 'components'
 import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
+import { Props } from './types'
 
-const Home: React.FC = () => {
+const Home: React.FC<Props> = () => {
   const { signOut } = useAuth()
   const { t } = useTranslation('home')
 
