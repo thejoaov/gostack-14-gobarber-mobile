@@ -27,7 +27,6 @@ i18n
     resources,
     fallbackLng: 'en-US',
     keySeparator: '.',
-    ns: ['common'],
     interpolation: {
       escapeValue: false,
     },

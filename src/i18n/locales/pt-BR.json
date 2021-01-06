@@ -1,24 +1,44 @@
 {
-  "common": {},
   "sign_in": {
     "title": "Faça seu login",
     "login_button": "Entrar",
-    "input_mail_placeholder": "E-mail",
-    "input_password_placeholder": "Senha",
     "forgot_password": "Esqueci minha senha",
-    "footer_button": "Criar uma conta"
+    "footer_button": "Criar uma conta",
+    "inputs": {
+      "mail_placeholder": "E-mail",
+      "mail_error_required": "Email é obrigatório",
+      "password_placeholder": "Senha",
+      "password_error_required": "Senha é obrigatória",
+      "password_error_min": "Mínimo de 6 caracteres"
+    },
+    "alerts": {
+      "error_signin_title": "Erro no login",
+      "error_signin_message": "Erro ao tentar logar na sua conta. Por favor tente novamente."
+    }
   },
   "sign_up": {
     "title": "Crie sua conta",
-    "create_account_button": "Cadastrar",
-    "input_name_placeholder": "Nome",
-    "input_mail_placeholder": "E-mail",
-    "input_password_placeholder": "Senha",
     "footer_button": "Voltar para o login",
-    "input_name_error_required": "Nome obrigatório",
-    "input_mail_error_valid": "Digite um email válido",
-    "input_mail_error_required": "Email obrigatório",
-    "input_password_error_required": "Senha obrigatória",
-    "input_password_error_min": "Mínimo de 6 caracteres"
+    "create_account_button": "Cadastrar",
+    "inputs": {
+      "name_placeholder": "Nome",
+      "name_error_required": "Nome é obrigatório",
+      "mail_placeholder": "E-mail",
+      "mail_error_valid": "Insira um email válido",
+      "mail_error_required": "Email é obrigatório",
+      "password_placeholder": "Senha",
+      "password_error_required": "Senha é obrigatória",
+      "password_error_min": "Mínimo de 6 caracteres"
+    },
+    "alerts": {
+      "error_signup_title": "Erro no cadastro",
+      "error_signup_message": "Erro ao tentar cadastrar seu usuário. Tente novamente.",
+      "success_signup_title": "Sucesso!",
+      "success_signup_message": "Bem vindo ao GoBarber. Por favor, faça login na sua nova conta."
+    }
+  },
+  "home": {
+    "provisory_title": "Home, usuário logado.",
+    "provisory_logout_button": "Deslogar"
   }
 }
