@@ -5,6 +5,7 @@ type Props = {
   title: string
   textColor?: string
   onPress?(): void
+  isLoading?: boolean
 }
 
 export type ButtonProps = Omit<RectButtonProperties, 'onPress'> &
