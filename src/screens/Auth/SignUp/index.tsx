@@ -1,13 +1,11 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef } from 'react'
 import {
   KeyboardAvoidingView,
   Platform,
   View,
   TextInput as Input,
-  Alert,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -26,10 +24,10 @@ import Device from 'core/helpers/Device'
 import theme from 'core/styles/theme'
 import { signUpDefaultValues } from 'core/constants/signup'
 import { useAuth } from 'core/hooks/AuthContext'
+import { Props } from './types'
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC<Props> = ({ navigation }) => {
   const { t } = useTranslation(['sign_up'])
-  const navigation = useNavigation()
   const emailInputRef = useRef<Input>(null)
   const passwordInputRef = useRef<Input>(null)
   const { signUp, loading } = useAuth()
@@ -48,19 +46,12 @@ const SignUp: React.FC = () => {
     async (values: typeof signUpDefaultValues): Promise<void> => {
       try {
         await signUp(values)
-        Alert.alert(
-          t('alerts.success_signup_title'),
-          t('alerts.success_signup_message'),
-          [{ onPress: () => navigation.navigate('SignIn') }],
-        )
+        navigation.navigate('SignUpStatus', { status: 'success' })
       } catch (error) {
-        Alert.alert(
-          t('alerts.error_signup_title'),
-          t('alerts.error_signup_message'),
-        )
+        navigation.navigate('SignUpStatus', { status: 'error' })
       }
     },
-    [navigation, signUp, t],
+    [navigation, signUp],
   )
 
   return (
@@ -181,7 +172,7 @@ const SignUp: React.FC = () => {
         title={t('footer_button')}
         hideOnKeyboard={Device.isAndroid()}
         color={theme.colors.white}
-        onPress={() => navigation.navigate('SignIn')}
+        onPress={() => navigation.goBack()}
       />
     </>
   )
