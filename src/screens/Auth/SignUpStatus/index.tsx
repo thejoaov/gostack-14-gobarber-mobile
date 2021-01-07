@@ -36,7 +36,7 @@ const SignUpStatus: React.FC<Props> = ({ route, navigation }) => {
 
       <Button
         mt={40}
-        width={status === 'success' ? 100 : '100%'}
+        width={status === 'success' ? 100 : 180}
         title={t(`${status}.button`)}
         onPress={() =>
           navigation.navigate(status === 'success' ? 'SignIn' : 'SignUp')
