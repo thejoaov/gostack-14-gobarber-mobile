@@ -9,8 +9,8 @@
     "test": "jest --runInBand",
     "test:ci": "TZ=America/Fortaleza jest --ci --runInBand --collectCoverage",
     "test:cov": "jest --coverage --colors",
-    "prettify": "prettier --check 'src/**/*.{ts,tsx,js,jsx,json}' --write",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --ext '.js,.jsx,.ts,.tsx' --fix"
+    "prettify": "prettier --check src/**/*.{ts,tsx,js,jsx,json} --write",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx} --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
