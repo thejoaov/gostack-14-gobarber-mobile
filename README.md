@@ -34,5 +34,5 @@ The project was coded and tested on both Android and iOS.
 [circleci-url]: https://circleci.com/gh/thejoaov/gobarber-14-mobile/tree/main
 [codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-14-mobile/branch/main/graph/badge.svg
 [codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-14-mobile
-[codeclimate-img]: https://api.codeclimate.com/v1/badges/b0431ae0fbc7d8ca7ff1/maintainability
+[codeclimate-img]: https://api.codeclimate.com/v1/badges/f90a6c9b9199a2d528cb/maintainability
 [codeclimate-url]: https://codeclimate.com/github/thejoaov/gobarber-14-mobile/maintainability
