@@ -1,6 +1,5 @@
 <div align="center">
 <img src="./src/assets/images/logo@3x.png" height="300" />
-
 <h2 style="color:#777">Front End Mobile</h2>
 
 [![CircleCI][circleci-img]][circleci-url]
