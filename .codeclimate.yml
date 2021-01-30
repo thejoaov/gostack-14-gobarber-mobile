@@ -10,6 +10,19 @@ plugins:
         - .ts
         - .tsx
         - .js
+      checks:
+        react/boolean-prop-naming:
+          enabled: false
+        react-hooks/exhaustive-deps:
+          enabled: false
+        react-hooks/rules-of-hooks:
+          enabled: false
+        react/jsx-filename-extension:
+          enabled: false
+        prettier/prettier:
+          enabled: false
+        import/no-unresolved:
+          enabled: false
 checks:
   argument-count:
     config:
@@ -39,6 +52,7 @@ exclude_patterns:
 - "ios/"
 - "android/"
 - "__mocks__/"
+- "src/i18n/"
 - "db/"
 - "dist/"
 - "features/"
