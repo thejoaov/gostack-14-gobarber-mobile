@@ -43,7 +43,7 @@ checks:
       threshold: 10
   method-lines:
     config:
-      threshold: 100
+      threshold: 250
   return-statements:
     config:
       threshold: 4
