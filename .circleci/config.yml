@@ -10,12 +10,24 @@ jobs:
           name: 'Setup Environment Variables'
           command: |
             echo 'export CODECOV_TOKEN="$CODECOV_TOKEN"' >> $BASH_ENV
+            echo 'export CC_TEST_REPORTER_ID="$CC_TEST_REPORTER_ID"' >> $BASH_ENV
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
       - run:
           name: 'Install dependencies'
           command: 'yarn install'
       - run:
-          name: 'Jest tests and send report to codecov'
-          command: 'yarn test:ci && bash <(curl -s https://codecov.io/bash)'
+          name: 'Run tests and get coverage'
+          command: 'yarn test:ci'
+      - run:
+          name: 'Send test coverage to CodeCov'
+          command: |
+            bash <(curl -s https://codecov.io/bash)
+            ./cc-test-reporter after-build -t lcov -p ./coverage/lcov.info
 
 workflows:
   testing:
