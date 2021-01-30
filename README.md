@@ -30,8 +30,8 @@ The project was coded and tested on both Android and iOS.
 
 
 
-[gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos/tree/master/nivel-03/03-iniciando-aplicativo-mobile
-[circleci-img]: https://circleci.com/gh/thejoaov/gobarber-11-mobile/tree/main.svg?style=svg
-[circleci-url]: https://circleci.com/gh/thejoaov/gobarber-11-mobile/tree/main
-[codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-11-mobile/branch/main/graph/badge.svg
-[codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-11-mobile
+[gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos
+[circleci-img]: https://circleci.com/gh/thejoaov/gobarber-14-mobile/tree/main.svg?style=svg
+[circleci-url]: https://circleci.com/gh/thejoaov/gobarber-14-mobile/tree/main
+[codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-14-mobile/branch/main/graph/badge.svg
+[codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-14-mobile
