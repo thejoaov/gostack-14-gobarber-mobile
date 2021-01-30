@@ -10,19 +10,21 @@ plugins:
         - .ts
         - .tsx
         - .js
-      checks:
-        react/boolean-prop-naming:
-          enabled: false
-        react-hooks/exhaustive-deps:
-          enabled: false
-        react-hooks/rules-of-hooks:
-          enabled: false
-        react/jsx-filename-extension:
-          enabled: false
-        prettier/prettier:
-          enabled: false
-        import/no-unresolved:
-          enabled: false
+    checks:
+      react/boolean-prop-naming:
+        enabled: false
+      react-hooks/exhaustive-deps:
+        enabled: false
+      react-hooks/rules-of-hooks:
+        enabled: false
+      react/jsx-filename-extension:
+        enabled: false
+      prettier/prettier:
+        enabled: false
+      import/no-unresolved:
+        enabled: false
+      import/no-cycle:
+        enabled: false
 checks:
   argument-count:
     config:
