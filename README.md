@@ -6,7 +6,6 @@
 [![codecov][codecov-badge]][codecov-badge-url]
 [![Maintainability][codeclimate-img]][codeclimate-url]
 
-
 </div>
 
 This repository contains the GoBarber Mobile application, developed during RocketSeat Bootcamp GoStack 14, improved with my current knowledge about some patterns, tests, and my personal code preferences.
@@ -16,7 +15,6 @@ So, the code avaiable here may differ from the original, which can be found [HER
 Documentation about the folder structure can be found at every `src/` folder, some with explanation about the choice.
 
 The project was coded and tested on both Android and iOS.
-
 
 ## To - Do
 
