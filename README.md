@@ -8,7 +8,7 @@
 
 </div>
 
-This repository contains the GoBarber Mobile application, developed during RocketSeat Bootcamp GoStack 11, improved with my current knowledge about some patterns, tests, and my personal code preferences.
+This repository contains the GoBarber Mobile application, developed during RocketSeat Bootcamp GoStack 14, improved with my current knowledge about some patterns, tests, and my personal code preferences.
 
 So, the code avaiable here may differ from the original, which can be found [HERE][gobarber-rocketseat].
 
