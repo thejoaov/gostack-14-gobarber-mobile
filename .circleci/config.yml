@@ -25,9 +25,10 @@ jobs:
           command: 'yarn test:ci'
       - run:
           name: 'Send test coverage to CodeCov'
-          command: |
-            bash <(curl -s https://codecov.io/bash)
-            ./cc-test-reporter after-build -t lcov -p ./coverage/lcov.info
+          command: 'bash <(curl -s https://codecov.io/bash)'
+      - run:
+          name: 'Send test coverage to CodeClimate'
+          command: './cc-test-reporter after-build -t lcov -p ./coverage/lcov.info'
 
 workflows:
   testing:
