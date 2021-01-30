@@ -4,7 +4,7 @@
 
 [![CircleCI][circleci-img]][circleci-url]
 [![codecov][codecov-badge]][codecov-badge-url]
-[![Maintainability][codeclimate-img][codeclimate-url]
+[![Maintainability][codeclimate-img]][codeclimate-url]
 
 
 </div>
