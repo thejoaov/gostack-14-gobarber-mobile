@@ -1,3 +1,4 @@
+version: "2"
 plugins:
   eslint:
     enabled: true
@@ -6,6 +7,62 @@ plugins:
       config: .eslintrc.js
       ignore_warnings: true
       extensions:
-      - .ts
-      - .tsx
-      - .js
+        - .ts
+        - .tsx
+        - .js
+checks:
+  argument-count:
+    config:
+      threshold: 4
+  complex-logic:
+    config:
+      threshold: 5
+  file-lines:
+    config:
+      threshold: 250
+  method-complexity:
+    config:
+      threshold: 8
+  method-count:
+    config:
+      threshold: 10
+  method-lines:
+    config:
+      threshold: 100
+  return-statements:
+    config:
+      threshold: 4
+  similar-code:
+    enabled: false
+exclude_patterns:
+- config/
+- ios/
+- android/
+- __mocks__/
+- db/
+- dist/
+- features/
+- **/node_modules/
+- script/
+- **/*.svg
+- **/*.jpg
+- **/*.png
+- **/*.ttf
+- **/*.java
+- **/*.xml
+- **/spec/
+- **/test/
+- **/tests/
+- Tests/
+- **/vendor/
+- **/*_test.go
+- **/*.d.ts
+- **/types.ts
+- .eslintrc.js
+- .prettierrc.js
+- babel.config.js
+- index.js
+- jest.config.js
+- jest.setup.js
+- metro.config.js
+- react-native.config.js
