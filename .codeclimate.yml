@@ -42,7 +42,7 @@ exclude_patterns:
 - "db/"
 - "dist/"
 - "features/"
-- "**/node_modules/"
+- "node_modules/"
 - "script/"
 - "**/*.svg"
 - "**/*.jpg"
