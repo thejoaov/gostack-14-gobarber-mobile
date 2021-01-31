@@ -3,8 +3,11 @@
 <h2 style="color:#777">Front End Mobile</h2>
 
 [![CircleCI][circleci-img]][circleci-url]
-[![codecov][codecov-badge]][codecov-badge-url]
+
+[![Test Coverage][coverage-img]][coverage-url]
+
 [![Maintainability][codeclimate-img]][codeclimate-url]
+
 
 </div>
 
@@ -32,7 +35,7 @@ The project was coded and tested on both Android and iOS.
 [gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos
 [circleci-img]: https://circleci.com/gh/thejoaov/gobarber-14-mobile/tree/main.svg?style=svg
 [circleci-url]: https://circleci.com/gh/thejoaov/gobarber-14-mobile/tree/main
-[codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-14-mobile/branch/main/graph/badge.svg
-[codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-14-mobile
 [codeclimate-img]: https://api.codeclimate.com/v1/badges/f90a6c9b9199a2d528cb/maintainability
 [codeclimate-url]: https://codeclimate.com/github/thejoaov/gobarber-14-mobile/maintainability
+[coverage-img]: https://api.codeclimate.com/v1/badges/f90a6c9b9199a2d528cb/test_coverage
+[coverage-url]: https://codeclimate.com/github/thejoaov/gobarber-14-mobile/test_coverage
