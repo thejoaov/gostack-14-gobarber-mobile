@@ -47,7 +47,4 @@ jobs:
 workflows:
   testing:
     jobs:
-      - test:
-          filters:
-            branches:
-              ignore: main
+      - test
