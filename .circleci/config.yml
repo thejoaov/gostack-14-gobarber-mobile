@@ -17,9 +17,21 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
+      - restore_cache:
+          key: 'node-v1-{{ checksum "package.json" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+      - restore_cache:
+          key: 'yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}-{{ checksum "patches.hash" }}'
       - run:
           name: 'Install dependencies'
-          command: 'yarn install'
+          command: 'yarn'
+      - save_cache:
+          key: 'node-v1-{{ checksum "package.json" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+          paths:
+            - node_modules
+      - save_cache:
+          key: 'yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+          paths:
+            - ~/.cache/yarn
       - run:
           name: 'Run tests and get coverage'
           command: 'yarn test:ci'
