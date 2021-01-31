@@ -3,11 +3,8 @@
 <h2 style="color:#777">Front End Mobile</h2>
 
 [![CircleCI][circleci-img]][circleci-url]
-
 [![Test Coverage][coverage-img]][coverage-url]
-
 [![Maintainability][codeclimate-img]][codeclimate-url]
-
 
 </div>
 
