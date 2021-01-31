@@ -1,6 +1,7 @@
 /.git
 /.vscode
 /android
+/__mocks__/**/*.*
 /ios
 node_modules
 build
