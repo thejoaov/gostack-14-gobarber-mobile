@@ -17,9 +17,21 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
+      - restore_cache:
+          key: 'node-v1-{{ checksum "package.json" }}'
+      - restore_cache:
+          key: 'yarn-v1-{{ checksum "yarn.lock" }}'
       - run:
           name: 'Install dependencies'
-          command: 'yarn install'
+          command: 'yarn'
+      - save_cache:
+          key: 'node-v1-{{ checksum "package.json" }}'
+          paths:
+            - node_modules
+      - save_cache:
+          key: 'yarn-v1-{{ checksum "yarn.lock" }}'
+          paths:
+            - ~/.cache/yarn
       - run:
           name: 'Run tests and get coverage'
           command: 'yarn test:ci'
@@ -28,7 +40,9 @@ jobs:
           command: 'bash <(curl -s https://codecov.io/bash)'
       - run:
           name: 'Send test coverage to CodeClimate'
-          command: './cc-test-reporter after-build -t lcov -p ./coverage'
+          command: |
+            ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+            ./cc-test-reporter upload-coverage
 
 workflows:
   testing:
