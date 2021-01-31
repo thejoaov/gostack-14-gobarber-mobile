@@ -18,18 +18,18 @@ jobs:
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
       - restore_cache:
-          key: 'node-v1-{{ checksum "package.json" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+          key: 'node-v1-{{ checksum "package.json" }}'
       - restore_cache:
-          key: 'yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+          key: 'yarn-v1-{{ checksum "yarn.lock" }}'
       - run:
           name: 'Install dependencies'
           command: 'yarn'
       - save_cache:
-          key: 'node-v1-{{ checksum "package.json" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+          key: 'node-v1-{{ checksum "package.json" }}'
           paths:
             - node_modules
       - save_cache:
-          key: 'yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}-{{ checksum "patches.hash" }}'
+          key: 'yarn-v1-{{ checksum "yarn.lock" }}'
           paths:
             - ~/.cache/yarn
       - run:
