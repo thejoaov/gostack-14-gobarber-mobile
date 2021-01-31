@@ -7,13 +7,12 @@ import React, {
 } from 'react'
 import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
-import { Alert } from 'react-native'
-import { AuthContextData, AuthState, SignUpData } from './types'
+import { AuthContextData, AuthState } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [data, setData] = useState<AuthState>({ token: null, user: null })
+  const [data, setData] = useState<AuthState>({} as AuthState)
   const [loading, setLoading] = useState(false)
 
   const loadData = useCallback(async () => {
@@ -28,18 +27,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     loadData()
   }, [loadData])
-
-  /**
-   * Send a request to api with signUp credentials
-   */
-  const signUp = useCallback(async (values: SignUpData) => {
-    try {
-      setLoading(true)
-      await Api.signUp(values)
-    } finally {
-      setLoading(false)
-    }
-  }, [])
 
   /**
    * Send a request to api with signIn credentials and
@@ -80,8 +67,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{ loading, user: data.user, signIn, signOut, signUp }}>
+    <AuthContext.Provider value={{ loading, user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

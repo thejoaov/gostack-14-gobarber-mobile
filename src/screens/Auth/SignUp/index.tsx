@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import {
   KeyboardAvoidingView,
   Platform,
@@ -20,6 +20,7 @@ import {
   TextInput,
 } from 'components'
 
+import { Api } from 'core/services/api'
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import { signUpDefaultValues } from 'core/constants/signup'
@@ -28,9 +29,11 @@ import { Props } from './types'
 
 const SignUp: React.FC<Props> = ({ navigation }) => {
   const { t } = useTranslation(['sign_up'])
+
+  const [loading, setLoading] = useState(false)
+
   const emailInputRef = useRef<Input>(null)
   const passwordInputRef = useRef<Input>(null)
-  const { signUp, loading } = useAuth()
   const theme = useTheme()
 
   const schema = Yup.object().shape({
@@ -46,7 +49,9 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
   const submit = useCallback(
     async (values: typeof signUpDefaultValues): Promise<void> => {
       try {
-        await signUp(values)
+        setLoading(true)
+        await Api.signUp(values)
+
         navigation.navigate('Feedback', {
           title: t('feedback.success.title'),
           message: t('feedback.success.message'),
@@ -66,9 +71,11 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
           status: 'error',
           button: { title: t('feedback.error.button') },
         })
+      } finally {
+        setLoading(false)
       }
     },
-    [navigation, signUp, t],
+    [navigation, t],
   )
 
   return (

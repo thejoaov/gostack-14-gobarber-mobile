@@ -147,11 +147,14 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
                 </>
               )}
             </Formik>
-            <LinkButton
-              title={t('forgot_password')}
-              mt={24}
-              onPress={() => navigation.navigate('ForgotPassword')}
-            />
+            {/* waiting to be enabled on production */}
+            {__DEV__ && (
+              <LinkButton
+                title={t('forgot_password')}
+                mt={24}
+                onPress={() => navigation.navigate('ForgotPassword')}
+              />
+            )}
           </Container>
         </ScrollView>
       </Container>
