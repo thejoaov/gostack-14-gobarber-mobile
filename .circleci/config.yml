@@ -40,7 +40,9 @@ jobs:
           command: 'bash <(curl -s https://codecov.io/bash)'
       - run:
           name: 'Send test coverage to CodeClimate'
-          command: './cc-test-reporter after-build -t lcov -p ./coverage/lcov.info'
+          command: |
+            ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+            ./cc-test-reporter upload-coverage
 
 workflows:
   testing:
