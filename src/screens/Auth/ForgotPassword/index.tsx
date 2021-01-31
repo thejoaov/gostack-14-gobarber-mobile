@@ -7,7 +7,6 @@ import {
   TextInput as Input,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik'
 import { useTheme } from 'styled-components'
 import * as Yup from 'yup'
@@ -17,7 +16,6 @@ import {
   Container,
   FooterButton,
   Image,
-  LinkButton,
   ScrollView,
   Text,
   TextInput,
@@ -55,6 +53,7 @@ const ForgotPassword: React.FC<Props> = ({ navigation }) => {
         }
 
         await Api.forgotPassword(values.email)
+
         navigation.navigate('Feedback', {
           title: t('feedback.success.title'),
           message: t('feedback.success.message'),

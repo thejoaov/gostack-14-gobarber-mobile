@@ -3,21 +3,21 @@ export type SignInCredentials = {
   password: string
 }
 
-export type SignUpData = {
+export type User = {
+  id: string
   name: string
+  avatar_url: string | null
   email: string
-  password: string
 }
 
 export type AuthContextData = {
   loading: boolean
-  user: Record<string, unknown> | null
-  signUp(data: SignUpData): Promise<void>
+  user: User
   signIn(credentials: SignInCredentials): Promise<void>
   signOut(): void
 }
 
 export type AuthState = {
-  token: string | null
-  user: Record<string, unknown> | null
+  token: string
+  user: User
 }
