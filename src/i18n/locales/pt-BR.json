@@ -14,6 +14,12 @@
     "alerts": {
       "error_signin_title": "Erro no login",
       "error_signin_message": "Erro ao tentar logar na sua conta. Por favor tente novamente."
+    },
+    "feedback": {
+      "error": {
+        "title": "Erro no login",
+        "message": "Erro ao tentar logar na sua conta. Por favor tente novamente."
+      }
     }
   },
   "sign_up": {
@@ -35,22 +41,44 @@
       "error_signup_message": "Erro ao tentar cadastrar seu usuário. Tente novamente.",
       "success_signup_title": "Sucesso!",
       "success_signup_message": "Bem vindo ao GoBarber. Por favor, faça login na sua nova conta."
-    }
-  },
-  "sign_up_status": {
-    "success": {
-      "title": "Cadastramento concluído!",
-      "message": "Sua conta foi cadastrada!",
-      "button": "Ok"
     },
-    "error": {
-      "title": "Erro no cadastro",
-      "message": "Ocorreu um erro no seu cadastro :/ \n\nVerifique suas informações e tente novamente.",
-      "button": "Tentar novamente"
+    "feedback": {
+      "success": {
+        "title": "Cadastramento concluído!",
+        "message": "Sua conta foi cadastrada!",
+        "button": "Ok"
+      },
+      "error": {
+        "title": "Erro no cadastro",
+        "message": "Ocorreu um erro no seu cadastro :/ \n\nVerifique suas informações e tente novamente.",
+        "button": "Tentar novamente"
+      }
     }
   },
   "home": {
     "provisory_title": "Home, usuário logado.",
     "provisory_logout_button": "Deslogar"
+  },
+  "forgot_password": {
+    "title": "Recuperação de senha",
+    "inputs": {
+      "mail_placeholder": "E-mail",
+      "mail_error_required": "Email é obrigatório",
+      "mail_error_valid": "Insira um email válido"
+    },
+    "forgot_button": "Enviar",
+    "footer_button": "Voltar pro login",
+    "feedback": {
+      "success": {
+        "title": "Email enviado",
+        "message": "Um email de refinição de senha foi enviado para seu email cadastrado. Lá estarão todas as instruções para redefinir sua senha.",
+        "button": "Ok"
+      },
+      "error": {
+        "title": "Ocorreu um erro",
+        "message": "Não encontramos esse email em nosso cadastro. Verifique o email e tente novamente",
+        "button": "Tentar novamente"
+      }
+    }
   }
 }

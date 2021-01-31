@@ -49,10 +49,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     try {
       setLoading(true)
 
-      const response = await Api.login({
-        password,
-        email,
-      })
+      const response = await Api.login(email, password)
 
       const { token, user } = response.data
 
@@ -71,12 +68,15 @@ export const AuthProvider: React.FC = ({ children }) => {
    * Clear user credentials in storage
    */
   const signOut = useCallback(async () => {
-    setLoading(true)
+    try {
+      setLoading(true)
 
-    await Storage.clearUser()
+      await Storage.clearUser()
 
-    setData({} as AuthState)
-    setLoading(false)
+      setData({} as AuthState)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   return (

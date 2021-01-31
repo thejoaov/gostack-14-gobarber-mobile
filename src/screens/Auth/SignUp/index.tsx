@@ -8,6 +8,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useTheme } from 'styled-components'
 
 import {
   Button,
@@ -21,7 +22,6 @@ import {
 
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
-import theme from 'core/styles/theme'
 import { signUpDefaultValues } from 'core/constants/signup'
 import { useAuth } from 'core/hooks/AuthContext'
 import { Props } from './types'
@@ -31,6 +31,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
   const emailInputRef = useRef<Input>(null)
   const passwordInputRef = useRef<Input>(null)
   const { signUp, loading } = useAuth()
+  const theme = useTheme()
 
   const schema = Yup.object().shape({
     name: Yup.string().required(t('inputs.name_error_required')),
@@ -46,12 +47,28 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
     async (values: typeof signUpDefaultValues): Promise<void> => {
       try {
         await signUp(values)
-        navigation.navigate('SignUpStatus', { status: 'success' })
+        navigation.navigate('Feedback', {
+          title: t('feedback.success.title'),
+          message: t('feedback.success.message'),
+          status: 'success',
+          button: {
+            onPress: () =>
+              navigation.navigate('SignIn', {
+                email: values.email,
+                password: values.password,
+              }),
+          },
+        })
       } catch (error) {
-        navigation.navigate('SignUpStatus', { status: 'error' })
+        navigation.navigate('Feedback', {
+          title: t('feedback.error.title'),
+          message: t('feedback.error.message'),
+          status: 'error',
+          button: { title: t('feedback.error.button') },
+        })
       }
     },
-    [navigation, signUp],
+    [navigation, signUp, t],
   )
 
   return (
@@ -172,7 +189,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
         title={t('footer_button')}
         hideOnKeyboard={Device.isAndroid()}
         color={theme.colors.white}
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('SignIn')}
       />
     </>
   )

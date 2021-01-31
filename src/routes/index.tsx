@@ -10,7 +10,7 @@ import { useAuth } from 'core/hooks/AuthContext'
 
 import SignIn from 'screens/Auth/SignIn'
 import SignUp from 'screens/Auth/SignUp'
-import SignUpStatus from 'screens/Auth/SignUpStatus'
+import Feedback from 'screens/Auth/Feedback'
 import ForgotPassword from 'screens/Auth/ForgotPassword'
 import Home from 'screens/Dashboard/Home'
 import Schedule from 'screens/Dashboard/Schedule'
@@ -63,7 +63,7 @@ const AuthRoutes: React.FC = () => (
     }}>
     <AuthStack.Screen name="SignIn" component={SignIn} />
     <AuthStack.Screen name="SignUp" component={SignUp} />
-    <AuthStack.Screen name="SignUpStatus" component={SignUpStatus} />
+    <AuthStack.Screen name="Feedback" component={Feedback} />
     <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
   </AuthStack.Navigator>
 )

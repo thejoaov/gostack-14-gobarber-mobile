@@ -13,9 +13,17 @@ export type AppNavProps<T extends keyof AppStackParams> = {
 
 export type AuthStackParams = {
   ForgotPassword: undefined
-  SignIn: undefined
+  SignIn: { email: string; password: string } | undefined
   SignUp: undefined
-  SignUpStatus: { status: 'success' | 'error' }
+  Feedback: {
+    title: string
+    status: 'success' | 'error'
+    message: string
+    button?: Partial<{
+      title: string
+      onPress(): void
+    }>
+  }
 }
 
 export type AuthNavProps<T extends keyof AuthStackParams> = {

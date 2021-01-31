@@ -62,3 +62,9 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Environment
+.env
+
+# Eslint cache
+.eslintcache
