@@ -1,3 +1,3 @@
 {
-  "*.{ts,tsx,js,jsx}": ["yarn prettify", "yarn lint --fix"]
+  "*.{ts,tsx,js,json}": ["yarn prettify", "yarn lint --fix"]
 }

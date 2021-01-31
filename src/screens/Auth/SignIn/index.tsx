@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef } from 'react'
 import {
   Alert,
   KeyboardAvoidingView,
@@ -7,7 +7,6 @@ import {
   TextInput as Input,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -21,17 +20,17 @@ import {
   Text,
   TextInput,
 } from 'components'
-
-import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import { useAuth } from 'core/hooks/AuthContext'
+
+import logoImg from 'assets/images/logo.png'
 import { signInDefaultValues } from 'core/constants/signin'
 import { Props } from './types'
 
-const SignIn: React.FC<Props> = () => {
-  const navigation = useNavigation()
+const SignIn: React.FC<Props> = ({ route, navigation }) => {
   const { t } = useTranslation(['sign_in'])
   const { loading, signIn } = useAuth()
+  const { params } = route
 
   const passwordInputRef = useRef<Input>(null)
 
@@ -55,13 +54,17 @@ const SignIn: React.FC<Props> = () => {
         }
         await signIn(values)
       } catch (error) {
-        Alert.alert(
-          t('alerts.error_signin_title'),
-          t('alerts.error_signin_message'),
-        )
+        navigation.navigate('Feedback', {
+          message: t('feedback.error.message'),
+          title: t('feedback.error.title'),
+          button: {
+            onPress: () => navigation.navigate('SignIn'),
+          },
+          status: 'error',
+        })
       }
     },
-    [signIn, t],
+    [navigation, signIn, t],
   )
 
   return (
@@ -84,18 +87,13 @@ const SignIn: React.FC<Props> = () => {
               </Text>
             </View>
             <Formik
-              initialValues={signInDefaultValues}
+              initialValues={params || signInDefaultValues}
               validationSchema={validationSchema}
+              enableReinitialize
+              key={params?.email}
               validateOnBlur={false}
               onSubmit={submit}>
-              {({
-                isValid,
-                errors,
-                values,
-                handleBlur,
-                handleSubmit,
-                setFieldValue,
-              }) => (
+              {({ isValid, errors, values, handleSubmit, setFieldValue }) => (
                 <>
                   <TextInput
                     mt={24}
@@ -110,7 +108,7 @@ const SignIn: React.FC<Props> = () => {
                     error={errors.email}
                     defaultValue={values.email}
                     returnKeyType="next"
-                    onBlur={handleBlur('email')}
+                    // onBlur={handleBlur('email')}
                     onChangeText={(value: string): void => {
                       setFieldValue('email', value)
                     }}
@@ -132,15 +130,15 @@ const SignIn: React.FC<Props> = () => {
                     error={errors.password}
                     isFilled={!!values.password}
                     defaultValue={values.password}
-                    onBlur={handleBlur('password')}
+                    // onBlur={handleBlur('password')}
                     returnKeyType="send"
                     onChangeText={(value: string): void => {
                       setFieldValue('password', value)
                     }}
                     onSubmitEditing={handleSubmit}
                   />
-
                   <Button
+                    enabled={isValid}
                     isLoading={loading}
                     title={t('login_button')}
                     mt={12}

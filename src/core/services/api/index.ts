@@ -1,18 +1,20 @@
 import { AxiosPromise } from 'axios'
-import { ApiConfig } from 'config/ApiConfig'
+import { ApiConfig as API } from 'config/ApiConfig'
+import {
+  LoginResponse,
+  SignUpResponse,
+  Appointment,
+  ProviderMonthAvailability,
+  UpdateProfileResponse,
+  UpdateAvatarResponse,
+} from './types'
 
 export const Api = {
   /**
    * Send a request to login
    */
-  login: ({
-    email,
-    password,
-  }: {
-    email: string
-    password: string
-  }): AxiosPromise<any> =>
-    ApiConfig.post('sessions', {
+  login: (email: string, password: string): AxiosPromise<LoginResponse> =>
+    API.post('/sessions', {
       password,
       email,
     }),
@@ -28,10 +30,81 @@ export const Api = {
     name: string
     email: string
     password: string
-  }): AxiosPromise<any> =>
-    ApiConfig.post('users', {
+  }): AxiosPromise<SignUpResponse> =>
+    API.post('/users', {
       name,
       password,
       email,
     }),
+
+  /**
+   * Send a request to forgot password
+   */
+  forgotPassword: (email: string): AxiosPromise<void> =>
+    API.post('/password/forgot', {
+      email,
+    }),
+
+  /**
+   * Send a request to reset password
+   */
+  resetPassword: ({
+    password,
+    passwordConfirmation,
+    token,
+  }: {
+    password: string
+    passwordConfirmation: string
+    token: string
+  }): AxiosPromise<void> =>
+    API.post('/password/reset', {
+      password,
+      password_confirmation: passwordConfirmation,
+      token,
+    }),
+
+  /**
+   * Get provider month availability
+   */
+  getProviderMonthAvailability: (
+    user_id: string,
+    year: number,
+    month: number,
+  ): AxiosPromise<ProviderMonthAvailability[]> =>
+    API.get(`/providers/${user_id}/month-availability`, {
+      params: { year, month },
+    }),
+
+  /**
+   * List provider appointments
+   */
+  listProviderAppointments: (
+    year: number,
+    month: number,
+    day: number,
+  ): AxiosPromise<Appointment[]> =>
+    API.get('/appointments/me', {
+      params: {
+        year,
+        month,
+        day,
+      },
+    }),
+
+  /**
+   * Update user profile
+   */
+  updateProfile: (data: {
+    name: string
+    email: string
+    old_password?: string
+    password?: string
+    password_confirmation?: string
+  }): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
+
+  /**
+   * Update avatar
+   */
+  updateAvatar: (data: FormData): AxiosPromise<UpdateAvatarResponse> =>
+    API.patch('/users/avatar', data),
 }

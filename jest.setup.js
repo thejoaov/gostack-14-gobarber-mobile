@@ -1,6 +1,48 @@
 import 'react-native'
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
 
+const entries = jest.fn()
+const append = jest.fn()
+
+global.FormData = () => ({ entries, append })
+
+jest.mock('styled-components', () => {
+  const original = jest.requireActual('styled-components')
+
+  return {
+    ...original,
+    useTheme: () => ({
+      colors: {
+        primary: '#ff9000',
+        background: '#312E38',
+        white: '#F4EDE8',
+        black: {
+          black: '#000000',
+          inputs: '#232129',
+          medium: '#28262E',
+          shape: '#3E3B47',
+        },
+        gray: {
+          gray: '#999591',
+          grayHard: '#666360',
+        },
+        semantic: {
+          success: '#00a99d',
+          warning: '#ff9000',
+          error: '#c53030',
+          info: '#3172b7',
+        },
+      },
+      fonts: {
+        bold: 'RobotoSlab-Bold',
+        medium: 'RobotoSlab-Medium',
+        regular: 'RobotoSlab-Regular',
+        light: 'RobotoSlab-Light',
+      },
+    }),
+  }
+})
+
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage)
 
 jest.mock('@react-navigation/native')
