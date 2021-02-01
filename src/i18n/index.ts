@@ -3,12 +3,12 @@ import { initReactI18next } from 'react-i18next'
 import { getLocales } from 'react-native-localize'
 
 import ptBR from './locales/pt-BR.json'
-import enUS from './locales/en-US.json'
+// import enUS from './locales/en-US.json'
 
 const resources = {
   'pt-BR': ptBR,
-  'en-US': enUS,
-  en: enUS,
+  // 'en-US': enUS,
+  // en: enUS,
 }
 
 const languageDetector = {
@@ -25,7 +25,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    fallbackLng: 'en-US',
+    fallbackLng: 'pt-BR',
     keySeparator: '.',
     interpolation: {
       escapeValue: false,
