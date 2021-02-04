@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 export { default as Container } from './layout/Container'
+export { default as Header } from './layout/Header'
 export { default as ScrollView } from './layout/ScrollView'
 export { default as Image } from './layout/Image'
 
@@ -8,6 +9,7 @@ export { default as StatusBar } from './style/StatusBar'
 
 export { default as Text } from './general/Text'
 export { default as Icon } from './general/Icon'
+export { default as Avatar } from './general/Avatar'
 
 export { default as TextInput } from './input/TextInput'
 

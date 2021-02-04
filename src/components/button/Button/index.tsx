@@ -9,11 +9,12 @@ import { ButtonProps } from './types'
 
 const Button: React.FC<ButtonProps> = ({
   textColor,
+  enabled,
   title,
   isLoading,
-  ...props
+  ...otherProps
 }) => (
-  <Container {...props}>
+  <Container enabled={enabled} isLoading={isLoading} {...otherProps}>
     {!!isLoading ? (
       <ActivityIndicator size={18} color="black" />
     ) : (
@@ -25,6 +26,8 @@ const Button: React.FC<ButtonProps> = ({
 )
 
 Button.defaultProps = {
+  title: 'OK',
+  color: theme.colors.primary,
   textColor: theme.colors.background,
   width: '100%',
   enabled: true,
