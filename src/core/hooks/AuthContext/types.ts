@@ -12,7 +12,7 @@ export type User = {
 
 export type AuthContextData = {
   loading: boolean
-  user: User
+  user: User | null
   signIn(credentials: SignInCredentials): Promise<void>
   signOut(): void
 }

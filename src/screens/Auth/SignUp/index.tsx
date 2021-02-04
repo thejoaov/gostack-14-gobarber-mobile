@@ -24,7 +24,7 @@ import { Api } from 'core/services/api'
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import { signUpDefaultValues } from 'core/constants/signup'
-import { useAuth } from 'core/hooks/AuthContext'
+
 import { Props } from './types'
 
 const SignUp: React.FC<Props> = ({ navigation }) => {
