@@ -26,7 +26,6 @@ const Button: React.FC<ButtonProps> = ({
 )
 
 Button.defaultProps = {
-  title: 'OK',
   color: theme.colors.primary,
   textColor: theme.colors.background,
   width: '100%',

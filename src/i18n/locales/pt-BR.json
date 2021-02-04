@@ -56,7 +56,7 @@
     }
   },
   "home": {
-    "provisory_title": "Home, usuário logado.",
+    "greeting": "Bem vindo,",
     "provisory_logout_button": "Deslogar"
   },
   "forgot_password": {
