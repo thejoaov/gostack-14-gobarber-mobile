@@ -4,16 +4,16 @@ import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
 import { Props } from './types'
 
-const Home: React.FC<Props> = () => {
+const Home: React.FC<Props> = ({ navigation }) => {
   const { signOut, user } = useAuth()
   const { t } = useTranslation('home')
 
   return (
     <>
       <Header greeting={t('greeting')} name={user?.name} />
-      <Container center>
+      <Container center marginX={30}>
         <Button
-          padding={20}
+          margin={20}
           onPress={() => signOut()}
           title={t('provisory_logout_button')}
         />
