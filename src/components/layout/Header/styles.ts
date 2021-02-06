@@ -22,10 +22,3 @@ export const Name = styled(Text)`
   color: ${({ theme }) => theme.colors.primary};
   font-size: 20px;
 `
-export const Avatar = styled.View`
-  width: 56px;
-  height: 56px;
-  background-color: ${({ theme }) => theme.colors.black.inputs};
-  margin: 24px;
-  border-radius: 28px;
-`

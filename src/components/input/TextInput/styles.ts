@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 import { layout, space } from 'styled-system'
-import Icon from 'react-native-vector-icons/Feather'
-import FeatherGlyphs from 'react-native-vector-icons/glyphmaps/Feather.json'
+import { Icon } from 'components'
+import { OwnProps } from './types'
 
 export const Container = styled.View<{
   isFocused?: boolean
@@ -27,11 +27,7 @@ export const Container = styled.View<{
   ${layout};
 `
 
-export const StyledIcon = styled(Icon)<{
-  isFocused: boolean
-  error: boolean
-  isFilled: boolean
-}>`
+export const StyledIcon = styled(Icon)<OwnProps>`
   color: ${({ theme, isFocused, isFilled, error }) =>
     (!!error && theme.colors.semantic.error) ||
     (isFocused || isFilled
@@ -55,9 +51,7 @@ export const StyledInput = styled.TextInput.attrs<{
   flex: 1;
 `
 
-export const StyledEyeIcon = styled(Icon)<{
-  name: keyof typeof FeatherGlyphs
-}>`
+export const StyledEyeIcon = styled(Icon)`
   color: ${({ theme }) => theme.colors.gray.grayHard};
 `
 

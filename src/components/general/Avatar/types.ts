@@ -1,7 +1,7 @@
-import { TouchableOpacityProps } from 'react-native'
+import { ImageSourcePropType, TouchableOpacityProps } from 'react-native'
 
 export type OwnProps = {
-  src: string
+  src: ImageSourcePropType & { uri?: string }
   size?: number
 }
 

@@ -9,5 +9,5 @@ export const StyledAvatar = styled.Image<{ size?: number }>`
   border-radius: 28px;
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
-  border-radius: ${({ size }) => size}px;
+  border-radius: ${({ size }) => Number(size) / 2}px;
 `

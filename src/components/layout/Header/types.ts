@@ -1,6 +1,7 @@
-type Props = {
-  name: string
+export type Props = {
+  name?: string
   greeting: string
+  onPressAvatar?(): void
 }
 
 export type HeaderProps = Props

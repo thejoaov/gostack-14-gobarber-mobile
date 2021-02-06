@@ -5,7 +5,7 @@ import { useAuth } from 'core/hooks/AuthContext'
 import { Container, NameContainer, Greeting, Name } from './styles'
 import { HeaderProps } from './types'
 
-const Header: React.FC<HeaderProps> = ({ name, greeting }) => {
+const Header: React.FC<HeaderProps> = ({ name, greeting, onPressAvatar }) => {
   const { user } = useAuth()
 
   return (
@@ -14,7 +14,10 @@ const Header: React.FC<HeaderProps> = ({ name, greeting }) => {
         <Greeting>{greeting}</Greeting>
         <Name>{name}</Name>
       </NameContainer>
-      <Avatar src={user?.avatar_url || ''} />
+      <Avatar
+        src={{ uri: user?.avatar_url as string | undefined }}
+        onPress={onPressAvatar}
+      />
     </Container>
   )
 }
