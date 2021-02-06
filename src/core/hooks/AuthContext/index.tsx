@@ -7,7 +7,8 @@ import React, {
 } from 'react'
 import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
-import { AuthContextData, AuthState } from './types'
+import { UpdateProfileForm } from 'core/services/api/types'
+import { AuthContextData, AuthState, UpdateProfile } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
@@ -66,8 +67,28 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
   }, [])
 
+  /**
+   * Update user
+   */
+  const updateProfile = useCallback(
+    async (profile: UpdateProfileForm) => {
+      try {
+        setLoading(true)
+        const response = await Api.updateProfile(profile)
+
+        // console.warn(response)
+        // await Storage.update([['user', JSON.stringify(newUser)]])
+        // setData({ ...data, user: newUser })
+      } finally {
+        setLoading(false)
+      }
+    },
+    [data.token],
+  )
+
   return (
-    <AuthContext.Provider value={{ loading, user: data.user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ loading, user: data.user, signIn, signOut, updateProfile }}>
       {children}
     </AuthContext.Provider>
   )

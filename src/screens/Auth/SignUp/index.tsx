@@ -120,7 +120,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                     autoCompleteType="name"
                     autoCapitalize="words"
                     defaultValue={values.name}
-                    error={errors.name}
+                    error={!!errors.name}
                     onBlur={handleBlur('name')}
                     returnKeyType="next"
                     isFilled={!!values.name}
@@ -143,7 +143,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                     placeholder={t('inputs.mail_placeholder')}
                     keyboardType="email-address"
                     autoCompleteType="email"
-                    error={errors.email}
+                    error={!!errors.email}
                     defaultValue={values.email}
                     returnKeyType="next"
                     onBlur={handleBlur('email')}
@@ -165,7 +165,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                     placeholder={t('inputs.password_placeholder')}
                     secureTextEntry
                     autoCompleteType="password"
-                    error={errors.password}
+                    error={!!errors.password}
                     isFilled={!!values.password}
                     defaultValue={values.password}
                     onBlur={handleBlur('password')}

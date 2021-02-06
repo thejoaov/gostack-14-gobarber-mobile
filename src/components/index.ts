@@ -1,6 +1,5 @@
 /* eslint-disable import/no-cycle */
 export { default as Container } from './layout/Container'
-export { default as Header } from './layout/Header'
 export { default as ScrollView } from './layout/ScrollView'
 export { default as Image } from './layout/Image'
 

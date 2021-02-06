@@ -30,6 +30,14 @@ export type ShowProfileResponse = {
   avatar_url: string | null
 }
 
+export type UpdateProfileForm = Partial<{
+  name: string
+  email: string
+  old_password: string
+  password: string
+  password_confirmation: string
+}>
+
 export type UpdateProfileResponse = ShowProfileResponse
 
 export type UpdateAvatarResponse = ShowProfileResponse

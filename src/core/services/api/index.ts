@@ -7,6 +7,7 @@ import {
   ProviderMonthAvailability,
   UpdateProfileResponse,
   UpdateAvatarResponse,
+  UpdateProfileForm,
 } from './types'
 
 export const Api = {
@@ -94,13 +95,9 @@ export const Api = {
   /**
    * Update user profile
    */
-  updateProfile: (data: {
-    name: string
-    email: string
-    old_password?: string
-    password?: string
-    password_confirmation?: string
-  }): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
+  updateProfile: (
+    data: UpdateProfileForm,
+  ): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
 
   /**
    * Update avatar
