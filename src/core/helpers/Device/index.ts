@@ -1,4 +1,4 @@
-import { Platform, PlatformOSType } from 'react-native'
+import { Platform, PlatformOSType, Dimensions } from 'react-native'
 
 const Device = {
   /**
@@ -22,6 +22,13 @@ const Device = {
    */
   keyboardBehavior: (): 'padding' | 'height' | 'position' | undefined =>
     Platform.OS === 'ios' ? 'padding' : undefined,
+
+  getWindowSize: (): { width: number; height: number } => {
+    const { width } = Dimensions.get('window')
+    const { height } = Dimensions.get('window')
+
+    return { width, height }
+  },
 }
 
 export default Device

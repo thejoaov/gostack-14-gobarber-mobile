@@ -97,11 +97,11 @@ export const Api = {
    */
   updateProfile: (
     data: UpdateProfileForm,
-  ): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
+  ): AxiosPromise<UpdateProfileResponse> => API.put('/profile', data),
 
   /**
    * Update avatar
    */
   updateAvatar: (data: FormData): AxiosPromise<UpdateAvatarResponse> =>
-    API.patch('/users/avatar', data),
+    API.patch('/users/avatar', { params: { data } }),
 }

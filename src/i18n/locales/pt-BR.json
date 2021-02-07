@@ -81,7 +81,37 @@
     }
   },
   "profile": {
-    "logout_button": "Deslogar"
+    "header_title": "Meu Perfil",
+    "logout_button": "Deslogar",
+    "inputs": {
+      "name_placeholder": "Nome",
+      "name_error_required": "Nome é obrigatório",
+      "mail_placeholder": "E-mail",
+      "mail_error_valid": "Insira um email válido",
+      "mail_error_required": "Email é obrigatório",
+      "old_password_placeholder": "Senha atual",
+      "old_password_error_min": "Mínimo de 6 caracteres",
+      "password_placeholder": "Nova senha",
+      "password_error_required": "Senha é obrigatória",
+      "password_error_min": "Mínimo de 6 caracteres",
+      "password_confirmation_placeholder": "Confirmação",
+      "password_confirmation_error_required": "Confirmação é obrigatória",
+      "password_confirmation_error_min": "Mínimo de 6 caracteres",
+      "password_confirmation_error_incorrect": "A confirmação está incorreta"
+    },
+    "feedback": {
+      "success": {
+        "title": "Perfil atualizado!",
+        "message": "Seu perfil foi atualizado com sucesso.",
+        "button": "Voltar"
+      },
+      "error": {
+        "title": "Erro",
+        "message": "Ocorreu um erro ao atualizar seu perfil.\n\nTente novamente.",
+        "button": "Voltar"
+      }
+    },
+    "submit_button": "Enviar"
   },
   "logout": {
     "title": "Já vai?",

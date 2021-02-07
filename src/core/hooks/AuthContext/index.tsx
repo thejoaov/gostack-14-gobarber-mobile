@@ -7,8 +7,12 @@ import React, {
 } from 'react'
 import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
-import { UpdateProfileForm } from 'core/services/api/types'
-import { AuthContextData, AuthState, UpdateProfile } from './types'
+import {
+  UpdateProfileForm,
+  UpdateProfileResponse,
+} from 'core/services/api/types'
+import { ApiConfig } from 'config/ApiConfig'
+import { AuthContextData, AuthState } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
@@ -21,6 +25,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const user = await Storage.getItem('user')
 
     if (token && user) {
+      ApiConfig.defaults.headers.authorization = `Bearer ${token}`
+
       setData({ token, user: JSON.parse(user) })
     }
   }, [])
@@ -47,6 +53,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       ])
 
       setData({ token, user })
+      ApiConfig.defaults.headers.authorization = `Bearer ${token}`
     } finally {
       setLoading(false)
     }
@@ -59,6 +66,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     try {
       setLoading(true)
 
+      ApiConfig.defaults.headers.authorization = null
       await Storage.clearUser()
 
       setData({} as AuthState)
@@ -76,14 +84,13 @@ export const AuthProvider: React.FC = ({ children }) => {
         setLoading(true)
         const response = await Api.updateProfile(profile)
 
-        // console.warn(response)
-        // await Storage.update([['user', JSON.stringify(newUser)]])
-        // setData({ ...data, user: newUser })
+        await Storage.update([['user', JSON.stringify(response.data)]])
+        setData({ ...data, user: response.data })
       } finally {
         setLoading(false)
       }
     },
-    [data.token],
+    [data],
   )
 
   return (

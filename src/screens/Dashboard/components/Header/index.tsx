@@ -16,6 +16,7 @@ const Header: React.FC<HeaderProps> = ({ name, greeting, onPressAvatar }) => {
       </NameContainer>
 
       <Avatar
+        margin={24}
         src={{ uri: user?.avatar_url as string | undefined }}
         onPress={onPressAvatar}
       />
