@@ -1,6 +1,8 @@
 <div align="center">
-<img src="./src/assets/images/logo@3x.png" height="300" />
-<h2 style="color:#777">Front End Mobile</h2>
+<img src="./android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" height="200" />
+<div style="display:flex;color:#fff;background:#312E38;justify-content:center;align-items:center;width:300px;height:50px;margin:40px;border-top:4px solid #ff9000;border-bottom:4px solid #ff9000;">
+  <h1 style="border:none">GoBarber Mobile</h1>
+</div>
 
 [![CircleCI][circleci-img]][circleci-url]
 [![Test Coverage][coverage-img]][coverage-url]
@@ -12,7 +14,7 @@ This repository contains the GoBarber Mobile application, developed during Rocke
 
 So, the code avaiable here may differ from the original, which can be found [HERE][gobarber-rocketseat].
 
-Documentation about the folder structure can be found at every `src/` folder, some with explanation about the choice.
+Documentation about the folder structure can be found at every `src/` folder, some with explanation about the choices.
 
 The project was coded and tested on both Android and iOS.
 
@@ -29,7 +31,10 @@ The project was coded and tested on both Android and iOS.
 - [ ] SplashScreen
   - [ ] iOS
   - [ ] Android
-- [ ] Deploy
+- [ ] Sentry
+- [ ] CodePush
+- [ ] Notifications
+- [ ] Deploy (Play Store Only)
 
 
 
