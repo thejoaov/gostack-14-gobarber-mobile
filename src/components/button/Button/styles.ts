@@ -5,14 +5,10 @@ import { space, width } from 'styled-system'
 import { Props } from './types'
 
 export const Container = styled(RectButton)<Props>`
-  background-color: ${({ theme, color, enabled, isLoading }) => {
-    if (isLoading) return shade(0.2, theme.colors.primary)
-    if (enabled) {
-      if (color) return color
-      return theme.colors.primary
-    }
-    return theme.colors.gray.gray
-  }};
+  background-color: ${({ theme, color, enabled, isLoading }) =>
+    enabled && !isLoading
+      ? color || theme.colors.primary
+      : shade(0.4, color || theme.colors.primary)};
   height: 60px;
   border-radius: 10px;
   justify-content: center;
