@@ -25,9 +25,7 @@ The project was coded and tested on both Android and iOS.
 - [x] CI (CircleCI)
 - [x] Code Coverage (CodeCov)
 - [ ] Toasts implementation
-- [ ] Icons
-  - [x] iOS
-  - [ ] Android
+- [x] Icons (iOS/Android)
 - [ ] SplashScreen
   - [ ] iOS
   - [ ] Android
