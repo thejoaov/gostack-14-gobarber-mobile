@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react'
-import { Avatar, Button, Container, ScrollView, TextInput } from 'components'
+import { Button, Container, ScrollView, TextInput } from 'components'
 import {
   KeyboardAvoidingView,
   Platform,
@@ -17,6 +17,8 @@ import { UpdateProfileForm } from 'core/services/api/types'
 import Device from 'core/helpers/Device'
 import Header from '../components/Header'
 import { Props } from './types'
+
+import AvatarView from '../components/AvatarView'
 
 const Profile: React.FC<Props> = ({ navigation }) => {
   const emailInputRef = useRef<Input>(null)
@@ -79,19 +81,18 @@ const Profile: React.FC<Props> = ({ navigation }) => {
   return (
     <>
       <Header title={t('header_title')} />
-
       <Container
         as={KeyboardAvoidingView}
         behavior={Device.keyboardBehavior()}
         enabled>
         <ScrollView center keyboardShouldPersistTaps="handled">
           <Container
-            as={View}
-            center
             paddingX={40}
+            center
             paddingBottom={Platform.select({ android: 110, ios: 40 })}>
             <Formik
               validationSchema={schema}
+              validateOnMount
               initialValues={{
                 ...profileInitialValues,
                 name: user?.name,
@@ -108,13 +109,7 @@ const Profile: React.FC<Props> = ({ navigation }) => {
                 setValues,
               }) => (
                 <>
-                  <Avatar
-                    mt={40}
-                    size={Device.getWindowSize().width / 3}
-                    src={{ uri: user?.avatar_url as string }}
-                    disabled
-                  />
-
+                  <AvatarView src={user?.avatar_url as string} />
                   <TextInput
                     mt={32}
                     icon="user"

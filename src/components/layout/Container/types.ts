@@ -4,6 +4,7 @@ import {
   LayoutProps,
   FlexboxProps,
   PositionProps,
+  ColorProps,
 } from 'styled-system'
 
 type Props = {
@@ -18,4 +19,5 @@ export type ContainerProps = Props &
   LayoutProps &
   FlexboxProps &
   ViewProps &
-  PositionProps
+  PositionProps &
+  ColorProps

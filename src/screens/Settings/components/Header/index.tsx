@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTheme } from 'styled-components/native'
 import { Icon } from 'components'
-import { useAuth } from 'core/hooks/AuthContext'
 import { useNavigation } from '@react-navigation/native'
 
 import {
@@ -11,9 +10,9 @@ import {
   Name,
   LogoutButton,
 } from './styles'
-import { HeaderProps } from './types'
+import { Props } from './types'
 
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header: React.FC<Props> = ({ title }) => {
   const { colors } = useTheme()
   const navigation = useNavigation()
 

@@ -1,18 +1,18 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import LinkButton from '../index'
-import { LinkButtonProps } from '../types'
+import AvatarView from '../index'
+import { AvatarViewProps } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: LinkButtonProps = { title: 'test' }
+const initialProps: AvatarViewProps = { src: 'src' }
 
-describe('LinkButton test suite', () => {
+describe('AvatarView test suite', () => {
   beforeEach(() => {
     act(() => {
       wrapper = create(
         <StylesProvider>
-          <LinkButton {...initialProps} />
+          <AvatarView {...initialProps} />
         </StylesProvider>,
       )
     })

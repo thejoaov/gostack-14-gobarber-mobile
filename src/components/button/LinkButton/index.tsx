@@ -4,9 +4,9 @@ import { Text } from 'components'
 import { IconProps } from 'react-native-vector-icons/Icon'
 
 import { Container, StyledIcon } from './styles'
-import { LinkButtonProps } from './types'
+import { Props } from './types'
 
-const LinkButton: React.FC<LinkButtonProps> = ({
+const LinkButton: React.FC<Props> = ({
   color,
   title,
   icon,

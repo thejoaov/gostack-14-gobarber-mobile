@@ -1,5 +1,5 @@
-export type Props = {
+export type HeaderProps = {
   title: string
 }
 
-export type HeaderProps = Props
+export type Props = HeaderProps

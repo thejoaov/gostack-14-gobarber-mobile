@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import { space, layout, flexbox, position, padding } from 'styled-system'
+import { space, layout, flexbox, position, padding, color } from 'styled-system'
 
 export const View = styled.View<{ center?: boolean }>`
   ${({ center }) =>
@@ -16,4 +16,5 @@ export const View = styled.View<{ center?: boolean }>`
   ${flexbox};
   ${position};
   ${padding};
+  ${color};
 `

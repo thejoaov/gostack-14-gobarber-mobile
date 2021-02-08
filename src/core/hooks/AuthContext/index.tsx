@@ -7,10 +7,7 @@ import React, {
 } from 'react'
 import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
-import {
-  UpdateProfileForm,
-  UpdateProfileResponse,
-} from 'core/services/api/types'
+import { UpdateProfileForm } from 'core/services/api/types'
 import { ApiConfig } from 'config/ApiConfig'
 import { AuthContextData, AuthState } from './types'
 

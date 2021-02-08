@@ -7,13 +7,13 @@ import {
 } from 'styled-system'
 import FeatherGlyphs from 'react-native-vector-icons/glyphmaps/Feather.json'
 
-type Props = {
+export type LinkButtonProps = {
   title: string
   textColor?: string
   icon?: keyof typeof FeatherGlyphs
 }
 
-export type LinkButtonProps = Props &
+export type Props = LinkButtonProps &
   TouchableOpacityProps &
   WidthProps &
   SpaceProps &
