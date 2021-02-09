@@ -84,13 +84,16 @@ const App: React.FC = () => {
   const { user } = useAuth()
 
   return (
-    <AppStack.Navigator headerMode="none">
+    <AppStack.Navigator headerMode="none" mode="modal">
       {!!user ? (
         <AppStack.Screen
           name="Main"
           component={MainRoutes}
           options={{
             cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            cardStyle: {
+              backgroundColor: 'transparent',
+            },
           }}
         />
       ) : (
