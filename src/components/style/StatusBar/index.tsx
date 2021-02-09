@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { StatusBar as StyledStatusBar } from './styles'
-import { StatusBarProps } from './types'
+import { Props } from './types'
 
-const StatusBar: React.FC<StatusBarProps> = ({ ...props }) => (
+const StatusBar: React.FC<Props> = ({ ...props }) => (
   <StyledStatusBar {...props} />
 )
 

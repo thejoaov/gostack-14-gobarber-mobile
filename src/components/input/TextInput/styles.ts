@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 import { layout, space } from 'styled-system'
 import { Icon } from 'components'
-import { OwnProps } from './types'
+import { TextInputProps } from './types'
 
 export const Container = styled.View<{
   isFocused?: boolean
@@ -27,7 +27,7 @@ export const Container = styled.View<{
   ${layout};
 `
 
-export const StyledIcon = styled(Icon)<OwnProps>`
+export const StyledIcon = styled(Icon)<TextInputProps>`
   color: ${({ theme, isFocused, isFilled, error }) =>
     (!!error && theme.colors.semantic.error) ||
     (isFocused || isFilled

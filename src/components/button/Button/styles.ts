@@ -2,9 +2,9 @@ import { shade } from 'polished'
 import { RectButton } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 import { space, width } from 'styled-system'
-import { Props } from './types'
+import { ButtonProps } from './types'
 
-export const Container = styled(RectButton)<Props>`
+export const Container = styled(RectButton)<ButtonProps>`
   background-color: ${({ theme, color, enabled, isLoading }) =>
     enabled && !isLoading
       ? color || theme.colors.primary

@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { View } from './styles'
-import { ContainerProps } from './types'
+import { Props } from './types'
 
-const Container: React.FC<ContainerProps> = ({ children, ...props }) => (
+const Container: React.FC<Props> = ({ children, ...props }) => (
   <View {...props}>{children}</View>
 )
 

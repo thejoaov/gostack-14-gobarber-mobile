@@ -4,3 +4,5 @@ export type StylesProviderProps = {
   children?: React.ReactNode
   theme?: DefaultTheme
 }
+
+export type Props = StylesProviderProps

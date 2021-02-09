@@ -5,9 +5,9 @@ import { Text } from 'components'
 import theme from 'core/styles/theme'
 
 import { Container } from './styles'
-import { ButtonProps } from './types'
+import { Props } from './types'
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<Props> = ({
   textColor,
   enabled,
   title,

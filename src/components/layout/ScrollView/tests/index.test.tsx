@@ -1,18 +1,18 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import Container from '../index'
-import { ContainerProps } from '../types'
+import ScrollView from '../index'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: ContainerProps = {}
+const initialProps: Props = {}
 
-describe('Container test suite', () => {
+describe('ScrollView test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <Container {...initialProps} />
+          <ScrollView {...initialProps} />
         </StylesProvider>,
       )
     })

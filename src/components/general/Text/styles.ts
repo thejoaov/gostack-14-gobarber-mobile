@@ -1,9 +1,8 @@
 import styled from 'styled-components/native'
 import { space, color, flexbox, fontSize, textAlign } from 'styled-system'
+import { TextProps } from './types'
 
-export const TextContainer = styled.Text<{
-  variant?: 'medium' | 'regular' | 'light' | 'bold'
-}>`
+export const TextContainer = styled.Text<TextProps>`
   font-family: ${({ theme, variant }) => theme.fonts[variant || 'regular']};
 
   ${space};

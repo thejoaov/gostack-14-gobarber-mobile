@@ -1,9 +1,9 @@
 import { ImageSourcePropType, TouchableOpacityProps } from 'react-native'
 import { MarginProps } from 'styled-system'
 
-export type OwnProps = {
+export type AvatarProps = {
   src: ImageSourcePropType & { uri?: string }
   size?: number
 }
 
-export type Props = OwnProps & TouchableOpacityProps & MarginProps
+export type Props = AvatarProps & TouchableOpacityProps & MarginProps

@@ -2,10 +2,10 @@ import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import Avatar from '../index'
-import { OwnProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: OwnProps = { src: 'test' }
+const initialProps: Props = { src: { uri: 'test' } }
 
 describe('Avatar test suite', () => {
   beforeEach(async () => {

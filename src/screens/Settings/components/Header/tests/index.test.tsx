@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: HeaderProps = { title: 'iai' }
 
 describe('Settings Header test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <Header {...initialProps} />
