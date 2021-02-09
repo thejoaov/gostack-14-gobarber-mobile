@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ name, greeting, onPressAvatar }) => {
     <Container>
       <NameContainer>
         <Greeting>{greeting}</Greeting>
-        <Name>{name}</Name>
+        <Name variant="medium">{name}</Name>
       </NameContainer>
 
       <Avatar

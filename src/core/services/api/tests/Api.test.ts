@@ -21,6 +21,7 @@ describe('Api service test suite', () => {
     expect(Api.getProviderMonthAvailability).toBeDefined()
     expect(Api.updateProfile).toBeDefined()
     expect(Api.updateAvatar).toBeDefined()
+    expect(Api.getProviderList).toBeDefined()
   })
 
   describe('login', () => {
@@ -113,6 +114,12 @@ describe('Api service test suite', () => {
       const formData = new FormData()
 
       await expect(Api.updateAvatar(formData)).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('getProviderList', () => {
+    it('should get provider list', async () => {
+      await expect(Api.getProviderList()).resolves.toEqual(fakeResponse)
     })
   })
 })

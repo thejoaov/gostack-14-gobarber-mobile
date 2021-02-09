@@ -56,7 +56,9 @@
     }
   },
   "home": {
-    "greeting": "Bem vindo,"
+    "greeting": "Bem vindo,",
+    "providers_title": "Cabeleileiros",
+    "providers_list_empty": "Sem cabeleileiros disponíveis 😕"
   },
   "forgot_password": {
     "title": "Recuperação de senha",
