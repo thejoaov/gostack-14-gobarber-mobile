@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text } from 'components'
 // eslint-disable-next-line import/no-unresolved
 import { IconProps } from 'react-native-vector-icons/Icon'
+import Text from '../../general/Text'
 
 import { Container, StyledIcon } from './styles'
 import { Props } from './types'

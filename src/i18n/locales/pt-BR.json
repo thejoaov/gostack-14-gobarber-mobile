@@ -58,7 +58,9 @@
   "home": {
     "greeting": "Bem vindo,",
     "providers_title": "Cabeleileiros",
-    "providers_list_empty": "Sem cabeleileiros disponíveis 😕"
+    "providers_list_empty": "Sem cabeleileiros disponíveis 😕",
+    "provider_availability_days": "Segunda à Sexta",
+    "provider_availability_hours": "8h às 18h"
   },
   "forgot_password": {
     "title": "Recuperação de senha",

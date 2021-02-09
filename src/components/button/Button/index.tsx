@@ -1,8 +1,7 @@
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
-import { Text } from 'components'
-
 import theme from 'core/styles/theme'
+import Text from '../../general/Text'
 
 import { Container } from './styles'
 import { Props } from './types'

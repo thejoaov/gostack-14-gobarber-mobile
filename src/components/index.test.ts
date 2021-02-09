@@ -11,6 +11,7 @@ import {
   Button,
   FooterButton,
   LinkButton,
+  Section,
 } from './index'
 
 describe('Components test suite', () => {
@@ -83,6 +84,12 @@ describe('Components test suite', () => {
   describe('FooterButton', () => {
     it('should be defined', () => {
       expect(FooterButton).toBeTruthy()
+    })
+  })
+
+  describe('Section', () => {
+    it('should be defined', () => {
+      expect(Section).toBeTruthy()
     })
   })
 })

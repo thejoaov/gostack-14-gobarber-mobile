@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { layout, space } from 'styled-system'
-import { Icon } from 'components'
+import Icon from '../../general/Icon'
 import { TextInputProps } from './types'
 
 export const Container = styled.View<{
@@ -13,7 +13,6 @@ export const Container = styled.View<{
   align-items: center;
   justify-content: center;
   flex-direction: row;
-
   border-width: 2px;
   border-color: ${({ theme, isFocused, error }) =>
     // eslint-disable-next-line no-nested-ternary

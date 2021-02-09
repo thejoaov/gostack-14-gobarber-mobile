@@ -8,6 +8,8 @@ import { Provider } from 'core/services/api/types'
 import { Api } from 'core/services/api'
 import Header from '../components/Header'
 import { Props } from './types'
+import Skeleton from '../components/ProviderCard/skeleton'
+import ProviderCard from '../components/ProviderCard'
 
 const Home: React.FC<Props> = ({ navigation }) => {
   const { user } = useAuth()
@@ -49,24 +51,38 @@ const Home: React.FC<Props> = ({ navigation }) => {
         onPressAvatar={handleNavigate}
       />
 
-      <FlatList
-        refreshing={loading}
-        onRefresh={loadProviders}
-        data={providers}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{ padding: 24 }}
-        ListHeaderComponent={(): JSX.Element => (
-          <Text variant="bold" fontSize={24} marginY={12}>
-            {t('providers_title')}
-          </Text>
-        )}
-        ListEmptyComponent={(): JSX.Element => (
-          <Text variant="bold" fontSize={24} marginY={12}>
-            {t('providers_list_empty')}
-          </Text>
-        )}
-        renderItem={({ item }) => <Text>{JSON.stringify(item)}</Text>}
-      />
+      {loading ? (
+        <>
+          <Skeleton />
+        </>
+      ) : (
+        <FlatList
+          refreshing={loading}
+          onRefresh={loadProviders}
+          data={providers}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{ paddingHorizontal: 24 }}
+          ListHeaderComponent={(): JSX.Element => (
+            <Text variant="bold" fontSize={25} mt={32} mb={24}>
+              {t('providers_title')}
+            </Text>
+          )}
+          ListEmptyComponent={(): JSX.Element => (
+            <Text variant="bold" fontSize={24} mt={32}>
+              {t('providers_list_empty')}
+            </Text>
+          )}
+          renderItem={({ item }) => (
+            <ProviderCard
+              provider={{
+                ...item,
+                availability_days: t('provider_availability_days'),
+                availability_hours: t('provider_availability_hours'),
+              }}
+            />
+          )}
+        />
+      )}
     </>
   )
 }
