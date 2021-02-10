@@ -15,7 +15,7 @@ jobs:
           command: 'yarn'
       - run:
           name: 'Generate version'
-          command: 'yarn version:next'
+          command: 'yarn version --patch'
       - run:
           name: 'Update git'
           command: |
