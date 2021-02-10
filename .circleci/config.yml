@@ -5,6 +5,9 @@ jobs:
     docker:
       - image: circleci/node:12
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "28:88:d8:e7:d6:4c:69:80:3c:a6:ed:97:45:4d:40:93"
       - checkout
       - restore_cache:
           key: 'node-v1-{{ checksum "package.json" }}'
@@ -25,7 +28,7 @@ jobs:
       - run:
           name: 'Update git'
           command: |
-            git push -q https://${GITHUB_PERSONAL_TOKEN}@github.com/thejoaov/gobarber-14-mobile.git main
+            git push -q git@github.com:thejoaov/gobarber-14-mobile.git main
       - save_cache:
           key: 'node-v1-{{ checksum "package.json" }}'
           paths:
