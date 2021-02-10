@@ -79,10 +79,13 @@ jobs:
             - ~/.cache/yarn
 
 workflows:
-  versioning:
+  build-and-test:
     jobs:
+      - test
       - check:
           type: approval
+          requires:
+            - test
           filters:
             branches:
               only: main
@@ -96,7 +99,3 @@ workflows:
               only: main
             tags:
               ignore: /.*/
-  build-and-test:
-    jobs:
-      - test
-
