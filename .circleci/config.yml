@@ -72,12 +72,10 @@ jobs:
             - ~/.cache/yarn
 
 workflows:
-  versioning:
+  build-and-test:
     jobs:
       - version:
           filters:
             branches:
               only: main
-  testing:
-    jobs:
       - test
