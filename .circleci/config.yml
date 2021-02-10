@@ -80,8 +80,10 @@ jobs:
 workflows:
   build-and-test:
     jobs:
+      - test
       - version:
+          requires:
+            - "test"
           filters:
             branches:
               only: main
-      - test
