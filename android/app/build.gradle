@@ -132,8 +132,8 @@ android {
         applicationId "com.gobarber"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 1000005
+        versionName "1.0.5"
     }
     splits {
         abi {

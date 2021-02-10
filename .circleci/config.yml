@@ -11,8 +11,18 @@ jobs:
       - restore_cache:
           key: 'yarn-v1-{{ checksum "yarn.lock" }}'
       - run:
+          name: 'Set custom git message'
+          command: 'yarn config set version-git-message "chore: bump version v%s"'
+      - run:
           name: 'Install dependencies'
           command: 'yarn'
+      - run:
+          name: 'Generate version'
+          command: yarn version --patch
+      - run:
+          name: 'Update git'
+          command: |
+            git push -q https://${GITHUB_PERSONAL_TOKEN}@github.com/thejoaov/gobarber-14-mobile.git main
       - save_cache:
           key: 'node-v1-{{ checksum "package.json" }}'
           paths:

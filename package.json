@@ -1,6 +1,6 @@
 {
   "name": "gobarber",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -8,6 +8,7 @@
     "start": "react-native start",
     "pretest": "jest --clearCache",
     "test": "APP_ENV=test jest --runInBand",
+    "postversion": "react-native-version --generate-build",
     "test:ci": "APP_ENV=test TZ=America/Fortaleza jest --ci --runInBand --collectCoverage",
     "test:cov": "APP_ENV=test jest --coverage --colors",
     "prettify": "prettier --check ./**/*.{ts,tsx,js,json} --write",
@@ -71,6 +72,7 @@
     "lint-staged": "^10.5.3",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.2.1",
+    "react-native-version": "^4.0.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   }
