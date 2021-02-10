@@ -29,6 +29,7 @@ jobs:
           name: 'Update git'
           command: |
             git push -q git@github.com:thejoaov/gobarber-14-mobile.git main
+            git push -q git@github.com:thejoaov/gobarber-14-mobile.git --tags
       - save_cache:
           key: 'node-v1-{{ checksum "package.json" }}'
           paths:
@@ -80,7 +81,16 @@ jobs:
 workflows:
   versioning:
     jobs:
+      - check:
+          type: approval
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
       - version:
+          requires:
+            - check
           filters:
             branches:
               ignore: /.*/
