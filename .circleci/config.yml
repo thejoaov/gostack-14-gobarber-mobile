@@ -28,6 +28,7 @@ jobs:
       - run:
           name: 'Update git'
           command: |
+            git push -q git@github.com:thejoaov/gobarber-14-mobile.git --tags
             git push -q git@github.com:thejoaov/gobarber-14-mobile.git main
       - save_cache:
           key: 'node-v1-{{ checksum "package.json" }}'
@@ -78,12 +79,15 @@ jobs:
             - ~/.cache/yarn
 
 workflows:
+  versioning:
+    jobs:
+      - version:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
   build-and-test:
     jobs:
       - test
-      - version:
-          requires:
-            - "test"
-          filters:
-            branches:
-              only: main
+
