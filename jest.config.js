@@ -42,6 +42,7 @@ module.exports = {
     'scripts',
     'constants',
     'types.ts',
+    'styles.ts',
     '.d.ts',
   ],
 

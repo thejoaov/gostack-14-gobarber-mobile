@@ -1,19 +1,19 @@
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
-import { Text } from 'components'
-
 import theme from 'core/styles/theme'
+import Text from '../../general/Text'
 
 import { Container } from './styles'
-import { ButtonProps } from './types'
+import { Props } from './types'
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<Props> = ({
   textColor,
+  enabled,
   title,
   isLoading,
-  ...props
+  ...otherProps
 }) => (
-  <Container {...props}>
+  <Container enabled={enabled} isLoading={isLoading} {...otherProps}>
     {!!isLoading ? (
       <ActivityIndicator size={18} color="black" />
     ) : (
@@ -25,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
 )
 
 Button.defaultProps = {
+  color: theme.colors.primary,
   textColor: theme.colors.background,
   width: '100%',
   enabled: true,

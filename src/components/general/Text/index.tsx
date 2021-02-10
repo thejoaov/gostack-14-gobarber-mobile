@@ -2,9 +2,9 @@ import theme from 'core/styles/theme'
 import React from 'react'
 
 import { TextContainer } from './styles'
-import { TextProps } from './types'
+import { Props } from './types'
 
-const Text: React.FC<TextProps> = ({ children, ...props }) => (
+const Text: React.FC<Props> = ({ children, ...props }) => (
   <TextContainer {...props}>{children}</TextContainer>
 )
 

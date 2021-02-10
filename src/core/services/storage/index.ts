@@ -20,4 +20,7 @@ export const Storage = {
    * Remove user info
    */
   clearUser: (): Promise<void> => AsyncStorage.multiRemove([`user`, `token`]),
+
+  /** Update AsyncStorage values */
+  update: (items: string[][]): Promise<void> => AsyncStorage.multiMerge(items),
 }

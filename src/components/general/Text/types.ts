@@ -7,13 +7,13 @@ import {
   TextAlignProps,
 } from 'styled-system'
 
-type Props = {
+export type TextProps = {
   children: React.ReactNode
   isBold?: boolean
   variant?: 'light' | 'bold' | 'medium' | 'regular'
 }
 
-export type TextProps = Props &
+export type Props = TextProps &
   NativeTextProps &
   SpaceProps &
   ColorProps &

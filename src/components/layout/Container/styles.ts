@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native'
-import { space, layout, flexbox, position } from 'styled-system'
+import { space, layout, flexbox, position, padding, color } from 'styled-system'
 
-export const View = styled.SafeAreaView<{ center?: boolean }>`
+export const View = styled.View<{ center?: boolean }>`
   ${({ center }) =>
     !!center &&
     css`
@@ -15,4 +15,6 @@ export const View = styled.SafeAreaView<{ center?: boolean }>`
   ${layout};
   ${flexbox};
   ${position};
+  ${padding};
+  ${color};
 `

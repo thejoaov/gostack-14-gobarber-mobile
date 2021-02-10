@@ -2,10 +2,10 @@ import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import FooterButton from '../index'
-import { FooterButtonProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: FooterButtonProps = { title: 'test' }
+const initialProps: Props = { title: 'test' }
 
 describe('FooterButton test suite', () => {
   beforeEach(async () => {

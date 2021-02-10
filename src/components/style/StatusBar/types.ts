@@ -1,3 +1,3 @@
-import { StatusBarProps as NativeStatusBar } from 'react-native'
+import { StatusBarProps } from 'react-native'
 
-export type StatusBarProps = NativeStatusBar
+export type Props = StatusBarProps

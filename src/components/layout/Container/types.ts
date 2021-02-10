@@ -4,18 +4,20 @@ import {
   LayoutProps,
   FlexboxProps,
   PositionProps,
+  ColorProps,
 } from 'styled-system'
 
-type Props = {
+export type ContainerProps = {
   children?: React.ReactNode
   as?: React.ElementType
   center?: boolean
 }
 
-export type ContainerProps = Props &
+export type Props = ContainerProps &
   KeyboardAvoidingViewProps &
   SpaceProps &
   LayoutProps &
   FlexboxProps &
   ViewProps &
-  PositionProps
+  PositionProps &
+  ColorProps

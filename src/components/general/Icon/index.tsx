@@ -2,15 +2,9 @@ import theme from 'core/styles/theme'
 import React from 'react'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import { IconContainer } from './styles'
-import { IconProps } from './types'
+import { Props } from './types'
 
-const Icon: React.FC<IconProps> = ({
-  name,
-  size,
-  color,
-  semantic,
-  ...props
-}) => {
+const Icon: React.FC<Props> = ({ name, size, color, semantic, ...props }) => {
   const getColor = () => {
     if (!!semantic) {
       return String(theme.colors.semantic[semantic])

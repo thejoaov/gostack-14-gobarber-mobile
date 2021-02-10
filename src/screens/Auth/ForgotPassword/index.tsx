@@ -24,7 +24,6 @@ import {
 import logoImg from 'assets/images/logo.png'
 import Device from 'core/helpers/Device'
 import { Api } from 'core/services/api'
-import { useAuth } from 'core/hooks/AuthContext'
 import { signInDefaultValues } from 'core/constants/signin'
 import { Props } from './types'
 
@@ -98,7 +97,7 @@ const ForgotPassword: React.FC<Props> = ({ navigation }) => {
               validationSchema={validationSchema}
               onSubmit={submit}>
               {({
-                isValid,
+                // isValid,
                 errors,
                 values,
                 handleBlur,

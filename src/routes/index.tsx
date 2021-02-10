@@ -10,7 +10,7 @@ import { useAuth } from 'core/hooks/AuthContext'
 
 import SignIn from 'screens/Auth/SignIn'
 import SignUp from 'screens/Auth/SignUp'
-import Feedback from 'screens/Auth/Feedback'
+import Feedback from 'screens/Feedback'
 import ForgotPassword from 'screens/Auth/ForgotPassword'
 import Home from 'screens/Dashboard/Home'
 import Schedule from 'screens/Dashboard/Schedule'
@@ -50,6 +50,8 @@ const SettingsRoutes: React.FC = () => (
     screenOptions={{ cardStyle: { backgroundColor: theme.colors.background } }}>
     <SettingsStack.Screen name="Profile" component={Profile} />
     <SettingsStack.Screen name="Logout" component={Logout} />
+    {/* Provisory, until Toasts are finished */}
+    <AuthStack.Screen name="Feedback" component={Feedback} />
   </SettingsStack.Navigator>
 )
 
@@ -63,8 +65,8 @@ const AuthRoutes: React.FC = () => (
     }}>
     <AuthStack.Screen name="SignIn" component={SignIn} />
     <AuthStack.Screen name="SignUp" component={SignUp} />
-    <AuthStack.Screen name="Feedback" component={Feedback} />
     <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
+    <AuthStack.Screen name="Feedback" component={Feedback} />
   </AuthStack.Navigator>
 )
 
@@ -82,13 +84,16 @@ const App: React.FC = () => {
   const { user } = useAuth()
 
   return (
-    <AppStack.Navigator headerMode="none">
+    <AppStack.Navigator headerMode="none" mode="modal">
       {!!user ? (
         <AppStack.Screen
           name="Main"
           component={MainRoutes}
           options={{
             cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            cardStyle: {
+              backgroundColor: 'transparent',
+            },
           }}
         />
       ) : (

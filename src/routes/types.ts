@@ -55,6 +55,15 @@ export type DashboardNavProps<T extends keyof DashboardStackParams> = {
 export type SettingsStackParams = {
   Profile: undefined
   Logout: undefined
+  Feedback: {
+    title: string
+    status: 'success' | 'error'
+    message: string
+    button?: Partial<{
+      title: string
+      onPress(): void
+    }>
+  }
 }
 
 export type SettingsNavProps<T extends keyof SettingsStackParams> = {

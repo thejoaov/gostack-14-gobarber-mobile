@@ -25,6 +25,8 @@ plugins:
         enabled: false
       import/no-cycle:
         enabled: false
+      react-native/no-inline-styles:
+        enabled: false
 checks:
   argument-count:
     config:

@@ -4,6 +4,8 @@ import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/asy
 const entries = jest.fn()
 const append = jest.fn()
 
+jest.useFakeTimers()
+
 global.FormData = () => ({ entries, append })
 
 jest.mock('styled-components', () => {

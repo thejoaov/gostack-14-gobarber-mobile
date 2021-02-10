@@ -2,10 +2,10 @@ import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import StatusBar from '../index'
-import { StatusBarProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: StatusBarProps = {}
+const initialProps: Props = {}
 
 describe('StatusBar test suite', () => {
   beforeEach(async () => {

@@ -2,10 +2,10 @@ import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import Button from '../index'
-import { ButtonProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: ButtonProps = { title: 'test' }
+const initialProps: Props = { title: 'test' }
 
 describe('Button test suite', () => {
   beforeEach(async () => {

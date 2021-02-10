@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { View } from './styles'
-import { ScrollViewProps } from './types'
+import { Props } from './types'
 
-const ScrollView: React.FC<ScrollViewProps> = ({ children, ...props }) => (
+const ScrollView: React.FC<Props> = ({ children, ...props }) => (
   <View {...props}>{children}</View>
 )
 

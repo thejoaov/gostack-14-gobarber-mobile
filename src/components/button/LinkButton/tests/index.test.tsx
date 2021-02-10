@@ -2,10 +2,10 @@ import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import LinkButton from '../index'
-import { LinkButtonProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: LinkButtonProps = { title: 'test' }
+const initialProps: Props = { title: 'test' }
 
 describe('LinkButton test suite', () => {
   beforeEach(async () => {

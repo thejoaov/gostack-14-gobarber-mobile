@@ -1,22 +1,89 @@
-import React from 'react'
-import { Container, Text, Button } from 'components'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
+import { Text } from 'components'
+
+import { FlatList } from 'react-native'
+import { Provider } from 'core/services/api/types'
+import { Api } from 'core/services/api'
+import Header from '../components/Header'
 import { Props } from './types'
+import Skeleton from '../components/ProviderCard/skeleton'
+import ProviderCard from '../components/ProviderCard'
 
-const Home: React.FC<Props> = () => {
-  const { signOut } = useAuth()
+const Home: React.FC<Props> = ({ navigation }) => {
+  const { user } = useAuth()
   const { t } = useTranslation('home')
+  const [providers, setProviders] = useState<Provider[]>([])
+  const [loading, setLoading] = useState(false)
 
-  const handleLogout = () => {
-    signOut()
-  }
+  const handleNavigate = useCallback(() => {
+    navigation.navigate({
+      name: 'Settings',
+      params: {
+        screen: 'Profile',
+      },
+    } as never)
+  }, [navigation])
+
+  const loadProviders = useCallback(async () => {
+    try {
+      setLoading(true)
+      const response = await Api.getProviderList()
+
+      setProviders(response.data)
+    } catch (error) {
+      // console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    loadProviders()
+  }, [loadProviders])
 
   return (
-    <Container center>
-      <Text>{t('provisory_title')}</Text>
-      <Button onPress={handleLogout} title={t('provisory_logout_button')} />
-    </Container>
+    <>
+      <Header
+        greeting={t('greeting')}
+        name={user?.name || ''}
+        onPressAvatar={handleNavigate}
+      />
+
+      {loading ? (
+        <>
+          <Skeleton />
+        </>
+      ) : (
+        <FlatList
+          refreshing={loading}
+          onRefresh={loadProviders}
+          data={providers}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{ paddingHorizontal: 24 }}
+          ListHeaderComponent={(): JSX.Element => (
+            <Text variant="bold" fontSize={25} mt={32} mb={24}>
+              {t('providers_title')}
+            </Text>
+          )}
+          ListEmptyComponent={(): JSX.Element => (
+            <Text variant="bold" fontSize={24} mt={32}>
+              {t('providers_list_empty')}
+            </Text>
+          )}
+          renderItem={({ item }) => (
+            <ProviderCard
+              provider={{
+                ...item,
+                availability_days: t('provider_availability_days'),
+                availability_hours: t('provider_availability_hours'),
+              }}
+            />
+          )}
+        />
+      )}
+    </>
   )
 }
 

@@ -5,6 +5,7 @@ import React, {
   useState,
   useCallback,
 } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import {
   Container,
@@ -14,14 +15,15 @@ import {
   StyledEyeIcon,
   IconEyeView,
 } from './styles'
-import { InputRef, TextInputProps } from './types'
+import { InputRef, Props } from './types'
 
-const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
+const TextInput: React.ForwardRefRenderFunction<InputRef, Props> = (
   { icon, secureTextEntry, error, isFilled, ...props },
   ref,
 ) => {
   const [isFocused, setIsFocused] = useState(false)
   const [isSecured, setIsSecured] = useState(secureTextEntry)
+  const { colors } = useTheme()
 
   const inputElementRef = useRef<any>(null)
 
@@ -50,6 +52,7 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
               size={18}
               isFocused={isFocused}
               isFilled={!!isFilled}
+              color={colors.gray.grayHard}
             />
           </IconView>
         )}
@@ -64,7 +67,11 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, TextInputProps> = (
 
         {!!secureTextEntry && (
           <IconEyeView onPress={() => setIsSecured(!isSecured)}>
-            <StyledEyeIcon name={isSecured ? 'eye-off' : 'eye'} size={18} />
+            <StyledEyeIcon
+              name={isSecured ? 'eye-off' : 'eye'}
+              size={18}
+              color={colors.gray.grayHard}
+            />
           </IconEyeView>
         )}
       </Container>

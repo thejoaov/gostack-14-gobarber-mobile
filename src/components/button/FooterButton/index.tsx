@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-
-import theme from 'core/styles/theme'
 import { Keyboard } from 'react-native'
-import { Container } from './styles'
-import { FooterButtonProps } from './types'
-import LinkButton from '../LinkButton'
+import theme from 'core/styles/theme'
 
-const FooterButton: React.FC<FooterButtonProps> = ({
+import LinkButton from '../LinkButton'
+import { Container } from './styles'
+import { Props } from './types'
+
+const FooterButton: React.FC<Props> = ({
   color,
   title,
   icon,

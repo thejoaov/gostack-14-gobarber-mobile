@@ -1,18 +1,18 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import Text from '../index'
-import { TextProps } from '../types'
+import Icon from '../index'
+import { IconProps } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: TextProps = { children: 'test' }
+const initialProps: IconProps = { name: 'thumbs-up' }
 
-describe('Text test suite', () => {
+describe('Icon test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <Text {...initialProps} />
+          <Icon {...initialProps} />
         </StylesProvider>,
       )
     })
