@@ -86,12 +86,16 @@ workflows:
           filters:
             branches:
               only: main
+            tags:
+              ignore: /.*/
       - version:
           requires:
             - check
           filters:
             branches:
               only: main
+            tags:
+              ignore: /.*/
   build-and-test:
     jobs:
       - test
