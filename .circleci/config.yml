@@ -85,17 +85,13 @@ workflows:
           type: approval
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
+              only: main
       - version:
           requires:
             - check
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
+              only: main
   build-and-test:
     jobs:
       - test
