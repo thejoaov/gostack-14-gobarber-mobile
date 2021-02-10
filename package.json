@@ -1,6 +1,6 @@
 {
   "name": "gobarber",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -8,7 +8,7 @@
     "start": "react-native start",
     "pretest": "jest --clearCache",
     "test": "APP_ENV=test jest --runInBand",
-    "postversion": "react-native-version -b",
+    "postversion": "react-native-version --generate-build",
     "test:ci": "APP_ENV=test TZ=America/Fortaleza jest --ci --runInBand --collectCoverage",
     "test:cov": "APP_ENV=test jest --coverage --colors",
     "prettify": "prettier --check ./**/*.{ts,tsx,js,json} --write",
