@@ -11,8 +11,11 @@ jobs:
       - restore_cache:
           key: 'yarn-v1-{{ checksum "yarn.lock" }}'
       - run:
-          name: 'Set custom git message'
-          command: 'yarn config set version-git-message "chore: bump version v%s"'
+          name: 'Configure git'
+          command: |
+            git config user.email "jvictorsantos852@gmail.com"
+            git config user.name "thejoaov"
+            yarn config set version-git-message "chore: bump version v%s"
       - run:
           name: 'Install dependencies'
           command: 'yarn'
