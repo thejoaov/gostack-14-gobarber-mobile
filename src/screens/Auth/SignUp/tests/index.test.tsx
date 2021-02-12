@@ -10,8 +10,8 @@ let wrapper: ReactTestRenderer
 const props: any = createTestProps({})
 
 describe('SignUp test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <SignUp {...props} />

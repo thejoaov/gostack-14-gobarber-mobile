@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: AvatarViewProps = { src: 'src' }
 
 describe('AvatarView test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <AvatarView {...initialProps} />

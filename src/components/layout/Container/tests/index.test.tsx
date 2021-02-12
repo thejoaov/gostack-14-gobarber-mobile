@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: ContainerProps = {}
 
 describe('Container test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <Container {...initialProps} />

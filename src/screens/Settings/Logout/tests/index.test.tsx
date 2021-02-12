@@ -9,8 +9,8 @@ let wrapper: ReactTestRenderer
 const props: any = createTestProps({})
 
 describe('Logout test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <Logout {...props} />

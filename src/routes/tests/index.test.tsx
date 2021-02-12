@@ -11,8 +11,8 @@ jest.mock('@react-navigation/stack', () => ({
 let wrapper: ReactTestRenderer
 
 describe('Routes test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <Routes />

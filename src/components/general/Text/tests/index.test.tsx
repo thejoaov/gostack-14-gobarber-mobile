@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: TextProps = { children: 'test' }
 
 describe('Text test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <Text {...initialProps} />

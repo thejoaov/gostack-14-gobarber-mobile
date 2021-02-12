@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const AppMock: React.FC = () => <App />
 
 describe('App test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<AppMock />)
     })
   })

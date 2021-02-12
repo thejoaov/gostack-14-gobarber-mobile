@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: IconProps = { name: 'thumbs-up' }
 
 describe('Icon test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <Icon {...initialProps} />

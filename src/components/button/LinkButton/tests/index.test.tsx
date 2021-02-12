@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: Props = { title: 'test' }
 
 describe('LinkButton test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <LinkButton {...initialProps} />

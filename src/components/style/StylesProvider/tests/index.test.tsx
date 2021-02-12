@@ -7,8 +7,8 @@ let wrapper: ReactTestRenderer
 const initialProps: Props = {}
 
 describe('StylesProvider test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<StylesProvider {...initialProps} />)
     })
   })

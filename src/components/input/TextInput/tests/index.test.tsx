@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: TextInputProps = {}
 
 describe('TextInput test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <TextInput {...initialProps} />

@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: ImageProps = { source: { uri: '' } }
 
 describe('Image test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <Image {...initialProps} />

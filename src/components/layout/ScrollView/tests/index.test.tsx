@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: Props = {}
 
 describe('ScrollView test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(
         <StylesProvider>
           <ScrollView {...initialProps} />
