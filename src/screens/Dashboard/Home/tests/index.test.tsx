@@ -12,10 +12,10 @@ let wrapper: ReactTestRenderer
 
 const props: any = createTestProps({})
 
-xdescribe('Home test suite', () => {
-  beforeEach(() => {
+describe('Home test suite', () => {
+  beforeEach(async () => {
     jest.spyOn(Api, 'getProviderList').mockReturnValue({ data: [] } as any)
-    act(() => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <Home {...props} />
@@ -24,7 +24,7 @@ xdescribe('Home test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

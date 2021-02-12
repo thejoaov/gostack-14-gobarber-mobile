@@ -17,8 +17,8 @@ const initialProps: Props = {
 }
 
 describe('ProviderCard test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <ProviderCard {...initialProps} />
@@ -27,7 +27,7 @@ describe('ProviderCard test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

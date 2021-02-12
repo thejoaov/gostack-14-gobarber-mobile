@@ -10,13 +10,9 @@ let wrapper: ReactTestRenderer
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const props: any = createTestProps({})
 
-xdescribe('Profile test suite', () => {
-  afterEach(() => {
-    jest.clearAllTimers()
-  })
-
-  beforeEach(() => {
-    act(() => {
+describe('Profile test suite', () => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <ContextProvider>
@@ -27,7 +23,7 @@ xdescribe('Profile test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

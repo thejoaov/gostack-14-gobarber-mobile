@@ -7,13 +7,13 @@ let wrapper: ReactTestRenderer
 const initialProps: Props = {}
 
 describe('StylesProvider test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(<StylesProvider {...initialProps} />)
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

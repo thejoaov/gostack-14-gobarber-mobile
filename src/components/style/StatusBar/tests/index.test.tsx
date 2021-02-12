@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: Props = {}
 
 describe('StatusBar test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <StatusBar {...initialProps} />
@@ -18,7 +18,7 @@ describe('StatusBar test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

@@ -9,8 +9,8 @@ let wrapper: ReactTestRenderer
 const props: any = createTestProps({})
 
 describe('ScheduleStatus test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <ScheduleStatus {...props} />
@@ -19,7 +19,7 @@ describe('ScheduleStatus test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

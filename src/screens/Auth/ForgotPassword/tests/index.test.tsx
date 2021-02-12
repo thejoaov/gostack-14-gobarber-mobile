@@ -10,8 +10,8 @@ let wrapper: ReactTestRenderer
 const props: any = createTestProps({})
 
 describe('ForgotPassword test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <ForgotPassword {...props} />
@@ -20,7 +20,7 @@ describe('ForgotPassword test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

@@ -8,8 +8,8 @@ let wrapper: ReactTestRenderer
 const initialProps: SectionProps = {}
 
 describe('Section test suite', () => {
-  beforeEach(() => {
-    act(() => {
+  beforeEach(async () => {
+    await act(async () => {
       wrapper = create(
         <StylesProvider>
           <Section {...initialProps} />
@@ -18,7 +18,7 @@ describe('Section test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })
