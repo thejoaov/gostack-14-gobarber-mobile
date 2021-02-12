@@ -1,18 +1,18 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import Container from '../index'
-import { ContainerProps } from '../types'
+import Header from '../index'
+import { HeaderProps } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: ContainerProps = {}
+const initialProps: HeaderProps = { greeting: 'test' }
 
-describe('Container test suite', () => {
+describe('Header test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <Container {...initialProps} />
+          <Header {...initialProps} />
         </StylesProvider>,
       )
     })
