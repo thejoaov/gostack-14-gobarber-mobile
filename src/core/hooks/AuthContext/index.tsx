@@ -9,7 +9,6 @@ import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
 import { UpdateProfileForm } from 'core/services/api/types'
 import { ApiConfig } from 'config/ApiConfig'
-import { apiStatus } from 'core/constants/status'
 
 import { AuthContextData, AuthState } from './types'
 
@@ -78,14 +77,17 @@ export const AuthProvider: React.FC = ({ children }) => {
     ApiConfig.interceptors.response.use(
       config => config,
       async error => {
-        const { response } = error
+        const token = await Storage.getItem('token')
+        const user = await Storage.getItem('user')
 
-        if (response.status === apiStatus.JWT_TOKEN_INVALID) await signOut()
+        if (!token && !user) {
+          await signOut()
+        }
 
         return Promise.reject(error)
       },
     )
-  }, [signOut, data])
+  }, [signOut, data, loadData])
 
   /**
    * Update user
