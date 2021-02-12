@@ -9,6 +9,8 @@ import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
 import { UpdateProfileForm } from 'core/services/api/types'
 import { ApiConfig } from 'config/ApiConfig'
+import { apiStatus } from 'core/constants/status'
+
 import { AuthContextData, AuthState } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -71,6 +73,19 @@ export const AuthProvider: React.FC = ({ children }) => {
       setLoading(false)
     }
   }, [])
+
+  useEffect(() => {
+    ApiConfig.interceptors.response.use(
+      config => config,
+      async error => {
+        const { response } = error
+
+        if (response.status === apiStatus.JWT_TOKEN_INVALID) await signOut()
+
+        return Promise.reject(error)
+      },
+    )
+  }, [signOut, data])
 
   /**
    * Update user
