@@ -17,6 +17,7 @@ import {
   Image,
   LinkButton,
   ScrollView,
+  Section,
   Text,
   TextInput,
 } from 'components'
@@ -81,7 +82,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
             paddingBottom={Platform.select({ android: 100, ios: 40 })}>
             <Image source={logoImg} testID="logo-image" />
 
-            <View>
+            <Section>
               <Text
                 mt={64}
                 mx={24}
@@ -90,7 +91,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
                 testID="title-text">
                 {t('title')}
               </Text>
-            </View>
+            </Section>
             <Formik
               initialValues={params || signInDefaultValues}
               validationSchema={validationSchema}
