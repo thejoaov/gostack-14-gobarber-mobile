@@ -73,6 +73,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
       <Container
         as={KeyboardAvoidingView}
         behavior={Device.keyboardBehavior()}
+        marginTop={Device.getStatusBarHeight()}
         enabled>
         <ScrollView center keyboardShouldPersistTaps="handled">
           <Container

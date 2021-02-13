@@ -53,9 +53,9 @@ const Device = {
     hasNotch()
       ? (Platform.select({
           ios: 20 + padding,
-          android: (StatusBar.currentHeight as number) + padding,
+          android: StatusBar.currentHeight as number,
         }) as number)
-      : (StatusBar.currentHeight as number),
+      : 0,
 }
 
 export default Device

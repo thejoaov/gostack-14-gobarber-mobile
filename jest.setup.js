@@ -8,6 +8,8 @@ jest.useFakeTimers()
 
 global.FormData = () => ({ entries, append })
 
+jest.mock('@react-native-community/datetimepicker', () => jest.fn())
+
 jest.mock('styled-components', () => {
   const original = jest.requireActual('styled-components')
 
