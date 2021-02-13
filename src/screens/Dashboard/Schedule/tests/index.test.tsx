@@ -8,7 +8,6 @@ import { Api } from 'core/services/api'
 import Schedule from '../index'
 
 let wrapper: ReactTestRenderer
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const props: any = createTestProps({
   params: {
     providerList: [
