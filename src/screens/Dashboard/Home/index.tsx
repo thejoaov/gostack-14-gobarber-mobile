@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components'
 import { FlatList } from 'react-native'
 import { Provider } from 'core/services/api/types'
 import { Api } from 'core/services/api'
-import Header from '../components/Header'
+import Header from '../components/HeaderHome'
 import { Props } from './types'
 import Skeleton from '../components/ProviderCard/skeleton'
 import ProviderCard from '../components/ProviderCard'
@@ -80,11 +80,13 @@ const Home: React.FC<Props> = ({ navigation }) => {
           )}
           renderItem={({ item }) => (
             <ProviderCard
-              provider={{
-                ...item,
-                availability_days: t('provider_availability_days'),
-                availability_hours: t('provider_availability_hours'),
-              }}
+              provider={item}
+              onPress={(): void =>
+                navigation.navigate('Schedule', {
+                  provider: item,
+                  providerList: providers,
+                })
+              }
             />
           )}
         />

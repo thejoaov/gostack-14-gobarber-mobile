@@ -14,7 +14,6 @@ import Feedback from 'screens/Feedback'
 import ForgotPassword from 'screens/Auth/ForgotPassword'
 import Home from 'screens/Dashboard/Home'
 import Schedule from 'screens/Dashboard/Schedule'
-import ScheduleStatus from 'screens/Dashboard/ScheduleStatus'
 import Profile from 'screens/Settings/Profile'
 import Logout from 'screens/Settings/Logout'
 
@@ -45,7 +44,7 @@ const DashboardRoutes: React.FC = () => {
       }}>
       <DashboardStack.Screen name="Home" component={Home} />
       <DashboardStack.Screen name="Schedule" component={Schedule} />
-      <DashboardStack.Screen name="ScheduleStatus" component={ScheduleStatus} />
+      <AuthStack.Screen name="Feedback" component={Feedback} />
     </DashboardStack.Navigator>
   )
 }

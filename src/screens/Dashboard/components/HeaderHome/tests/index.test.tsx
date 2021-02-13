@@ -1,19 +1,18 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import { createTestProps } from 'core/utils'
-import ScheduleStatus from '../index'
+import HeaderHome from '../index'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const props: any = createTestProps({})
+const initialProps: Props = { greeting: 'test' }
 
-describe('ScheduleStatus test suite', () => {
+describe('HeaderHome test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <ScheduleStatus {...props} />
+          <HeaderHome {...initialProps} />
         </StylesProvider>,
       )
     })

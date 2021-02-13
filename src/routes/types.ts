@@ -1,5 +1,6 @@
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { Provider } from 'core/services/api/types'
 
 export type AppStackParams = {
   Auth: undefined
@@ -43,8 +44,16 @@ export type MainNavProps<T extends keyof MainStackParams> = {
 
 export type DashboardStackParams = {
   Home: undefined
-  Schedule: undefined
-  ScheduleStatus: { status: 'success' | 'error' }
+  Schedule: { provider: Provider; providerList: Provider[] }
+  Feedback: {
+    title: string
+    status: 'success' | 'error'
+    message: string
+    button?: Partial<{
+      title: string
+      onPress(): void
+    }>
+  }
 }
 
 export type DashboardNavProps<T extends keyof DashboardStackParams> = {
