@@ -122,5 +122,11 @@
     "message": "Deseja sair de sua conta no aplicativo, {{name}}?",
     "button_back": "Voltar",
     "button_logout": "Sair"
+  },
+  "schedule": {
+    "header_title": "Agendamento",
+    "choose_date_title": "Escolha a data",
+    "choose_hour_title": "Escolha o horário",
+    "datepicker_button_android": "Escolha a data"
   }
 }

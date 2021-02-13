@@ -8,6 +8,7 @@ import {
   UpdateProfileResponse,
   UpdateAvatarResponse,
   UpdateProfileForm,
+  ProviderDayAvailability,
   Provider,
 } from './types'
 
@@ -75,6 +76,23 @@ export const Api = {
   ): AxiosPromise<ProviderMonthAvailability[]> =>
     API.get(`/providers/${user_id}/month-availability`, {
       params: { year, month },
+    }),
+
+  /**
+   * Get provider month availability
+   */
+  getProviderDayAvailability: (
+    user_id: string,
+    year: number,
+    month: number,
+    day: number,
+  ): AxiosPromise<ProviderDayAvailability[]> =>
+    API.get(`/providers/${user_id}/day-availability`, {
+      params: {
+        year: year.toString(),
+        month: month.toString(),
+        day: day.toString(),
+      },
     }),
 
   /**

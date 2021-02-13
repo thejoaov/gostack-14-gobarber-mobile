@@ -32,7 +32,7 @@ const props: any = createTestProps({
 describe('Schedule test suite', () => {
   beforeEach(async () => {
     jest
-      .spyOn(Api, 'getProviderMonthAvailability')
+      .spyOn(Api, 'getProviderDayAvailability')
       .mockReturnValue({ data: [] } as any)
 
     await act(async () => {

@@ -3,8 +3,13 @@ import { Button, Container, Section, Text } from 'components'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { ActivityIndicator, FlatList, Platform } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { Provider, ProviderMonthAvailability } from 'core/services/api/types'
+import {
+  Provider,
+  ProviderDayAvailability,
+  ProviderMonthAvailability,
+} from 'core/services/api/types'
 import { Api } from 'core/services/api'
+import Device from 'core/helpers/Device'
 import { useTheme } from 'styled-components/native'
 
 import { ScrollView } from 'react-native-gesture-handler'
@@ -25,7 +30,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
   )
   const [loading, setLoading] = useState(false)
   const [monthAvailability, setMonthAvailability] = useState<
-    ProviderMonthAvailability[]
+    ProviderDayAvailability[]
   >()
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [showDatePicker, setShowDatePicker] = useState(false)
@@ -33,10 +38,11 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
   const loadMonthAvailability = useCallback(async () => {
     try {
       setLoading(true)
-      const response = await Api.getProviderMonthAvailability(
+      const response = await Api.getProviderDayAvailability(
         selectedProvider.id,
         selectedDate.getFullYear(),
         selectedDate.getMonth(),
+        selectedDate.getDay(),
       )
 
       setMonthAvailability(response.data)
@@ -52,15 +58,19 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
       animated: true,
       index: params.providerList.indexOf(selectedProvider),
     })
-  }, [params.providerList, selectedProvider])
+  }, [params.providerList, selectedProvider, selectedDate])
 
   useEffect(() => {
     loadMonthAvailability()
   }, [loadMonthAvailability, params.providerList, selectedProvider])
 
-  const handeDateChange = useCallback((_event: Event, date?: Date) => {
-    setSelectedDate(date as Date)
-  }, [])
+  const handeDateChange = useCallback(
+    (_event: Event, date: Date | undefined) => {
+      if (Device.isAndroid()) setShowDatePicker(false)
+      setSelectedDate(date as Date)
+    },
+    [],
+  )
 
   const handleShowDatePicker = useCallback(() => {
     setShowDatePicker(prevState => !prevState)
@@ -95,14 +105,19 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
       <Container as={ScrollView} paddingX={24}>
         {Platform.select({
           ios: (
-            <DateTimePicker
-              textColor={colors.white}
-              mode="date"
-              display="inline"
-              value={selectedDate}
-              onChange={handeDateChange}
-              locale="pt-br"
-            />
+            <>
+              <Text fontSize={25} mb={10}>
+                {t('choose_date_title')}
+              </Text>
+              <DateTimePicker
+                textColor={colors.white}
+                mode="date"
+                display="inline"
+                value={selectedDate}
+                onChange={handeDateChange}
+                locale="pt-br"
+              />
+            </>
           ),
           android: (
             <>
@@ -115,7 +130,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
                   mode="date"
                   display="calendar"
                   value={selectedDate}
-                  // locale="pt-br"
+                  onChange={handeDateChange}
                 />
               )}
             </>
