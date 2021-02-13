@@ -2,6 +2,7 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 import { Icon } from 'components'
 import { useNavigation } from '@react-navigation/native'
+import { StatusBar } from 'react-native'
 
 import {
   Container,
@@ -18,6 +19,7 @@ const Header: React.FC<Props> = ({ title }) => {
 
   return (
     <Container>
+      <StatusBar backgroundColor={colors.background} />
       <BackButton onPress={(): void => navigation.goBack()}>
         <Icon name="arrow-left" color={colors.gray.gray} size={25} />
       </BackButton>

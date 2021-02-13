@@ -3,7 +3,6 @@ import {
   ScrollView,
   Image,
   StylesProvider,
-  StatusBar,
   Text,
   Icon,
   Avatar,
@@ -42,12 +41,6 @@ describe('Components test suite', () => {
   describe('StylesProvider', () => {
     it('should be defined', () => {
       expect(StylesProvider).toBeTruthy()
-    })
-  })
-
-  describe('StatusBar', () => {
-    it('should be defined', () => {
-      expect(StatusBar).toBeTruthy()
     })
   })
 

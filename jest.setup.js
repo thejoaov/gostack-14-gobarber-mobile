@@ -91,3 +91,7 @@ jest.mock('react-native-gesture-handler', () => {
 jest.mock('react-native-reanimated', () => {})
 
 jest.mock('@react-native-community/masked-view', () => {})
+
+jest.mock('react-native-device-info', () => ({
+  hasNotch: jest.fn().mockReturnValue(true),
+}))

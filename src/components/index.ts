@@ -4,7 +4,6 @@ export { default as Image } from './layout/Image'
 export { default as Section } from './layout/Section'
 
 export { default as StylesProvider } from './style/StylesProvider'
-export { default as StatusBar } from './style/StatusBar'
 
 export { default as Text } from './general/Text'
 export { default as Icon } from './general/Icon'
