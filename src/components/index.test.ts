@@ -11,6 +11,7 @@ import {
   FooterButton,
   LinkButton,
   Section,
+  DatePicker,
 } from './index'
 
 describe('Components test suite', () => {
@@ -83,6 +84,12 @@ describe('Components test suite', () => {
   describe('Section', () => {
     it('should be defined', () => {
       expect(Section).toBeTruthy()
+    })
+  })
+
+  describe('DatePicker', () => {
+    it('should be defined', () => {
+      expect(DatePicker).toBeTruthy()
     })
   })
 })

@@ -10,6 +10,7 @@ export { default as Icon } from './general/Icon'
 export { default as Avatar } from './general/Avatar'
 
 export { default as TextInput } from './input/TextInput'
+export { default as DatePicker } from './input/DatePicker'
 
 export { default as Button } from './button/Button'
 export { default as FooterButton } from './button/FooterButton'

@@ -1,13 +1,9 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Button, Container, Section, Text } from 'components'
-import DateTimePicker from '@react-native-community/datetimepicker'
-import { ActivityIndicator, FlatList, Platform } from 'react-native'
+import { Button, Container, Section, Text, DatePicker } from 'components'
+
+import { ActivityIndicator, FlatList } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import {
-  Provider,
-  ProviderDayAvailability,
-  ProviderMonthAvailability,
-} from 'core/services/api/types'
+import { Provider, ProviderDayAvailability } from 'core/services/api/types'
 import { Api } from 'core/services/api'
 import Device from 'core/helpers/Device'
 import { useTheme } from 'styled-components/native'
@@ -17,12 +13,13 @@ import HeaderSchedule from '../components/HeaderSchedule'
 import ProviderCard from '../components/ProviderCard'
 import { Props } from './types'
 
-const Schedule: React.FC<Props> = ({ route, navigation }) => {
+const Schedule: React.FC<Props> = ({ route }) => {
   const { params } = route
   const { t } = useTranslation('schedule')
   const { colors } = useTheme()
   const flatListRef = useRef<FlatList>(null)
 
+  const [hasSelected, setHasSelected] = useState(false)
   const [selectedProvider, setSelectedProvider] = useState<Provider>(
     params.providerList.find(
       item => item.id === params.provider.id,
@@ -64,17 +61,22 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
     loadMonthAvailability()
   }, [loadMonthAvailability, params.providerList, selectedProvider])
 
-  const handeDateChange = useCallback(
-    (_event: Event, date: Date | undefined) => {
-      if (Device.isAndroid()) setShowDatePicker(false)
-      setSelectedDate(date as Date)
-    },
-    [],
-  )
+  const handeDateChange = useCallback((_event, date: Date | undefined) => {
+    if (Device.isAndroid()) setShowDatePicker(false)
+    if (!!date) setHasSelected(true)
+    setSelectedDate(prevState => (!!date ? (date as Date) : prevState))
+  }, [])
 
   const handleShowDatePicker = useCallback(() => {
     setShowDatePicker(prevState => !prevState)
   }, [])
+
+  const getAndroidButton = (): JSX.Element => (
+    <Button
+      title={hasSelected ? `${selectedDate}` : t('datepicker_button_android')}
+      onPress={handleShowDatePicker}
+    />
+  )
 
   return (
     <>
@@ -86,7 +88,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={params.providerList}
-          getItemLayout={(data, index) => ({
+          getItemLayout={(_data, index) => ({
             length: 50,
             offset: 175 * index,
             index,
@@ -103,39 +105,22 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
       </Section>
 
       <Container as={ScrollView} paddingX={24}>
-        {Platform.select({
-          ios: (
-            <>
-              <Text fontSize={25} mb={10}>
-                {t('choose_date_title')}
-              </Text>
-              <DateTimePicker
-                textColor={colors.white}
-                mode="date"
-                display="inline"
-                value={selectedDate}
-                onChange={handeDateChange}
-                locale="pt-br"
-              />
-            </>
-          ),
-          android: (
-            <>
-              <Button
-                title={t('datepicker_button_android')}
-                onPress={handleShowDatePicker}
-              />
-              {showDatePicker && (
-                <DateTimePicker
-                  mode="date"
-                  display="calendar"
-                  value={selectedDate}
-                  onChange={handeDateChange}
-                />
-              )}
-            </>
-          ),
-        })}
+        <DatePicker
+          title={t('choose_date_title')}
+          value={selectedDate}
+          iosOptions={{
+            onChange: handeDateChange,
+            mode: 'date',
+            display: 'inline',
+          }}
+          androidOptions={{
+            isVisible: showDatePicker,
+            ButtonComponent: getAndroidButton,
+            mode: 'date',
+            display: 'calendar',
+            onChange: handeDateChange,
+          }}
+        />
 
         {loading ? (
           <Section flex={1}>
