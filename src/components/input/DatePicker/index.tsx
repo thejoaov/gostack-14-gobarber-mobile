@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components/native'
 import Text from '../../general/Text'
 
 import { Props } from './types'
+import Section from '../../layout/Section'
 
 const DatePicker = ({
   title,
@@ -19,7 +20,12 @@ const DatePicker = ({
 
   return Platform.select({
     ios: (
-      <>
+      <Section
+        justifyContent="center"
+        alignItems="center"
+        borderRadius={10}
+        backgroundColor={colors.black.medium}
+        padding={10}>
         <Text fontSize={25} mb={10}>
           {title}
         </Text>
@@ -27,10 +33,11 @@ const DatePicker = ({
           textColor={colors.white}
           locale="pt-br"
           value={value}
+          shouldRasterizeIOS
           {...otherProps}
           {...iosOptions}
         />
-      </>
+      </Section>
     ),
     android: (
       <>
