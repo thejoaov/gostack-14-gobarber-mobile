@@ -13,9 +13,7 @@ describe('FormatDate', () => {
     it('should format date to string', () => {
       const date = new Date()
 
-      expect(FormatDate.formatString(date, 'dd/MM/yyyy')).toEqual(
-        date.toDateString(),
-      )
+      expect(FormatDate.formatString(date)).toEqual(date.toDateString())
     })
   })
 })
