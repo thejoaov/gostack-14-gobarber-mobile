@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
-import { Button, Container, Section, Text, DatePicker } from 'components'
-
-import { ActivityIndicator, FlatList } from 'react-native'
+import { ActivityIndicator, FlatList, ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useTheme } from 'styled-components/native'
+
 import { Provider, ProviderDayAvailability } from 'core/services/api/types'
 import { Api } from 'core/services/api'
 import Device from 'core/helpers/Device'
-import { useTheme } from 'styled-components/native'
+import FormatDate from 'core/helpers/FormatDate'
 
-import { ScrollView } from 'react-native-gesture-handler'
+import { Button, Container, Section, Text, DatePicker } from 'components'
+
 import HeaderSchedule from '../components/HeaderSchedule'
 import ProviderCard from '../components/ProviderCard'
 import { Props } from './types'
@@ -71,13 +72,6 @@ const Schedule: React.FC<Props> = ({ route }) => {
     setShowDatePicker(prevState => !prevState)
   }, [])
 
-  const getAndroidButton = (): JSX.Element => (
-    <Button
-      title={hasSelected ? `${selectedDate}` : t('datepicker_button_android')}
-      onPress={handleShowDatePicker}
-    />
-  )
-
   return (
     <>
       <HeaderSchedule title={t('header_title')} />
@@ -106,7 +100,11 @@ const Schedule: React.FC<Props> = ({ route }) => {
 
       <Container as={ScrollView} paddingX={24}>
         <DatePicker
-          title={t('choose_date_title')}
+          title={
+            hasSelected
+              ? FormatDate.formatString(selectedDate)
+              : t('choose_date_title')
+          }
           value={selectedDate}
           iosOptions={{
             onChange: handeDateChange,
@@ -115,7 +113,9 @@ const Schedule: React.FC<Props> = ({ route }) => {
           }}
           androidOptions={{
             isVisible: showDatePicker,
-            ButtonComponent: getAndroidButton,
+            ButtonComponent: (): JSX.Element => (
+              <Button onPress={handleShowDatePicker} />
+            ),
             mode: 'date',
             display: 'calendar',
             onChange: handeDateChange,

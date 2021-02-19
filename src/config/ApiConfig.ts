@@ -12,7 +12,10 @@ ApiConfig.interceptors.response.use(
   async error => {
     const { response } = error
 
-    if (response.status === apiStatus.JWT_TOKEN_INVALID)
+    if (
+      response.status === apiStatus.JWT_TOKEN_INVALID ||
+      response.status === apiStatus.JWT_TOKEN_MISSING
+    )
       await Storage.clearUser()
 
     return Promise.reject(error)

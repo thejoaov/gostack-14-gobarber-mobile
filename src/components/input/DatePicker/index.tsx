@@ -4,9 +4,10 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { useTheme } from 'styled-components/native'
 
 import Text from '../../general/Text'
+import Section from '../../layout/Section'
+import Container from '../../layout/Container'
 
 import { Props } from './types'
-import Section from '../../layout/Section'
 
 const DatePicker = ({
   title,
@@ -20,24 +21,29 @@ const DatePicker = ({
 
   return Platform.select({
     ios: (
-      <Section
-        justifyContent="center"
-        alignItems="center"
-        borderRadius={10}
-        backgroundColor={colors.black.medium}
-        padding={10}>
-        <Text fontSize={25} mb={10}>
-          {title}
-        </Text>
-        <DateTimePicker
-          textColor={colors.white}
-          locale="pt-br"
-          value={value}
-          shouldRasterizeIOS
-          {...otherProps}
-          {...iosOptions}
-        />
-      </Section>
+      <Container marginY={10}>
+        <Section
+          backgroundColor={colors.black.shape}
+          borderTopLeftRadius={10}
+          borderTopRightRadius={10}
+          center
+          padding={2}>
+          <Text fontSize={25}>{title}</Text>
+        </Section>
+        <Section
+          padding={10}
+          backgroundColor={colors.black.medium}
+          borderBottomLeftRadius={10}
+          borderBottomRightRadius={10}>
+          <DateTimePicker
+            textColor={colors.white}
+            locale="pt-br"
+            value={value}
+            {...otherProps}
+            {...iosOptions}
+          />
+        </Section>
+      </Container>
     ),
     android: (
       <>

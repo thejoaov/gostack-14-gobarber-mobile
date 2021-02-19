@@ -77,10 +77,14 @@ export const AuthProvider: React.FC = ({ children }) => {
     ApiConfig.interceptors.response.use(
       config => config,
       async error => {
-        const token = await Storage.getItem('token')
-        const user = await Storage.getItem('user')
+        try {
+          const token = await Storage.getItem('token')
+          const user = await Storage.getItem('user')
 
-        if (!token && !user) {
+          if (!token && !user) {
+            await signOut()
+          }
+        } catch {
           await signOut()
         }
 

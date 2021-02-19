@@ -1,5 +1,13 @@
 import styled from 'styled-components/native'
-import { space, color, flexbox, fontSize, textAlign } from 'styled-system'
+import {
+  space,
+  color,
+  flexbox,
+  fontSize,
+  textAlign,
+  layout,
+  border,
+} from 'styled-system'
 import { TextProps } from './types'
 
 export const TextContainer = styled.Text<TextProps>`
@@ -9,5 +17,7 @@ export const TextContainer = styled.Text<TextProps>`
   ${color};
   ${flexbox};
   ${fontSize};
-  ${textAlign}
+  ${textAlign};
+  ${layout};
+  ${border};
 `
