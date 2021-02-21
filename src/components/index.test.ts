@@ -3,7 +3,6 @@ import {
   ScrollView,
   Image,
   StylesProvider,
-  StatusBar,
   Text,
   Icon,
   Avatar,
@@ -12,6 +11,7 @@ import {
   FooterButton,
   LinkButton,
   Section,
+  DatePicker,
 } from './index'
 
 describe('Components test suite', () => {
@@ -42,12 +42,6 @@ describe('Components test suite', () => {
   describe('StylesProvider', () => {
     it('should be defined', () => {
       expect(StylesProvider).toBeTruthy()
-    })
-  })
-
-  describe('StatusBar', () => {
-    it('should be defined', () => {
-      expect(StatusBar).toBeTruthy()
     })
   })
 
@@ -90,6 +84,12 @@ describe('Components test suite', () => {
   describe('Section', () => {
     it('should be defined', () => {
       expect(Section).toBeTruthy()
+    })
+  })
+
+  describe('DatePicker', () => {
+    it('should be defined', () => {
+      expect(DatePicker).toBeTruthy()
     })
   })
 })

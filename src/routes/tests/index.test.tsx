@@ -21,7 +21,7 @@ describe('Routes test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

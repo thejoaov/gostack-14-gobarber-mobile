@@ -156,7 +156,7 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['<rootDir>/src/**/*.{spect,test}.{ts,tsx}'],
+  testMatch: ['<rootDir>/src/**/*.{spec,test}.{ts,tsx}'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['/node_modules/'],
@@ -183,7 +183,7 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/(?!(jest-)?react-native|react-navigation-redux-helpers|react-navigation|@react-navigation/.*)',
+    '<rootDir>/node_modules/(?!(jest-)?react-native|react-navigation|@react-navigation/.*)',
   ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

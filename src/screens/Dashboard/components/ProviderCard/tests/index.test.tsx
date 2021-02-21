@@ -11,6 +11,7 @@ const initialProps: Props = {
     name: 'Hdjd',
     email: 'hsjd@jfjcj.com',
     avatar: null,
+    avatar_url: null,
     created_at: '2021-01-31T16:24:39.355Z',
     updated_at: '2021-01-31T16:24:39.355Z',
   },
@@ -27,7 +28,7 @@ describe('ProviderCard test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

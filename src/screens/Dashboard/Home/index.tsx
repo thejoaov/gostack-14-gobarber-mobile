@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'components'
+import { Section, Text } from 'components'
+import { useTheme } from 'styled-components'
 
 import { FlatList } from 'react-native'
 import { Provider } from 'core/services/api/types'
 import { Api } from 'core/services/api'
-import Header from '../components/Header'
+import Header from '../components/HeaderHome'
 import { Props } from './types'
 import Skeleton from '../components/ProviderCard/skeleton'
 import ProviderCard from '../components/ProviderCard'
@@ -14,6 +15,7 @@ import ProviderCard from '../components/ProviderCard'
 const Home: React.FC<Props> = ({ navigation }) => {
   const { user } = useAuth()
   const { t } = useTranslation('home')
+  const { colors } = useTheme()
   const [providers, setProviders] = useState<Provider[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -62,23 +64,29 @@ const Home: React.FC<Props> = ({ navigation }) => {
           data={providers}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{ paddingHorizontal: 24 }}
-          ListHeaderComponent={(): JSX.Element => (
-            <Text variant="bold" fontSize={25} mt={32} mb={24}>
-              {t('providers_title')}
-            </Text>
-          )}
+          ListHeaderComponent={(): JSX.Element =>
+            (!!providers.length && (
+              <Text variant="bold" fontSize={25} mt={32} mb={24}>
+                {t('providers_title')}
+              </Text>
+            )) as JSX.Element
+          }
           ListEmptyComponent={(): JSX.Element => (
-            <Text variant="bold" fontSize={24} mt={32}>
-              {t('providers_list_empty')}
-            </Text>
+            <Section center>
+              <Text fontSize={18} color={colors.gray.gray} mt={32}>
+                {t('providers_list_empty')}
+              </Text>
+            </Section>
           )}
           renderItem={({ item }) => (
             <ProviderCard
-              provider={{
-                ...item,
-                availability_days: t('provider_availability_days'),
-                availability_hours: t('provider_availability_hours'),
-              }}
+              provider={item}
+              onPress={(): void =>
+                navigation.navigate('Schedule', {
+                  provider: item,
+                  providerList: providers,
+                })
+              }
             />
           )}
         />

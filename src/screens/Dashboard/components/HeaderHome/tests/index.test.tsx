@@ -1,24 +1,24 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import StatusBar from '../index'
+import HeaderHome from '../index'
 import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: Props = {}
+const initialProps: Props = { greeting: 'test' }
 
-describe('StatusBar test suite', () => {
+describe('HeaderHome test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <StatusBar {...initialProps} />
+          <HeaderHome {...initialProps} />
         </StylesProvider>,
       )
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

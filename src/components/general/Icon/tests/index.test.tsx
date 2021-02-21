@@ -18,7 +18,7 @@ describe('Icon test suite', () => {
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

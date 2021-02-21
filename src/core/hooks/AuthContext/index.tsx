@@ -9,6 +9,7 @@ import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
 import { UpdateProfileForm } from 'core/services/api/types'
 import { ApiConfig } from 'config/ApiConfig'
+
 import { AuthContextData, AuthState } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -71,6 +72,22 @@ export const AuthProvider: React.FC = ({ children }) => {
       setLoading(false)
     }
   }, [])
+
+  useEffect(() => {
+    ApiConfig.interceptors.response.use(
+      config => config,
+      async error => {
+        const token = await Storage.getItem('token')
+        const user = await Storage.getItem('user')
+
+        if (!token || !user) {
+          await signOut()
+        }
+
+        return Promise.reject(error)
+      },
+    )
+  }, [signOut, data, loadData])
 
   /**
    * Update user

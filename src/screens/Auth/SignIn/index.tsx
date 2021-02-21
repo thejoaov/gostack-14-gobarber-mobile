@@ -17,6 +17,7 @@ import {
   Image,
   LinkButton,
   ScrollView,
+  Section,
   Text,
   TextInput,
 } from 'components'
@@ -72,6 +73,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
       <Container
         as={KeyboardAvoidingView}
         behavior={Device.keyboardBehavior()}
+        marginTop={Device.getStatusBarHeight()}
         enabled>
         <ScrollView center keyboardShouldPersistTaps="handled">
           <Container
@@ -79,13 +81,18 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
             center
             paddingX={40}
             paddingBottom={Platform.select({ android: 100, ios: 40 })}>
-            <Image source={logoImg} />
+            <Image source={logoImg} testID="logo-image" />
 
-            <View>
-              <Text mt={64} mx={24} fontSize={24} variant="medium">
+            <Section>
+              <Text
+                mt={64}
+                mx={24}
+                fontSize={24}
+                variant="medium"
+                testID="title-text">
                 {t('title')}
               </Text>
-            </View>
+            </Section>
             <Formik
               initialValues={params || signInDefaultValues}
               validationSchema={validationSchema}
@@ -93,9 +100,17 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
               key={params?.email}
               validateOnBlur={false}
               onSubmit={submit}>
-              {({ isValid, errors, values, handleSubmit, setFieldValue }) => (
+              {({
+                isValid,
+                errors,
+                values,
+                handleSubmit,
+                setFieldValue,
+                handleBlur,
+              }) => (
                 <>
                   <TextInput
+                    testID="email-input"
                     mt={24}
                     icon="mail"
                     isFilled={!!values.email}
@@ -108,7 +123,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
                     error={!!errors.email}
                     defaultValue={values.email}
                     returnKeyType="next"
-                    // onBlur={handleBlur('email')}
+                    onBlur={handleBlur('email')}
                     onChangeText={(value: string): void => {
                       setFieldValue('email', value)
                     }}
@@ -119,6 +134,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
 
                   <TextInput
                     mt={10}
+                    testID="password-input"
                     ref={passwordInputRef}
                     icon="lock"
                     keyboardAppearance="dark"
@@ -130,7 +146,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
                     error={!!errors.password}
                     isFilled={!!values.password}
                     defaultValue={values.password}
-                    // onBlur={handleBlur('password')}
+                    onBlur={handleBlur('password')}
                     returnKeyType="send"
                     onChangeText={(value: string): void => {
                       setFieldValue('password', value)
@@ -138,6 +154,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
                     onSubmitEditing={handleSubmit}
                   />
                   <Button
+                    testID="submit-button"
                     enabled={isValid}
                     isLoading={loading}
                     title={t('login_button')}
@@ -161,6 +178,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
 
       <FooterButton
         icon="log-in"
+        testID="footer-button"
         title={t('footer_button')}
         hideOnKeyboard={Device.isAndroid()}
         onPress={() => navigation.navigate('SignUp')}

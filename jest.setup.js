@@ -1,4 +1,6 @@
+import React from 'react'
 import 'react-native'
+import { View } from 'react-native'
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
 
 const entries = jest.fn()
@@ -7,6 +9,10 @@ const append = jest.fn()
 jest.useFakeTimers()
 
 global.FormData = () => ({ entries, append })
+
+jest.mock('@react-native-community/datetimepicker', () =>
+  jest.fn().mockImplementation(props => <View {...props} />),
+)
 
 jest.mock('styled-components', () => {
   const original = jest.requireActual('styled-components')
@@ -91,3 +97,11 @@ jest.mock('react-native-gesture-handler', () => {
 jest.mock('react-native-reanimated', () => {})
 
 jest.mock('@react-native-community/masked-view', () => {})
+
+jest.mock('react-native-device-info', () => ({
+  hasNotch: jest.fn().mockReturnValue(true),
+}))
+
+jest.mock('date-fns', () => ({
+  format: jest.fn().mockImplementation(value => value),
+}))

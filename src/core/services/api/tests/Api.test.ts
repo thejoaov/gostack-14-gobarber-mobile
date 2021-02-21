@@ -19,6 +19,7 @@ describe('Api service test suite', () => {
     expect(Api.resetPassword).toBeDefined()
     expect(Api.listProviderAppointments).toBeDefined()
     expect(Api.getProviderMonthAvailability).toBeDefined()
+    expect(Api.getProviderDayAvailability).toBeDefined()
     expect(Api.updateProfile).toBeDefined()
     expect(Api.updateAvatar).toBeDefined()
     expect(Api.getProviderList).toBeDefined()
@@ -89,6 +90,19 @@ describe('Api service test suite', () => {
 
       await expect(
         Api.getProviderMonthAvailability(user_id, month, day),
+      ).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('getProviderDayAvailability', () => {
+    it('should get provider availability by day', async () => {
+      const user_id = '1'
+      const year = 2025
+      const month = 6
+      const day = 9
+
+      await expect(
+        Api.getProviderDayAvailability(user_id, year, month, day),
       ).resolves.toEqual(fakeResponse)
     })
   })

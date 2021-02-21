@@ -1,24 +1,26 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import Container from '../index'
-import { ContainerProps } from '../types'
+import AvailabilityCard from '../index'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-const initialProps: ContainerProps = {}
+const initialProps: Props = {
+  availability: { available: false, hour: 13, hourFormatted: '13:00' },
+}
 
-describe('Container test suite', () => {
+describe('AvailabilityCard test suite', () => {
   beforeEach(async () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <Container {...initialProps} />
+          <AvailabilityCard {...initialProps} />
         </StylesProvider>,
       )
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

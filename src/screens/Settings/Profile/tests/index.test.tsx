@@ -2,6 +2,8 @@ import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
 import { createTestProps } from 'core/utils'
+import ContextProvider from 'core/hooks'
+
 import Profile from '../index'
 
 let wrapper: ReactTestRenderer
@@ -13,13 +15,15 @@ describe('Profile test suite', () => {
     await act(async () => {
       wrapper = create(
         <StylesProvider>
-          <Profile {...props} />
+          <ContextProvider>
+            <Profile {...props} />
+          </ContextProvider>
         </StylesProvider>,
       )
     })
   })
 
-  it('should render', () => {
+  it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
 })

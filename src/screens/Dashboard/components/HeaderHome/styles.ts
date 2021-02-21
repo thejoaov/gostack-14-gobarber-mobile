@@ -1,22 +1,13 @@
 import styled from 'styled-components/native'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import Text from 'components/general/Text'
 import Device from 'core/helpers/Device'
 
 export const Container = styled.View`
   width: 100%;
-  padding-top: ${Device.isIos() ? getStatusBarHeight() : 0}px;
+  padding-top: ${Device.getStatusBarHeight(10)}px;
   background-color: ${({ theme }) => theme.colors.black.medium};
   flex-direction: row;
-`
-
-export const NameContainer = styled.View`
-  margin: 24px;
-  flex: 1;
-`
-
-export const Greeting = styled(Text)`
-  font-size: 20px;
+  justify-content: space-between;
 `
 
 export const Name = styled(Text)`

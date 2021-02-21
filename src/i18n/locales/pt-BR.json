@@ -58,7 +58,7 @@
   "home": {
     "greeting": "Bem vindo,",
     "providers_title": "Cabeleileiros",
-    "providers_list_empty": "Sem cabeleileiros disponíveis 😕",
+    "providers_list_empty": "Sem cabeleileiros disponíveis.",
     "provider_availability_days": "Segunda à Sexta",
     "provider_availability_hours": "8h às 18h"
   },
@@ -122,5 +122,25 @@
     "message": "Deseja sair de sua conta no aplicativo, {{name}}?",
     "button_back": "Voltar",
     "button_logout": "Sair"
+  },
+  "schedule": {
+    "header_title": "Agendamento",
+    "choose_date_title": "Escolha a data",
+    "choose_hour_title": "Escolha o horário",
+    "datepicker_button_android": "Escolha a data",
+    "availability_morning_title": "Manhã",
+    "availability_afternoon_title": "Tarde",
+    "submit_schedule_button": "Agendar",
+    "feedback": {
+      "success": {
+        "title": "Agendamento concluído",
+        "message": "{{date}} com {{providerName}}"
+      },
+      "error": {
+        "title": "Erro no agendamento",
+        "message": "Ocorreu um erro ao criar o seu agendamento.",
+        "button_title": "Voltar"
+      }
+    }
   }
 }

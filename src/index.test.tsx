@@ -14,7 +14,7 @@ describe('App test suite', () => {
     })
   })
 
-  it('should render without explode', () => {
+  it('should render without explode', async () => {
     expect(wrapper).toBeTruthy()
   })
 })
