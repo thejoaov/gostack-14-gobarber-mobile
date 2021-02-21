@@ -1,4 +1,15 @@
 {
+  "permissions": {
+    "android": {
+      "camera": {
+        "title": "Permissão da câmera",
+        "message": "Conceda o acesso à câmera para capturar sua foto de perfil",
+        "buttonNeutral": "Pergunte-me depois",
+        "buttonNegative": "Cancelar",
+        "buttonPositive": "OK"
+      }
+    }
+  },
   "sign_in": {
     "title": "Faça seu login",
     "login_button": "Entrar",
