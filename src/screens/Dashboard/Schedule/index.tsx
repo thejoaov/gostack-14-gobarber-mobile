@@ -113,15 +113,12 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
       selectedProvider.id,
       new Date(selectedDate.setUTCHours(selectedHour)),
     )
-      .then(() => {
+      .then(({ data }) => {
         navigation.navigate('Feedback', {
           status: 'success',
           title: t('feedback.success.title'),
           message: t('feedback.success.message', {
-            date: DateTime.formatDate(
-              new Date(selectedDate.setUTCHours(selectedHour)),
-              'ptBR_long',
-            ),
+            date: DateTime.formatDate(new Date(data.date), 'ptBR_long'),
             providerName: selectedProvider.name,
           }),
         })
