@@ -164,11 +164,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
         />
       </Section>
 
-      <ScrollView
-        ref={scheduleRef}
-        bounces={false}
-        endFillColor={colors.black.shape}
-        centerContent>
+      <ScrollView ref={scheduleRef} bounces={false} centerContent>
         <Container flex={1} pt={24} paddingX={24}>
           <DatePicker
             title={t('choose_date_title')}
@@ -181,7 +177,14 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
             androidOptions={{
               isVisible: showDatePicker,
               ButtonComponent: (): JSX.Element => (
-                <Button onPress={handleShowDatePicker} />
+                <Button
+                  onPress={handleShowDatePicker}
+                  title={
+                    hasSelected
+                      ? DateTime.formatDate(selectedDate, 'ptBR_short')
+                      : t('choose_date_title')
+                  }
+                />
               ),
               mode: 'date',
               display: 'calendar',
@@ -190,40 +193,44 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
           />
 
           {loading ? (
-            <Section flex={1}>
+            <Section flex={1} mt={32}>
               <ActivityIndicator size={60} color={colors.primary} />
             </Section>
           ) : (
             <>
               <Section paddingY="40px" flex={1}>
-                <Text fontSize={25} variant="medium">
-                  {t('choose_hour_title')}
-                </Text>
-                <Text fontSize={14} color={colors.gray.gray} mt="22px">
-                  {t('availability_morning_title')}
-                </Text>
-                <Section flexWrap="wrap" flexDirection="row" mt="6px">
-                  {morningAvailability.map(item => (
-                    <AvailabilityCard
-                      availability={item}
-                      selected={selectedHour === item.hour}
-                      onPress={(): void => handleSelectHour(item)}
-                    />
-                  ))}
-                </Section>
+                {hasSelected && (
+                  <>
+                    <Text fontSize={25} variant="medium">
+                      {t('choose_hour_title')}
+                    </Text>
+                    <Text fontSize={14} color={colors.gray.gray} mt="22px">
+                      {t('availability_morning_title')}
+                    </Text>
+                    <Section flexWrap="wrap" flexDirection="row" mt="6px">
+                      {morningAvailability.map(item => (
+                        <AvailabilityCard
+                          availability={item}
+                          selected={selectedHour === item.hour}
+                          onPress={(): void => handleSelectHour(item)}
+                        />
+                      ))}
+                    </Section>
 
-                <Text fontSize={14} color={colors.gray.gray} mt="22px">
-                  {t('availability_afternoon_title')}
-                </Text>
-                <Section flexWrap="wrap" flexDirection="row" mt="6px">
-                  {afternoonAvailability.map(item => (
-                    <AvailabilityCard
-                      selected={selectedHour === item.hour}
-                      availability={item}
-                      onPress={(): void => handleSelectHour(item)}
-                    />
-                  ))}
-                </Section>
+                    <Text fontSize={14} color={colors.gray.gray} mt="22px">
+                      {t('availability_afternoon_title')}
+                    </Text>
+                    <Section flexWrap="wrap" flexDirection="row" mt="6px">
+                      {afternoonAvailability.map(item => (
+                        <AvailabilityCard
+                          selected={selectedHour === item.hour}
+                          availability={item}
+                          onPress={(): void => handleSelectHour(item)}
+                        />
+                      ))}
+                    </Section>
+                  </>
+                )}
               </Section>
             </>
           )}
