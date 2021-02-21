@@ -61,7 +61,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
         .filter(item => item.hour < 12)
         .map(item => ({
           ...item,
-          hourFormatted: DateTime.formatHour(item.hour, 'HH:00'),
+          hourFormatted: DateTime.formatHour(item.hour, 'ptBR_short'),
         })),
     [availability],
   )
@@ -72,7 +72,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
         .filter(item => item.hour >= 12)
         .map(item => ({
           ...item,
-          hourFormatted: DateTime.formatHour(item.hour, 'HH:00'),
+          hourFormatted: DateTime.formatHour(item.hour, 'ptBR_short'),
         })),
     [availability],
   )
@@ -116,8 +116,14 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
       .then(() => {
         navigation.navigate('Feedback', {
           status: 'success',
-          title: t('feedback.sucess.title'),
-          message: t('feedback.sucess.message'),
+          title: t('feedback.success.title'),
+          message: t('feedback.success.message', {
+            date: DateTime.formatDate(
+              new Date(selectedDate.setUTCHours(selectedHour)),
+              'ptBR_long',
+            ),
+            providerName: selectedProvider.name,
+          }),
         })
       })
       .catch(() => {

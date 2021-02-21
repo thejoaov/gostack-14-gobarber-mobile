@@ -10,7 +10,7 @@ describe('DateTime', () => {
     it('should format date to string', () => {
       const date = new Date()
 
-      expect(DateTime.formatDate(date, 'dd/MM/yyyy')).toEqual(date)
+      expect(DateTime.formatDate(date, 'ptBR_short')).toEqual(date)
     })
   })
 
@@ -19,7 +19,9 @@ describe('DateTime', () => {
       const hour = 18
       const date = new Date()
 
-      expect(DateTime.formatHour(hour, 'HH:00')).toEqual(date.setHours(hour))
+      expect(DateTime.formatHour(hour, 'ptBR_short')).toEqual(
+        date.setHours(hour),
+      )
     })
   })
 })

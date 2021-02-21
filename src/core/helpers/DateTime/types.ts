@@ -1,3 +1,5 @@
-export type DateFormats = 'dd/MM/yyyy'
+import { dateFormats, hourFormats } from 'core/constants/dateTime'
 
-export type HourFormats = 'HH:00'
+export type DateFormats = keyof typeof dateFormats
+
+export type HourFormats = keyof typeof hourFormats

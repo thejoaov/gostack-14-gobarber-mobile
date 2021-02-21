@@ -133,8 +133,8 @@
     "submit_schedule_button": "Agendar",
     "feedback": {
       "success": {
-        "title": "Agendamento\nconcluído",
-        "message": "{{date}} com {{provider}}"
+        "title": "Agendamento concluído",
+        "message": "{{date}} com {{providerName}}"
       },
       "error": {
         "title": "Erro no agendamento",
