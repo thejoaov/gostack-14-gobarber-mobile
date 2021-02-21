@@ -127,6 +127,20 @@
     "header_title": "Agendamento",
     "choose_date_title": "Escolha a data",
     "choose_hour_title": "Escolha o horário",
-    "datepicker_button_android": "Escolha a data"
+    "datepicker_button_android": "Escolha a data",
+    "availability_morning_title": "Manhã",
+    "availability_afternoon_title": "Tarde",
+    "submit_schedule_button": "Agendar",
+    "feedback": {
+      "success": {
+        "title": "Agendamento\nconcluído",
+        "message": "{{date}} com {{provider}}"
+      },
+      "error": {
+        "title": "Erro no agendamento",
+        "message": "Ocorreu um erro ao criar o seu agendamento.",
+        "button_title": "Voltar"
+      }
+    }
   }
 }

@@ -101,3 +101,7 @@ jest.mock('@react-native-community/masked-view', () => {})
 jest.mock('react-native-device-info', () => ({
   hasNotch: jest.fn().mockReturnValue(true),
 }))
+
+jest.mock('date-fns', () => ({
+  format: jest.fn().mockImplementation(value => value),
+}))

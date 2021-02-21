@@ -74,9 +74,12 @@ export const Api = {
     year: number,
     month: number,
   ): AxiosPromise<ProviderMonthAvailability[]> =>
-    API.get(`/providers/${user_id}/month-availability`, {
-      params: { year, month },
-    }),
+    API.get(
+      `/providers/${user_id}/month-availability?${new URLSearchParams({
+        year: year.toString(),
+        month: month.toString(),
+      })}`,
+    ),
 
   /**
    * Get provider month availability
@@ -87,14 +90,13 @@ export const Api = {
     month: number,
     day: number,
   ): AxiosPromise<ProviderDayAvailability[]> =>
-    API.get(`/providers/${user_id}/day-availability`, {
-      params: {
+    API.get(
+      `/providers/${user_id}/day-availability?${new URLSearchParams({
         year: year.toString(),
         month: month.toString(),
         day: day.toString(),
-      },
-    }),
-
+      })}`,
+    ),
   /**
    * List provider appointments
    */
@@ -103,13 +105,13 @@ export const Api = {
     month: number,
     day: number,
   ): AxiosPromise<Appointment[]> =>
-    API.get('/appointments/me', {
-      params: {
-        year,
-        month,
-        day,
-      },
-    }),
+    API.get(
+      `/appointments/me?${new URLSearchParams({
+        year: year.toString(),
+        month: month.toString(),
+        day: day.toString(),
+      })}`,
+    ),
 
   /**
    * Update user profile
@@ -122,10 +124,22 @@ export const Api = {
    * Update avatar
    */
   updateAvatar: (data: FormData): AxiosPromise<UpdateAvatarResponse> =>
-    API.patch('/users/avatar', { params: { data } }),
+    API.patch('/users/avatar', data),
 
   /**
    * Get provider list
    */
   getProviderList: (): AxiosPromise<Provider[]> => API.get('providers'),
+
+  /**
+   * Create appointment
+   */
+  createAppointment: (
+    provider_id: string,
+    date: Date,
+  ): AxiosPromise<Appointment> =>
+    API.post('appointments', {
+      provider_id,
+      date,
+    }),
 }
