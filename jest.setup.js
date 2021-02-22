@@ -14,6 +14,12 @@ jest.mock('@react-native-community/datetimepicker', () =>
   jest.fn().mockImplementation(props => <View {...props} />),
 )
 
+jest.mock('react-native-image-picker', () => {
+  return {
+    showImagePicker: jest.fn().mockResolvedValue({}),
+  }
+})
+
 jest.mock('styled-components', () => {
   const original = jest.requireActual('styled-components')
 
