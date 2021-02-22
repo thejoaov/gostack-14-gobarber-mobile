@@ -18,6 +18,7 @@ export type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<void>
   signOut(): void
   updateProfile(profile: UpdateProfileForm): Promise<void>
+  updateLocalProfile(profile: User): Promise<void>
 }
 
 export type AuthState = {

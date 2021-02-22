@@ -1,4 +1,13 @@
 {
+  "picker": {
+    "image": {
+      "title": "Alterar foto de perfil",
+      "cancel_button": "Cancelar",
+      "choose_from_library": "Galeria",
+      "choose_which_library": "Escolha a galeria",
+      "take_photo": "Tirar foto"
+    }
+  },
   "permissions": {
     "android": {
       "camera": {
@@ -96,6 +105,12 @@
     }
   },
   "profile": {
+    "change_avatar": {
+      "error": {
+        "title": "Ops!",
+        "message": "Ocorreu um erro ao atualizar sua foto de perfil. Tente novamente."
+      }
+    },
     "header_title": "Meu Perfil",
     "logout_button": "Deslogar",
     "inputs": {

@@ -3,6 +3,9 @@ import i18n from 'i18next'
 import Device from '../Device'
 
 const Permissions = {
+  /** Request camera permission
+   * @platform Android
+   */
   requestCamera: (): Promise<PermissionStatus> | null => {
     if (Device.isAndroid()) {
       return PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA, {
