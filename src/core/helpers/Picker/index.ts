@@ -12,7 +12,6 @@ const Picker = {
         ImagePicker.showImagePicker(
           {
             ...options,
-
             title: i18n.t('image.title', { ns: 'picker' }),
             cancelButtonTitle: i18n.t('image.cancel_button', { ns: 'picker' }),
             chooseFromLibraryButtonTitle: i18n.t('image.choose_from_library', {
@@ -24,7 +23,7 @@ const Picker = {
             takePhotoButtonTitle: i18n.t('image.take_photo', { ns: 'picker' }),
           },
           image => {
-            if (image.didCancel) reject(new Error('user cancelled'))
+            // if (image.didCancel) reject(new Error('user cancelled'))
             if (image.error) reject(new Error('error'))
             resolve(image)
           },

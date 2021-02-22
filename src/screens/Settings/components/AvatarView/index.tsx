@@ -29,12 +29,14 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
   }, [])
 
   const handleChangePhoto = async () => {
-    try {
-      const image = await Picker.image({
-        allowsEditing: true,
-        noData: true,
-      })
+    const image = await Picker.image({
+      allowsEditing: true,
+      noData: true,
+    })
 
+    if (image.didCancel) return
+
+    try {
       const form = new FormData()
 
       form.append('avatar', {
@@ -50,8 +52,7 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
 
       setAvatarUrl(image.uri)
     } catch (error) {
-      setAvatarUrl('')
-      updateLocalProfile({ ...user, avatar_url: null } as User)
+      updateLocalProfile({ ...user, avatar_url: avatarUrl } as User)
 
       Alert.alert(
         t('change_avatar.error.title'),
@@ -77,7 +78,7 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
       })}
       <AvatarButton onPress={handleChangePhoto}>
         {loading ? (
-          <ActivityIndicator size={50} color={colors.background} />
+          <ActivityIndicator size={15} color={colors.background} />
         ) : (
           <Icon name="camera" color={colors.background} />
         )}
