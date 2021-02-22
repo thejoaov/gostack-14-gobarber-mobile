@@ -32,6 +32,7 @@ export type ShowProfileResponse = {
 
 export type UpdateProfileForm = Partial<{
   name: string
+  avatar_url: string | null
   email: string
   old_password: string
   password: string

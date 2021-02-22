@@ -124,7 +124,11 @@ export const Api = {
    * Update avatar
    */
   updateAvatar: (data: FormData): AxiosPromise<UpdateAvatarResponse> =>
-    API.patch('/users/avatar', data),
+    API.patch('/users/avatar', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }),
 
   /**
    * Get provider list
