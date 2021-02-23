@@ -5,6 +5,7 @@ import React, {
   useState,
   useCallback,
 } from 'react'
+import { TextInput as RnTextInput } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import {
@@ -25,11 +26,11 @@ const TextInput: React.ForwardRefRenderFunction<InputRef, Props> = (
   const [isSecured, setIsSecured] = useState(secureTextEntry)
   const { colors } = useTheme()
 
-  const inputElementRef = useRef<any>(null)
+  const inputElementRef = useRef<RnTextInput>(null)
 
   useImperativeHandle(ref, () => ({
     focus() {
-      inputElementRef.current.focus()
+      inputElementRef.current?.focus()
     },
   }))
 

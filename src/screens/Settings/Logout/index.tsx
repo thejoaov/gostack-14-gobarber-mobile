@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
-import { Container, Text, Icon, Button, Avatar } from 'components'
+import { Container, Text, Button, Avatar } from 'components'
 import { useTheme } from 'styled-components'
 import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
 
 import { Props } from './types'
 
-const Logout: React.FC<Props> = ({ route, navigation }) => {
+const Logout: React.FC<Props> = ({ navigation }) => {
   const { t } = useTranslation('logout')
   const { colors } = useTheme()
   const { user, signOut } = useAuth()

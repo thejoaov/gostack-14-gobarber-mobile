@@ -2,7 +2,6 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import { View } from 'react-native'
 
 import { createTestProps } from 'core/utils'
 import { Api } from 'core/services/api'

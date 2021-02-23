@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   TextInput as Input,
-  View,
 } from 'react-native'
 import { Formik } from 'formik'
 import { useTranslation } from 'react-i18next'

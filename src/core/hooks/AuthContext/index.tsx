@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import SplashScreen from 'react-native-splash-screen'
 import { Api } from 'core/services/api'
 import { Storage } from 'core/services/storage'
 import { UpdateProfileForm } from 'core/services/api/types'
@@ -27,6 +28,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       setData({ token, user: JSON.parse(user) })
     }
+
+    SplashScreen.hide()
   }, [])
 
   useEffect(() => {
@@ -120,7 +123,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         setLoading(false)
       }
     },
-    [data],
+    [updateLocalProfile],
   )
 
   return (

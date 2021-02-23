@@ -1,6 +1,5 @@
 import { RectButton } from 'react-native-gesture-handler'
 import { Text } from 'components'
-import { shade } from 'polished'
 import styled, { css } from 'styled-components/native'
 
 export const Container = styled(RectButton)<{ selected?: boolean }>`
