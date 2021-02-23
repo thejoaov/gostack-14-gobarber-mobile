@@ -123,7 +123,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         setLoading(false)
       }
     },
-    [data],
+    [updateLocalProfile],
   )
 
   return (
