@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { useTheme } from 'styled-components/native'
 import { Platform, StatusBar } from 'react-native'
-import { useAuth } from 'core/hooks/AuthContext'
+import SplashScreen from 'react-native-splash-screen'
+import { useTheme } from 'styled-components/native'
 
+import { useAuth } from 'core/hooks/AuthContext'
 import SignIn from 'screens/Auth/SignIn'
 import SignUp from 'screens/Auth/SignUp'
-import Feedback from 'screens/Feedback'
 import ForgotPassword from 'screens/Auth/ForgotPassword'
+import Feedback from 'screens/Feedback'
 import Home from 'screens/Dashboard/Home'
 import Schedule from 'screens/Dashboard/Schedule'
 import Profile from 'screens/Settings/Profile'
@@ -110,6 +111,10 @@ const MainRoutes: React.FC = () => {
 const App: React.FC = () => {
   const { user } = useAuth()
   const theme = useTheme()
+
+  useEffect(() => {
+    SplashScreen.hide()
+  }, [])
 
   return (
     <AppStack.Navigator headerMode="none">
