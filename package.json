@@ -20,6 +20,7 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "@types/jest": "^26.0.21",
     "axios": "^0.21.1",
     "date-fns": "^2.17.0",
     "formik": "^2.2.6",
@@ -80,7 +81,7 @@
     "metro-react-native-babel-preset": "^0.64.0",
     "prettier": "^2.2.1",
     "react-native-version": "^4.0.0",
-    "react-test-renderer": "17.0.1",
+    "react-test-renderer": "16.14.0",
     "typescript": "^4.2.3"
   }
 }

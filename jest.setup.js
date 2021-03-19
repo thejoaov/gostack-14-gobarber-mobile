@@ -65,6 +65,15 @@ jest.mock('@react-navigation/stack', () => ({
   createStackNavigator: jest.fn(),
 }))
 
+jest.mock('react-native-splash-screen', () => ({
+  show: jest.fn().mockImplementation(() => {
+    console.log('show splash screen')
+  }),
+  hide: jest.fn().mockImplementation(() => {
+    console.log('hide splash screen')
+  }),
+}))
+
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('react-native-gesture-handler', () => {
