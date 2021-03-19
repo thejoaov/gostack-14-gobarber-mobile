@@ -5,7 +5,6 @@ import {
 } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { Platform, StatusBar } from 'react-native'
-import SplashScreen from 'react-native-splash-screen'
 import { useTheme } from 'styled-components/native'
 
 import { useAuth } from 'core/hooks/AuthContext'
@@ -32,7 +31,7 @@ const MainStack = createStackNavigator<MainStackParams>()
 const DashboardStack = createStackNavigator<DashboardStackParams>()
 const SettingsStack = createStackNavigator<SettingsStackParams>()
 
-const DashboardRoutes: React.FC = () => {
+const DashboardRoutes = (): JSX.Element => {
   const theme = useTheme()
 
   return (
@@ -50,7 +49,7 @@ const DashboardRoutes: React.FC = () => {
   )
 }
 
-const SettingsRoutes: React.FC = () => {
+const SettingsRoutes = (): JSX.Element => {
   const theme = useTheme()
 
   return (
@@ -69,7 +68,7 @@ const SettingsRoutes: React.FC = () => {
   )
 }
 
-const AuthRoutes: React.FC = () => {
+const AuthRoutes = (): JSX.Element => {
   const theme = useTheme()
 
   return (
@@ -91,7 +90,7 @@ const AuthRoutes: React.FC = () => {
   )
 }
 
-const MainRoutes: React.FC = () => {
+const MainRoutes = (): JSX.Element => {
   const theme = useTheme()
 
   return (
@@ -108,13 +107,9 @@ const MainRoutes: React.FC = () => {
   )
 }
 
-const App: React.FC = () => {
+const App = (): JSX.Element => {
   const { user } = useAuth()
   const theme = useTheme()
-
-  useEffect(() => {
-    SplashScreen.hide()
-  }, [])
 
   return (
     <AppStack.Navigator headerMode="none">
@@ -141,7 +136,7 @@ const App: React.FC = () => {
   )
 }
 
-const Routes: React.FC = () => {
+const Routes = (): JSX.Element => {
   const { colors } = useTheme()
 
   return (

@@ -10,7 +10,6 @@ const StylesProvider: React.FC<Props> = ({
 }) => <ThemeProvider theme={theme}>{children}</ThemeProvider>
 
 StylesProvider.defaultProps = {
-  children: null,
   theme: defaultTheme,
 }
 
