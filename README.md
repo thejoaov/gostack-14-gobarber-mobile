@@ -28,15 +28,11 @@ The project was coded and tested on both Android and iOS.
 - [x] Code Coverage (CodeCov)
 - [ ] Toasts implementation
 - [x] Icons (iOS/Android)
-- [ ] SplashScreen
-  - [ ] iOS
-  - [ ] Android
+- [x] SplashScreen (iOS/Android)
 - [ ] Sentry
 - [ ] CodePush
 - [ ] Notifications
 - [ ] Deploy (Play Store Only)
-
-
 
 [gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos
 [circleci-img]: https://circleci.com/gh/thejoaov/gobarber-14-mobile/tree/main.svg?style=svg
