@@ -8,17 +8,14 @@ const Feedback: React.FC<Props> = ({ route, navigation }) => {
   const { title, message, status, button } = route.params
   const theme = useTheme()
 
-  const getIcon = useCallback(
-    (type: typeof status): JSX.Element => {
-      const selector = {
-        success: <Icon name="check" size={100} semantic="success" />,
-        error: <Icon name="x" size={100} semantic="error" />,
-      }
+  const getIcon = (type: typeof status): JSX.Element => {
+    const selector = {
+      success: <Icon name="check" size={100} semantic="success" />,
+      error: <Icon name="x" size={100} semantic="error" />,
+    }
 
-      return selector[type]
-    },
-    [status],
-  )
+    return selector[type]
+  }
 
   const handleGoBack = useCallback((): void => {
     navigation.goBack()
@@ -41,6 +38,7 @@ const Feedback: React.FC<Props> = ({ route, navigation }) => {
       </Text>
 
       <Button
+        testID="ok-button"
         mt={40}
         title={button?.title || 'OK'}
         onPress={button?.onPress || handleGoBack}

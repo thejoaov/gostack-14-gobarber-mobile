@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 export type TestProps = {
   props?: Record<string, unknown>
   params?: Record<string, unknown>
@@ -54,3 +55,23 @@ export const createTestProps = ({
   },
   ...props,
 })
+
+type FakeApiReturn<T> = {
+  data: T | any
+  status: 200
+  statusText: 'OK' | 'ERROR'
+  headers: Record<string, unknown>
+  config: Record<string, unknown>
+}
+
+export function fakeApiReturn<T>(
+  apiReturn: Partial<FakeApiReturn<T>>,
+): Required<FakeApiReturn<T>> {
+  return {
+    data: apiReturn.data || {},
+    status: apiReturn.status || 200,
+    statusText: apiReturn.statusText || 'OK',
+    headers: apiReturn.headers || {},
+    config: apiReturn.config || {},
+  }
+}

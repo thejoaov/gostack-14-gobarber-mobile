@@ -23,6 +23,7 @@ describe('Api service test suite', () => {
     expect(Api.updateProfile).toBeDefined()
     expect(Api.updateAvatar).toBeDefined()
     expect(Api.getProviderList).toBeDefined()
+    expect(Api.createAppointment).toBeDefined()
   })
 
   describe('login', () => {
@@ -134,6 +135,17 @@ describe('Api service test suite', () => {
   describe('getProviderList', () => {
     it('should get provider list', async () => {
       await expect(Api.getProviderList()).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('createAppointment', () => {
+    it('should create appointment', async () => {
+      const provider_id = '1'
+      const date = new Date()
+
+      await expect(Api.createAppointment(provider_id, date)).resolves.toEqual(
+        fakeResponse,
+      )
     })
   })
 })
