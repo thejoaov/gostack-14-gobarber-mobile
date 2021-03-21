@@ -1,19 +1,45 @@
 {
+  "picker": {
+    "image": {
+      "title": "Change profile photo",
+      "cancel_button": "Cancel",
+      "choose_from_library": "Gallery",
+      "choose_which_library": "Choose from gallery",
+      "take_photo": "Take photo"
+    }
+  },
+  "permissions": {
+    "android": {
+      "camera": {
+        "title": "Camera permission",
+        "message": "We need the camera permission to take your profile photo",
+        "buttonNeutral": "Ask me later",
+        "buttonNegative": "Cancel",
+        "buttonPositive": "OK"
+      }
+    }
+  },
   "sign_in": {
-    "title": "Sign In",
+    "title": "",
     "login_button": "Login",
     "forgot_password": "Forgot my password",
-    "footer_button": "Create account",
+    "footer_button": "Create your account",
     "inputs": {
-      "mail_placeholder": "E-mail",
+      "mail_placeholder": "Email",
       "mail_error_required": "Email is required",
       "password_placeholder": "Password",
       "password_error_required": "Password is required",
-      "password_error_min": "Minimum 6 characters"
+      "password_error_min": "6 characters minimum"
     },
     "alerts": {
       "error_signin_title": "Login error",
-      "error_signin_message": "Error when logging into your account, please try again."
+      "error_signin_message": "Error while we trying to login. Please try again."
+    },
+    "feedback": {
+      "error": {
+        "title": "Login error",
+        "message": "Error while we trying to login. Please try again."
+      }
     }
   },
   "sign_up": {
@@ -23,34 +49,124 @@
     "inputs": {
       "name_placeholder": "Name",
       "name_error_required": "Name is required",
-      "mail_placeholder": "E-mail",
-      "mail_error_valid": "Insert a valid email address",
+      "mail_placeholder": "Email",
+      "mail_error_valid": "Invalid email",
       "mail_error_required": "Email is required",
       "password_placeholder": "Password",
       "password_error_required": "Password is required",
-      "password_error_min": "Minimum 6 characters"
+      "password_error_min": "6 characters minimum"
     },
     "alerts": {
-      "error_signup_title": "Sign up error",
-      "error_signup_message": "Error when registering your account, please try again.",
-      "success_signup_title": "Success!",
+      "error_signup_title": "Signup error",
+      "error_signup_message": "Error while we trying to signup, please try again",
+      "success_signup_title": "Sucess!",
       "success_signup_message": "Welcome to GoBarber. Please login into your new account."
-    }
-  },
-  "sign_up_status": {
-    "success": {
-      "title": "Signup complete!",
-      "messsage": "Your account was sucessfuly registered!",
-      "button": "Ok"
     },
-    "error": {
-      "title": "Signup error",
-      "message": "An error ocurred in your registering :/ \n\nVerify your information and try again.",
-      "button": "Try again"
+    "feedback": {
+      "success": {
+        "title": "Signup success!",
+        "message": "Welcome to GoBarber!\n\nPlease proceed to login into your new account.",
+        "button": "Ok"
+      },
+      "error": {
+        "title": "Signup error",
+        "message": "It apperas that ocurred an error with your signup :/ \n\nVerifify your information and try again.",
+        "button": "Try again"
+      }
     }
   },
   "home": {
-    "provisory_title": "Home, user logged in",
-    "provisory_logout_button": "Logout"
+    "greeting": "Welcome, ",
+    "providers_title": "Barbers",
+    "providers_list_empty": "No barbers available.",
+    "provider_availability_days": "Monday to Friday",
+    "provider_availability_hours": "8h to 18h"
+  },
+  "forgot_password": {
+    "title": "Password recovery",
+    "inputs": {
+      "mail_placeholder": "Email",
+      "mail_error_required": "Email is required",
+      "mail_error_valid": "Email needs to be valid"
+    },
+    "forgot_button": "Send",
+    "footer_button": "Back to login",
+    "feedback": {
+      "success": {
+        "title": "Email sent",
+        "message": "An password recovery email was sent. Please check your email.",
+        "button": "Ok"
+      },
+      "error": {
+        "title": "Error",
+        "message": "We do not found this email in our registry, please check your email and try again.",
+        "button": "Try again"
+      }
+    }
+  },
+  "profile": {
+    "change_avatar": {
+      "error": {
+        "title": "Oops!",
+        "message": "It appears that ocurred an error while updating your profile photo, please try again"
+      }
+    },
+    "header_title": "My profile",
+    "logout_button": "Logout",
+    "inputs": {
+      "name_placeholder": "Name",
+      "name_error_required": "Name is required",
+      "mail_placeholder": "Email",
+      "mail_error_valid": "Email needs to be valid",
+      "mail_error_required": "Email is required",
+      "old_password_placeholder": "Actual password",
+      "old_password_error_min": "6 characters minimum",
+      "password_placeholder": "New password",
+      "password_error_required": "Password is required",
+      "password_error_min": "6 characters minimum",
+      "password_confirmation_placeholder": "Confirmation",
+      "password_confirmation_error_required": "Confirmation is required",
+      "password_confirmation_error_min": "6 characters minimum",
+      "password_confirmation_error_incorrect": "Incorrect confirmation"
+    },
+    "feedback": {
+      "success": {
+        "title": "Profile updated!",
+        "message": "Profile updated with success!",
+        "button": "Voltar"
+      },
+      "error": {
+        "title": "Error",
+        "message": "Ocurred an error while updating your profile.\n\nPlease try again.",
+        "button": "Back"
+      }
+    },
+    "submit_button": "Send"
+  },
+  "logout": {
+    "title": "Are you going?",
+    "message": "Do you want to logout, {{name}}?",
+    "button_back": "Back",
+    "button_logout": "Logout"
+  },
+  "schedule": {
+    "header_title": "Schedule",
+    "choose_date_title": "Choose a date",
+    "choose_hour_title": "Choose time",
+    "datepicker_button_android": "Choose a date",
+    "availability_morning_title": "Morning",
+    "availability_afternoon_title": "Afternoon",
+    "submit_schedule_button": "Schedule",
+    "feedback": {
+      "success": {
+        "title": "Scheduled!",
+        "message": "{{date}}\nwith\n{{providerName}}"
+      },
+      "error": {
+        "title": "Schedule error",
+        "message": "An error ocurred while scheduling. Please try again.",
+        "button_title": "Back"
+      }
+    }
   }
 }
