@@ -1,5 +1,5 @@
 import { dateFormats, hourFormats } from 'core/constants/dateTime'
 
-export type DateFormats = keyof typeof dateFormats
+export type DateFormats = 'long' | 'short'
 
 export type HourFormats = keyof typeof hourFormats

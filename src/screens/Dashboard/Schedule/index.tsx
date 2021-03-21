@@ -114,11 +114,13 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
       new Date(selectedDate.setUTCHours(selectedHour)),
     )
       .then(({ data }) => {
+        const scheduledDate = new Date(data.date).setHours(selectedHour)
+
         navigation.navigate('Feedback', {
           status: 'success',
           title: t('feedback.success.title'),
           message: t('feedback.success.message', {
-            date: DateTime.formatDate(new Date(data.date), 'ptBR_long'),
+            date: DateTime.formatDate(new Date(scheduledDate), 'long'),
             providerName: selectedProvider.name,
           }),
         })
@@ -181,7 +183,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
                   onPress={handleShowDatePicker}
                   title={
                     hasSelected
-                      ? DateTime.formatDate(selectedDate, 'ptBR_short')
+                      ? DateTime.formatDate(selectedDate, 'short')
                       : t('choose_date_title')
                   }
                 />
