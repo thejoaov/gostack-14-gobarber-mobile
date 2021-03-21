@@ -35,9 +35,7 @@ describe('SignIn test suite', () => {
 
     act(() => {
       fireEvent.press(footerButton[0])
-    })
 
-    act(() => {
       expect(signInProps.navigation.navigate).toBeCalledWith('SignUp')
     })
   })

@@ -7,10 +7,10 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "pretest": "jest --clearCache",
-    "test": "jest",
+    "test": "jest --runInBand",
     "postversion": "react-native-version --generate-build",
-    "test:ci": "TZ=America/Fortaleza APP_ENV=test jest --ci --collectCoverage",
-    "test:cov": "jest --coverage --colors",
+    "test:ci": "TZ=America/Fortaleza APP_ENV=test yarn test --ci --runInBand --collectCoverage",
+    "test:cov": "yarn test --coverage --colors",
     "prettify": "prettier --check ./**/*.{ts,tsx,js,json} --write",
     "lint": "eslint . -c .eslintrc.js --ext \"js,ts,tsx\" --cache"
   },
