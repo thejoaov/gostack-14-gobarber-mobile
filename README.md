@@ -23,7 +23,7 @@ The project was coded and tested on both Android and iOS.
 - [x] Commit pattern (git-commit-msg-linter)
 - [x] Husky and lint-staged
 - [x] Internationalization (i18n)
-- [ ] English translations
+- [x] English translations
 - [x] Tests implementation
 - [x] CI (CircleCI)
 - [x] Code Coverage (CodeCov)
