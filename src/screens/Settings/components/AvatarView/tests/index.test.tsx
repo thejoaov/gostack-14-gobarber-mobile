@@ -15,12 +15,11 @@ const initialProps: AvatarViewProps = { src: 'src' }
 
 let DeviceSpy: jest.SpyInstance
 let PickerSpy: jest.SpyInstance
-let AlertSpy: jest.SpyInstance
-let AuthSpy: jest.SpyInstance
+// let AlertSpy: jest.SpyInstance
 
 describe('AvatarView test suite', () => {
   beforeEach(async () => {
-    AlertSpy = jest.spyOn(Alert, 'alert')
+    // AlertSpy = jest.spyOn(Alert, 'alert')
     DeviceSpy = jest.spyOn(Device, 'getWindowSize')
     PickerSpy = jest.spyOn(Picker, 'image')
 
