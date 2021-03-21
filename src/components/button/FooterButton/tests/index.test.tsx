@@ -1,7 +1,9 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { Keyboard } from 'react-native'
+import { findByTestID } from 'core/utils'
 import { StylesProvider } from 'components'
+
 import FooterButton from '../index'
 import { Props } from '../types'
 
@@ -28,30 +30,24 @@ describe('FooterButton test suite', () => {
   })
 
   it('should hide on keyboard open', async () => {
-    const testInstance = wrapper.root
-
     act(() => {
       Keyboard.emit('keyboardDidShow', {})
     })
 
     setTimeout(() => {
-      const container = testInstance.findByProps({ testID: 'footer-button' })
+      const container = findByTestID(wrapper, 'footer-button')
 
       expect(container).not.toBeTruthy()
     }, 1000)
   })
 
   it('should show on keyboard closed', async () => {
-    const testInstance = wrapper.root
-
     act(() => {
       Keyboard.emit('keyboardDidShow', {})
     })
 
     setTimeout(() => {
-      const container = testInstance.findByProps({
-        testID: 'footer-button',
-      })
+      const container = findByTestID(wrapper, 'footer-button')
 
       expect(container).not.toBeTruthy()
     }, 1000)
@@ -61,7 +57,7 @@ describe('FooterButton test suite', () => {
     })
 
     setTimeout(() => {
-      const container = testInstance.findByProps({ testID: 'footer-button' })
+      const container = findByTestID(wrapper, 'footer-button')
 
       expect(container).toBeTruthy()
     }, 1000)

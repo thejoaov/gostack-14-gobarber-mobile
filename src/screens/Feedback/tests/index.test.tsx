@@ -1,7 +1,7 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import { createTestProps } from 'core/utils'
+import { createTestProps, findByTestID } from 'core/utils'
 
 import Feedback from '../index'
 
@@ -25,13 +25,13 @@ describe('Feedback test suite', () => {
   })
 
   it('should navigate back when requested', () => {
-    const testInstance = wrapper.root
-    const button = testInstance.findByProps({ testID: 'ok-button' })
+    const rootComponent = wrapper.root.props.children
+    const button = findByTestID(wrapper, 'ok-button')
 
     act(() => {
       button.props.onPress()
     })
 
-    expect(testInstance.props.children.props.navigation.goBack).toBeCalled()
+    expect(rootComponent.props.navigation.goBack).toBeCalled()
   })
 })

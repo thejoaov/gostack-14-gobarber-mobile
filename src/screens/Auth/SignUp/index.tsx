@@ -46,37 +46,34 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
       .min(6, t('inputs.password_error_min')),
   })
 
-  const submit = useCallback(
-    async (values: typeof signUpDefaultValues): Promise<void> => {
-      try {
-        setLoading(true)
-        await Api.signUp(values)
+  const submit = async (values: typeof signUpDefaultValues): Promise<void> => {
+    try {
+      setLoading(true)
+      await Api.signUp(values)
 
-        navigation.navigate('Feedback', {
-          title: t('feedback.success.title'),
-          message: t('feedback.success.message'),
-          status: 'success',
-          button: {
-            onPress: () =>
-              navigation.navigate('SignIn', {
-                email: values.email,
-                password: values.password,
-              }),
-          },
-        })
-      } catch (error) {
-        navigation.navigate('Feedback', {
-          title: t('feedback.error.title'),
-          message: t('feedback.error.message'),
-          status: 'error',
-          button: { title: t('feedback.error.button') },
-        })
-      } finally {
-        setLoading(false)
-      }
-    },
-    [navigation, t],
-  )
+      navigation.navigate('Feedback', {
+        title: t('feedback.success.title'),
+        message: t('feedback.success.message'),
+        status: 'success',
+        button: {
+          onPress: () =>
+            navigation.navigate('SignIn', {
+              email: values.email,
+              password: values.password,
+            }),
+        },
+      })
+    } catch (error) {
+      navigation.navigate('Feedback', {
+        title: t('feedback.error.title'),
+        message: t('feedback.error.message'),
+        status: 'error',
+        button: { title: t('feedback.error.button') },
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <>
@@ -112,6 +109,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
               }) => (
                 <>
                   <TextInput
+                    testID="name-input"
                     mt={24}
                     icon="user"
                     autoCorrect={false}
@@ -133,6 +131,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                   />
 
                   <TextInput
+                    testID="email-input"
                     mt={10}
                     ref={emailInputRef}
                     icon="mail"
@@ -156,6 +155,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                   />
 
                   <TextInput
+                    testID="password-input"
                     mt={10}
                     ref={passwordInputRef}
                     icon="lock"
@@ -178,6 +178,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                   />
 
                   <Button
+                    testID="submit-button"
                     title={t('create_account_button')}
                     mt={16}
                     isLoading={loading}
@@ -192,6 +193,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
       </Container>
 
       <FooterButton
+        testID="footer-button"
         icon="arrow-left"
         title={t('footer_button')}
         hideOnKeyboard={Device.isAndroid()}

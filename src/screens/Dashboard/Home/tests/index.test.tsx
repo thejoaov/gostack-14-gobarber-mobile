@@ -2,7 +2,12 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
 import { StylesProvider } from 'components'
-import { createTestProps, fakeApiReturn } from 'core/utils'
+import {
+  createTestProps,
+  fakeApiReturn,
+  findAllByTestID,
+  findByTestID,
+} from 'core/utils'
 import { Provider } from 'core/services/api/types'
 
 import { Api } from 'core/services/api'
@@ -42,42 +47,34 @@ describe('Home test suite', () => {
   })
 
   it('should navigate to profile when clicking on avatar on header', async () => {
-    const testInstance = wrapper.root
+    const rootComponent = wrapper.root.props.children
 
-    const header = testInstance.findByProps({
-      testID: 'header',
-    })
+    const header = findByTestID(wrapper, 'header')
 
     act(() => {
       header.props.onPressAvatar()
     })
 
-    expect(testInstance.props.children.props.navigation.navigate).toBeCalled()
+    expect(rootComponent.props.navigation.navigate).toBeCalled()
   })
 
   describe('Provider list', () => {
     it('should load providers', async () => {
-      const testInstance = wrapper.root
-
-      const providerCard = testInstance.findAllByProps({
-        testID: 'provider-card',
-      })[0]
+      const providerCard = findAllByTestID(wrapper, 'provider-card')[0]
 
       expect(providerCard).toBeTruthy()
     })
 
     it('should navigate to selected provider when click on card', () => {
-      const testInstance = wrapper.root
+      const rootComponent = wrapper.root.props.children
 
-      const providerCard = testInstance.findAllByProps({
-        testID: 'provider-card',
-      })[0]
+      const providerCard = findAllByTestID(wrapper, 'provider-card')[0]
 
       act(() => {
         providerCard.props.onPress()
       })
 
-      expect(testInstance.props.children.props.navigation.navigate).toBeCalled()
+      expect(rootComponent.props.navigation.navigate).toBeCalled()
     })
   })
 })

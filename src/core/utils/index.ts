@@ -1,3 +1,6 @@
+import { User } from 'core/hooks/AuthContext/types'
+import { ReactTestInstance, ReactTestRenderer } from 'react-test-renderer'
+
 /* eslint-disable complexity */
 export type TestProps = {
   props?: Record<string, unknown>
@@ -75,3 +78,43 @@ export function fakeApiReturn<T>(
     config: apiReturn.config || {},
   }
 }
+
+export const findByTestID = (
+  { root: testInstance }: ReactTestRenderer,
+  testID: string,
+): ReactTestInstance => testInstance.findByProps({ testID })
+
+export const findAllByTestID = (
+  { root: testInstance }: ReactTestRenderer,
+  testID: string,
+): ReactTestInstance[] => testInstance.findAllByProps({ testID })
+
+export const mockPlatform = (OS: 'android' | 'ios') => {
+  jest.resetModules()
+  jest.doMock('react-native/Libraries/Utilities/Platform', () => ({
+    OS,
+    select: (config: any) => config[OS],
+  }))
+}
+
+export const mockAuthContext = (user?: User) => ({
+  updateLocalProfile: async (data: Record<string, unknown>) => {
+    jest.fn().mockImplementation(() => data)
+  },
+  updateProfile: async (data: Record<string, unknown>) => {
+    jest.fn().mockImplementation(() => data)
+  },
+  user: user || {
+    avatar_url: 'htul',
+    email: 'email@email.com',
+    id: '1',
+    name: 'test',
+  },
+  signOut: async () => {
+    jest.fn()
+  },
+  loading: false,
+  signIn: async () => {
+    jest.fn()
+  },
+})
