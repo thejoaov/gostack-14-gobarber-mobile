@@ -48,15 +48,14 @@ const Home: React.FC<Props> = ({ navigation }) => {
   return (
     <>
       <Header
+        testID="header"
         greeting={t('greeting')}
         name={user?.name || ''}
         onPressAvatar={handleNavigate}
       />
 
       {loading ? (
-        <>
-          <Skeleton />
-        </>
+        <Skeleton />
       ) : (
         <FlatList
           refreshing={loading}
@@ -80,6 +79,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
           )}
           renderItem={({ item }) => (
             <ProviderCard
+              testID="provider-card"
               provider={item}
               onPress={(): void =>
                 navigation.navigate('Schedule', {

@@ -23,4 +23,15 @@ describe('Feedback test suite', () => {
   it('should render', async () => {
     expect(wrapper).toBeTruthy()
   })
+
+  it('should navigate back when requested', () => {
+    const testInstance = wrapper.root
+    const button = testInstance.findByProps({ testID: 'ok-button' })
+
+    act(() => {
+      button.props.onPress()
+    })
+
+    expect(testInstance.props.children.props.navigation.goBack).toBeCalled()
+  })
 })

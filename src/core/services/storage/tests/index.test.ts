@@ -57,4 +57,16 @@ describe('Storage service test suite', () => {
       expect(test2).toBe(testData2)
     })
   })
+
+  describe('update', () => {
+    it('should update items', async () => {
+      await Storage.setItems([['test', JSON.stringify({ user: '1' })]])
+
+      await Storage.update([['test', JSON.stringify({ user: '2' })]])
+
+      const result = await Storage.getItem('test')
+
+      expect(result).toBe(JSON.stringify({ user: '2' }))
+    })
+  })
 })
