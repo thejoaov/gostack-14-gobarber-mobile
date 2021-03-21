@@ -22,7 +22,7 @@ const Feedback: React.FC<Props> = ({ route, navigation }) => {
   }, [navigation])
 
   return (
-    <Container center margin={80}>
+    <Container center margin={80} testID="feedback-container">
       {getIcon(status)}
 
       <Text mt={40} textAlign="center" fontSize={30}>

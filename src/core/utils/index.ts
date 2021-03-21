@@ -1,3 +1,5 @@
+import { ReactTestInstance, ReactTestRenderer } from 'react-test-renderer'
+
 /* eslint-disable complexity */
 export type TestProps = {
   props?: Record<string, unknown>
@@ -74,4 +76,22 @@ export function fakeApiReturn<T>(
     headers: apiReturn.headers || {},
     config: apiReturn.config || {},
   }
+}
+
+export const findByTestID = (
+  { root: testInstance }: ReactTestRenderer,
+  testID: string,
+): ReactTestInstance => testInstance.findByProps({ testID })
+
+export const findAllByTestID = (
+  { root: testInstance }: ReactTestRenderer,
+  testID: string,
+): ReactTestInstance[] => testInstance.findAllByProps({ testID })
+
+export const mockPlatform = (OS: 'android' | 'ios') => {
+  jest.resetModules()
+  jest.doMock('react-native/Libraries/Utilities/Platform', () => ({
+    OS,
+    select: (config: any) => config[OS],
+  }))
 }

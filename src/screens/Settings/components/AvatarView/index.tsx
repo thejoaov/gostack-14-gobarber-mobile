@@ -21,20 +21,24 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
   const { t } = useTranslation('profile')
   const { user, updateLocalProfile } = useAuth()
 
-  const getSizeAndroid = useMemo(() => {
+  const getSizeAndroid = () => {
     const size = Device.getWindowSize().width / 3
 
     if (size > 186) return 186
     return size
-  }, [])
+  }
 
   const handleChangePhoto = async () => {
+    setLoading(true)
     const image = await Picker.image({
       allowsEditing: true,
       noData: true,
     })
 
-    if (image.didCancel) return
+    if (image.didCancel) {
+      setLoading(false)
+      return
+    }
 
     try {
       const form = new FormData()
@@ -45,7 +49,6 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
         type: 'image/jpeg',
       })
 
-      setLoading(true)
       const { data } = await Api.updateAvatar(form)
 
       updateLocalProfile(data)
@@ -68,17 +71,29 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
       {Platform.select({
         android: (
           <Avatar
+            testID="avatar-android"
             mt={40}
-            size={getSizeAndroid}
+            size={getSizeAndroid()}
             src={{ uri: avatarUrl }}
             disabled
           />
         ),
-        ios: <Avatar size={186} src={{ uri: avatarUrl }} disabled />,
+        ios: (
+          <Avatar
+            testID="avatar-ios"
+            size={186}
+            src={{ uri: avatarUrl }}
+            disabled
+          />
+        ),
       })}
-      <AvatarButton onPress={handleChangePhoto}>
+      <AvatarButton testID="avatar-button" onPress={handleChangePhoto}>
         {loading ? (
-          <ActivityIndicator size={15} color={colors.background} />
+          <ActivityIndicator
+            testID="avatar-loading"
+            size={15}
+            color={colors.background}
+          />
         ) : (
           <Icon name="camera" color={colors.background} />
         )}
