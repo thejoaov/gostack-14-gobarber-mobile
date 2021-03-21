@@ -20,7 +20,7 @@
     }
   },
   "sign_in": {
-    "title": "Faça seu login",
+    "title": "",
     "login_button": "Entrar",
     "forgot_password": "Esqueci minha senha",
     "footer_button": "Criar uma conta",
