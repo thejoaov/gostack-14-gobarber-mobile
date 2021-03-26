@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   View,
+  ScrollView,
   TextInput as Input,
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
@@ -16,7 +17,6 @@ import {
   FooterButton,
   Image,
   LinkButton,
-  ScrollView,
   Section,
   Text,
   TextInput,
@@ -75,7 +75,9 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
         behavior={Device.keyboardBehavior()}
         marginTop={Device.getStatusBarHeight()}
         enabled>
-        <ScrollView center keyboardShouldPersistTaps="handled">
+        <ScrollView
+          contentContainerStyle={{ flex: 1 }}
+          keyboardShouldPersistTaps="handled">
           <Container
             as={View}
             center

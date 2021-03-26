@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
 import { Section, Text } from 'components'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import { FlatList } from 'react-native'
 import { Provider } from 'core/services/api/types'

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Container, Text, Icon, Button } from 'components'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import { Props } from './types'
 

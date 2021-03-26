@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { View } from './styles'
+import { StyledScrollView } from './styles'
 import { Props } from './types'
 
-const ScrollView: React.FC<Props> = ({ children, ...props }) => (
-  <View {...props}>{children}</View>
+const ScrollView = ({ children, ...props }: Props): JSX.Element => (
+  <StyledScrollView {...props}>{children}</StyledScrollView>
 )
 
 ScrollView.defaultProps = {

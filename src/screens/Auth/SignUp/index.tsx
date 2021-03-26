@@ -8,7 +8,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import {
   Button,

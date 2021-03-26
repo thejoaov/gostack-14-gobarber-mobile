@@ -1,7 +1,8 @@
 import React, { useCallback, useRef } from 'react'
-import { Button, Container, ScrollView, TextInput } from 'components'
+import { Button, Container, LinkButton, Section, TextInput } from 'components'
 import {
   KeyboardAvoidingView,
+  ScrollView,
   Platform,
   TextInput as Input,
 } from 'react-native'
@@ -11,6 +12,7 @@ import * as Yup from 'yup'
 
 import { profileInitialValues } from 'core/constants/profile'
 import { useAuth } from 'core/hooks/AuthContext'
+import { useTheme } from 'styled-components/native'
 
 import { UpdateProfileForm } from 'core/services/api/types'
 import Device from 'core/helpers/Device'
@@ -24,7 +26,7 @@ const Profile: React.FC<Props> = ({ navigation }) => {
   const oldPasswordInputRef = useRef<Input>(null)
   const passwordInputRef = useRef<Input>(null)
   const passwordConfirmationInputRef = useRef<Input>(null)
-
+  const { colors } = useTheme()
   const { t } = useTranslation('profile')
   const { user, updateProfile, loading } = useAuth()
 
@@ -84,11 +86,10 @@ const Profile: React.FC<Props> = ({ navigation }) => {
         as={KeyboardAvoidingView}
         behavior={Device.keyboardBehavior()}
         enabled>
-        <ScrollView center keyboardShouldPersistTaps="handled">
+        <ScrollView keyboardShouldPersistTaps="handled">
           <Container
             paddingX={40}
-            center
-            paddingBottom={Platform.select({ android: 110, ios: 40 })}>
+            paddingBottom={Platform.select({ android: 110, ios: 50 })}>
             <Formik
               validationSchema={schema}
               validateOnMount
@@ -108,7 +109,10 @@ const Profile: React.FC<Props> = ({ navigation }) => {
                 setValues,
               }) => (
                 <>
-                  <AvatarView src={user?.avatar_url as string} />
+                  <Section center>
+                    <AvatarView src={user?.avatar_url as string} />
+                  </Section>
+
                   <TextInput
                     mt={32}
                     icon="user"
@@ -237,6 +241,14 @@ const Profile: React.FC<Props> = ({ navigation }) => {
                 </>
               )}
             </Formik>
+            <LinkButton
+              testID="logout-button"
+              title={t('logout_button')}
+              mt={16}
+              icon="log-out"
+              color={colors.semantic.info}
+              onPress={(): void => navigation.navigate('Logout')}
+            />
           </Container>
         </ScrollView>
       </Container>

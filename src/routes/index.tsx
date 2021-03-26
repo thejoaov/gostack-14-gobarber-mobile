@@ -16,6 +16,7 @@ import Home from 'screens/Dashboard/Home'
 import Schedule from 'screens/Dashboard/Schedule'
 import Profile from 'screens/Settings/Profile'
 import Logout from 'screens/Settings/Logout'
+import Settings from 'screens/Settings/Settings'
 
 import {
   AuthStackParams,
@@ -44,7 +45,6 @@ const DashboardRoutes = (): JSX.Element => {
       }}>
       <DashboardStack.Screen name="Home" component={Home} />
       <DashboardStack.Screen name="Schedule" component={Schedule} />
-      <AuthStack.Screen name="Feedback" component={Feedback} />
     </DashboardStack.Navigator>
   )
 }
@@ -58,12 +58,17 @@ const SettingsRoutes = (): JSX.Element => {
       initialRouteName="Profile"
       screenOptions={{
         cardStyle: { backgroundColor: theme.colors.background },
-        cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
       }}>
       <SettingsStack.Screen name="Profile" component={Profile} />
-      <SettingsStack.Screen name="Logout" component={Logout} />
-      {/* Provisory, until Toasts are finished */}
-      <AuthStack.Screen name="Feedback" component={Feedback} />
+      <SettingsStack.Screen name="Settings" component={Settings} />
+      <SettingsStack.Screen
+        name="Logout"
+        component={Logout}
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forScaleFromCenterAndroid,
+        }}
+      />
     </SettingsStack.Navigator>
   )
 }
@@ -78,14 +83,13 @@ const AuthRoutes = (): JSX.Element => {
       screenOptions={{
         cardStyle: { backgroundColor: theme.colors.background },
         cardStyleInterpolator: Platform.select({
-          ios: CardStyleInterpolators.forVerticalIOS,
+          ios: CardStyleInterpolators.forHorizontalIOS,
           android: CardStyleInterpolators.forRevealFromBottomAndroid,
         }),
       }}>
       <AuthStack.Screen name="SignIn" component={SignIn} />
       <AuthStack.Screen name="SignUp" component={SignUp} />
       <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
-      <AuthStack.Screen name="Feedback" component={Feedback} />
     </AuthStack.Navigator>
   )
 }
@@ -118,7 +122,8 @@ const App = (): JSX.Element => {
           name="Main"
           component={MainRoutes}
           options={{
-            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            cardStyleInterpolator:
+              CardStyleInterpolators.forFadeFromBottomAndroid,
             cardStyle: { backgroundColor: theme.colors.background },
           }}
         />
@@ -127,11 +132,13 @@ const App = (): JSX.Element => {
           name="Auth"
           component={AuthRoutes}
           options={{
-            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            cardStyleInterpolator:
+              CardStyleInterpolators.forFadeFromBottomAndroid,
             cardStyle: { backgroundColor: theme.colors.background },
           }}
         />
       )}
+      <AuthStack.Screen name="Feedback" component={Feedback} />
     </AppStack.Navigator>
   )
 }

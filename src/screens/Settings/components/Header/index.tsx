@@ -7,7 +7,7 @@ import { StatusBar } from 'react-native'
 import { Container, BackButton, LogoutButton } from './styles'
 import { Props } from './types'
 
-const Header: React.FC<Props> = ({ title }) => {
+const Header = ({ title }: Props): JSX.Element => {
   const { colors } = useTheme()
   const navigation = useNavigation()
 
@@ -20,8 +20,8 @@ const Header: React.FC<Props> = ({ title }) => {
       <Section margin={24}>
         <Text fontSize={20}>{title}</Text>
       </Section>
-      <LogoutButton onPress={(): void => navigation.navigate('Logout')}>
-        <Icon name="log-out" color={colors.gray.gray} size={25} />
+      <LogoutButton onPress={(): void => navigation.navigate('Settings')}>
+        <Icon name="settings" color={colors.gray.gray} size={25} />
       </LogoutButton>
     </Container>
   )
