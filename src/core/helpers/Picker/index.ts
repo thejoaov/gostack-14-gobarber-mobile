@@ -1,7 +1,7 @@
 import ImagePicker, {
   ImagePickerOptions,
   ImagePickerResponse,
-} from 'react-native-image-picker/src'
+} from 'react-native-image-picker'
 import i18n from 'i18n'
 
 const Picker = {

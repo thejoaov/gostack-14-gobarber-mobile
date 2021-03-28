@@ -33,7 +33,7 @@ jest.mock('react-native-screens', () => ({
   ScreenStackHeaderCenterView: View,
 }))
 
-jest.mock('react-native-image-picker/src', () => ({
+jest.mock('react-native-image-picker', () => ({
   showImagePicker: jest.fn().mockResolvedValue({}),
 }))
 
