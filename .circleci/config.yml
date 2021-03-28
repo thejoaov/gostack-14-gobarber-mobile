@@ -58,9 +58,14 @@ jobs:
           key: 'node-v1-{{ checksum "package.json" }}'
       - restore_cache:
           key: 'yarn-v1-{{ checksum "yarn.lock" }}'
+      - restore_cache:
+          key: 'eslint-v1-{{ checksum ".eslintrc.js" }}'
       - run:
           name: 'Install dependencies'
           command: 'yarn'
+      - run:
+          name: 'Run linter'
+          command: 'yarn lint'
       - run:
           name: 'Run tests and get coverage'
           command: 'yarn test:ci'
@@ -77,6 +82,10 @@ jobs:
           key: 'yarn-v1-{{ checksum "yarn.lock" }}'
           paths:
             - ~/.cache/yarn
+      - save_cache:
+          key: 'eslint-v1-{{ checksum ".eslintrc.js" }}'
+          paths:
+            - .eslintcache
 
 workflows:
   versioning:
