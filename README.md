@@ -20,6 +20,8 @@ The project was coded and tested on both Android and iOS.
 
 ## To - Do
 
+Check out the [roadmap][roadmap-link], the [issues][issues-link] and the [milestones][milestones-link] to know what i will be improving.
+
 - [x] Commit pattern (git-commit-msg-linter)
 - [x] Husky and lint-staged
 - [x] Internationalization (i18n)
@@ -42,3 +44,6 @@ The project was coded and tested on both Android and iOS.
 [codeclimate-url]: https://codeclimate.com/github/thejoaov/gobarber-14-mobile/maintainability
 [coverage-img]: https://api.codeclimate.com/v1/badges/f90a6c9b9199a2d528cb/test_coverage
 [coverage-url]: https://codeclimate.com/github/thejoaov/gobarber-14-mobile/test_coverage
+[roadmap-link]: https://github.com/thejoaov/gobarber-14-mobile/projects/1
+[issues-link]: https://github.com/thejoaov/gobarber-14-mobile/issues
+[milestones-link]: https://github.com/thejoaov/gobarber-14-mobile/milestones
