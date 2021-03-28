@@ -14,6 +14,25 @@ jest.mock('@react-native-community/datetimepicker', () =>
   jest.fn().mockImplementation(props => <View {...props} />),
 )
 
+jest.mock('lottie-react-native', () =>
+  jest.fn().mockImplementation(props => <View {...props} />),
+)
+
+jest.mock('react-native-screens', () => ({
+  enableScreens: jest.fn(),
+  ScreenContainer: View,
+  Screen: View,
+  NativeScreen: View,
+  NativeScreenContainer: View,
+  ScreenStack: View,
+  ScreenStackHeaderConfig: View,
+  ScreenStackHeaderSubview: View,
+  ScreenStackHeaderRightView: View,
+  ScreenStackHeaderLeftView: View,
+  ScreenStackHeaderTitleView: View,
+  ScreenStackHeaderCenterView: View,
+}))
+
 jest.mock('react-native-image-picker', () => {
   return {
     showImagePicker: jest.fn().mockResolvedValue({}),

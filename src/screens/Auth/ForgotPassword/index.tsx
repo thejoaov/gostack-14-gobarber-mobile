@@ -57,7 +57,11 @@ const ForgotPassword: React.FC<Props> = ({ navigation }) => {
           title: t('feedback.success.title'),
           message: t('feedback.success.message'),
           status: 'success',
-          button: { onPress: () => navigation.navigate('SignIn') },
+          button: {
+            onPress: (): void => {
+              navigation.navigate('SignIn')
+            },
+          },
         })
       } catch (error) {
         navigation.navigate('Feedback', {

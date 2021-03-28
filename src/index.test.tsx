@@ -8,13 +8,13 @@ let wrapper: ReactTestRenderer
 const AppMock: React.FC = () => <App />
 
 describe('App test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<AppMock />)
     })
   })
 
-  it('should render without explode', async () => {
+  it('should render without explode', () => {
     expect(wrapper).toBeTruthy()
   })
 })

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
   KeyboardAvoidingView,
   Platform,
@@ -56,11 +56,12 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
         message: t('feedback.success.message'),
         status: 'success',
         button: {
-          onPress: () =>
+          onPress: (): void => {
             navigation.navigate('SignIn', {
               email: values.email,
               password: values.password,
-            }),
+            })
+          },
         },
       })
     } catch (error) {

@@ -1,4 +1,5 @@
-import { User } from 'core/hooks/AuthContext/types'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AuthContextData, User } from 'core/hooks/AuthContext/types'
 import { ReactTestInstance, ReactTestRenderer } from 'react-test-renderer'
 
 /* eslint-disable complexity */
@@ -89,7 +90,7 @@ export const findAllByTestID = (
   testID: string,
 ): ReactTestInstance[] => testInstance.findAllByProps({ testID })
 
-export const mockPlatform = (OS: 'android' | 'ios') => {
+export const mockPlatform = (OS: 'android' | 'ios'): any => {
   jest.resetModules()
   jest.doMock('react-native/Libraries/Utilities/Platform', () => ({
     OS,
@@ -97,7 +98,7 @@ export const mockPlatform = (OS: 'android' | 'ios') => {
   }))
 }
 
-export const mockAuthContext = (user?: User) => ({
+export const mockAuthContext = (user?: User): AuthContextData => ({
   updateLocalProfile: async (data: Record<string, unknown>) => {
     jest.fn().mockImplementation(() => data)
   },

@@ -64,7 +64,6 @@ export type DashboardNavProps<T extends keyof DashboardStackParams> = {
 export type SettingsStackParams = {
   Profile: undefined
   Logout: undefined
-  Settings: undefined
   Feedback: {
     title: string
     status: 'success' | 'error'

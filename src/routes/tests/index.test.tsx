@@ -12,11 +12,11 @@ jest.mock('@react-navigation/stack', () => ({
 }))
 
 let wrapper: ReactTestRenderer
-let AuthSpy: jest.SpyInstance
+// let AuthSpy: jest.SpyInstance
 
 describe('Routes test suite', () => {
   beforeEach(() => {
-    AuthSpy = jest.spyOn(hooks, 'useAuth').mockReturnValue(mockAuthContext())
+    jest.spyOn(hooks, 'useAuth').mockReturnValue(mockAuthContext())
 
     act(() => {
       wrapper = create(

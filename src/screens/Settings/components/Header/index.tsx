@@ -20,7 +20,7 @@ const Header = ({ title }: Props): JSX.Element => {
       <Section margin={24}>
         <Text fontSize={20}>{title}</Text>
       </Section>
-      <LogoutButton onPress={(): void => navigation.navigate('Settings')}>
+      <LogoutButton onPress={(): void => navigation.navigate('Logout')}>
         <Icon name="settings" color={colors.gray.gray} size={25} />
       </LogoutButton>
     </Container>

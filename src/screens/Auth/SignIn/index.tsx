@@ -59,7 +59,9 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
           message: t('feedback.error.message'),
           title: t('feedback.error.title'),
           button: {
-            onPress: () => navigation.navigate('SignIn'),
+            onPress: (): void => {
+              navigation.navigate('SignIn')
+            },
           },
           status: 'error',
         })
@@ -76,6 +78,7 @@ const SignIn: React.FC<Props> = ({ route, navigation }) => {
         marginTop={Device.getStatusBarHeight()}
         enabled>
         <ScrollView
+          // eslint-disable-next-line react-native/no-inline-styles
           contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled">
           <Container

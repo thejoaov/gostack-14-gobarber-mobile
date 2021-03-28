@@ -1,4 +1,4 @@
-import { dateFormats, hourFormats } from 'core/constants/dateTime'
+import { hourFormats } from 'core/constants/dateTime'
 
 export type DateFormats = 'long' | 'short'
 
