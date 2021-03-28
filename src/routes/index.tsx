@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { Platform, StatusBar } from 'react-native'
+import { StatusBar } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useAuth } from 'core/hooks/AuthContext'
@@ -44,7 +44,6 @@ const DashboardRoutes = (): JSX.Element => {
       }}>
       <DashboardStack.Screen name="Home" component={Home} />
       <DashboardStack.Screen name="Schedule" component={Schedule} />
-      <AuthStack.Screen name="Feedback" component={Feedback} />
     </DashboardStack.Navigator>
   )
 }
@@ -58,12 +57,16 @@ const SettingsRoutes = (): JSX.Element => {
       initialRouteName="Profile"
       screenOptions={{
         cardStyle: { backgroundColor: theme.colors.background },
-        cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
       }}>
       <SettingsStack.Screen name="Profile" component={Profile} />
-      <SettingsStack.Screen name="Logout" component={Logout} />
-      {/* Provisory, until Toasts are finished */}
-      <AuthStack.Screen name="Feedback" component={Feedback} />
+      <SettingsStack.Screen
+        name="Logout"
+        component={Logout}
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forScaleFromCenterAndroid,
+        }}
+      />
     </SettingsStack.Navigator>
   )
 }
@@ -77,15 +80,12 @@ const AuthRoutes = (): JSX.Element => {
       initialRouteName="SignIn"
       screenOptions={{
         cardStyle: { backgroundColor: theme.colors.background },
-        cardStyleInterpolator: Platform.select({
-          ios: CardStyleInterpolators.forVerticalIOS,
-          android: CardStyleInterpolators.forRevealFromBottomAndroid,
-        }),
+        cardStyleInterpolator:
+          CardStyleInterpolators.forRevealFromBottomAndroid,
       }}>
       <AuthStack.Screen name="SignIn" component={SignIn} />
       <AuthStack.Screen name="SignUp" component={SignUp} />
       <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
-      <AuthStack.Screen name="Feedback" component={Feedback} />
     </AuthStack.Navigator>
   )
 }
@@ -112,26 +112,25 @@ const App = (): JSX.Element => {
   const theme = useTheme()
 
   return (
-    <AppStack.Navigator headerMode="none">
+    <AppStack.Navigator
+      headerMode="none"
+      screenOptions={{
+        cardStyle: { backgroundColor: theme.colors.background },
+        cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+      }}>
       {!!user ? (
-        <AppStack.Screen
-          name="Main"
-          component={MainRoutes}
-          options={{
-            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-            cardStyle: { backgroundColor: theme.colors.background },
-          }}
-        />
+        <AppStack.Screen name="Main" component={MainRoutes} />
       ) : (
-        <AppStack.Screen
-          name="Auth"
-          component={AuthRoutes}
-          options={{
-            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-            cardStyle: { backgroundColor: theme.colors.background },
-          }}
-        />
+        <AppStack.Screen name="Auth" component={AuthRoutes} />
       )}
+      <AuthStack.Screen
+        name="Feedback"
+        component={Feedback}
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forScaleFromCenterAndroid,
+        }}
+      />
     </AppStack.Navigator>
   )
 }

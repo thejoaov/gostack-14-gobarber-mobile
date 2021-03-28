@@ -1,4 +1,4 @@
-import { format, Locale } from 'date-fns'
+import { format } from 'date-fns'
 import { ptBR, enUS } from 'date-fns/locale'
 import { hourFormats, dateFormats } from 'core/constants/dateTime'
 import i18n from 'i18n'

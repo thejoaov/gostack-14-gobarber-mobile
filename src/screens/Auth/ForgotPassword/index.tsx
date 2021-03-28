@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Formik } from 'formik'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 import * as Yup from 'yup'
 
 import {
@@ -57,7 +57,11 @@ const ForgotPassword: React.FC<Props> = ({ navigation }) => {
           title: t('feedback.success.title'),
           message: t('feedback.success.message'),
           status: 'success',
-          button: { onPress: () => navigation.navigate('SignIn') },
+          button: {
+            onPress: (): void => {
+              navigation.navigate('SignIn')
+            },
+          },
         })
       } catch (error) {
         navigation.navigate('Feedback', {

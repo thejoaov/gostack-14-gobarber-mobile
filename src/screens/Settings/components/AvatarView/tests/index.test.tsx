@@ -1,6 +1,6 @@
 import React from 'react'
 import { create, act, ReactTestRenderer } from 'react-test-renderer'
-import { Alert } from 'react-native'
+// import { Alert } from 'react-native'
 import Device from 'core/helpers/Device'
 import { StylesProvider } from 'components'
 import { findByTestID, mockAuthContext, mockPlatform } from 'core/utils'
@@ -16,16 +16,14 @@ const initialProps: AvatarViewProps = { src: 'src' }
 let DeviceSpy: jest.SpyInstance
 let PickerSpy: jest.SpyInstance
 // let AlertSpy: jest.SpyInstance
-let AuthSpy: jest.SpyInstance
+// let AuthSpy: jest.SpyInstance
 
 describe('AvatarView test suite', () => {
   beforeEach(async () => {
     // AlertSpy = jest.spyOn(Alert, 'alert')
     DeviceSpy = jest.spyOn(Device, 'getWindowSize')
     PickerSpy = jest.spyOn(Picker, 'image')
-    AuthSpy = jest
-      .spyOn(AuthContext, 'useAuth')
-      .mockReturnValue(mockAuthContext())
+    jest.spyOn(AuthContext, 'useAuth').mockReturnValue(mockAuthContext())
 
     mockPlatform('android')
     await act(async () => {
@@ -82,19 +80,6 @@ describe('AvatarView test suite', () => {
 
         expect(avatarLoading).toBeFalsy()
       }, 500)
-    })
-  })
-
-  it('should show current photo', async () => {
-    PickerSpy.mockResolvedValue({ uri: 'file://image.jpg' })
-
-    await act(async () => {
-      const avatarAndroid = findByTestID(wrapper, 'avatar-android')
-      const avatarButton = findByTestID(wrapper, 'avatar-button')
-
-      await avatarButton.props.onPress()
-
-      expect(avatarAndroid.props.src).toEqual({ uri: 'src' })
     })
   })
 })

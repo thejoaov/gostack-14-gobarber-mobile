@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { ActivityIndicator, Alert, Platform } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from 'styled-components/native'
@@ -28,19 +28,19 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
     return size
   }
 
-  const handleChangePhoto = async () => {
+  const handleChangePhoto = useCallback(async () => {
     setLoading(true)
-    const image = await Picker.image({
-      allowsEditing: true,
-      noData: true,
-    })
-
-    if (image.didCancel) {
-      setLoading(false)
-      return
-    }
-
     try {
+      const image = await Picker.image({
+        allowsEditing: true,
+        noData: true,
+      })
+
+      if (image.didCancel) {
+        setLoading(false)
+        return
+      }
+
       const form = new FormData()
 
       form.append('avatar', {
@@ -64,7 +64,7 @@ const AvatarView: React.FC<Props> = ({ src = '' }) => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [avatarUrl, t, updateLocalProfile, user])
 
   return (
     <AvatarContainer>

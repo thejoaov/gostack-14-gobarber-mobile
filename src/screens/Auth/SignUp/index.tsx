@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
   KeyboardAvoidingView,
   Platform,
@@ -8,7 +8,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import {
   Button,
@@ -56,11 +56,12 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
         message: t('feedback.success.message'),
         status: 'success',
         button: {
-          onPress: () =>
+          onPress: (): void => {
             navigation.navigate('SignIn', {
               email: values.email,
               password: values.password,
-            }),
+            })
+          },
         },
       })
     } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Container, Text, Button, Avatar } from 'components'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 import { useAuth } from 'core/hooks/AuthContext'
 import { useTranslation } from 'react-i18next'
 
