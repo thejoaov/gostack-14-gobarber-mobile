@@ -33,11 +33,9 @@ jest.mock('react-native-screens', () => ({
   ScreenStackHeaderCenterView: View,
 }))
 
-jest.mock('react-native-image-picker', () => {
-  return {
-    showImagePicker: jest.fn().mockResolvedValue({}),
-  }
-})
+jest.mock('react-native-image-picker/src', () => ({
+  showImagePicker: jest.fn().mockResolvedValue({}),
+}))
 
 jest.mock('styled-components', () => {
   const original = jest.requireActual('styled-components')
