@@ -11,6 +11,8 @@
     <item name="android:windowLightStatusBar">false</item>
     <!-- Add the following line to set the default background color for all the app. -->
     <item name="android:windowBackground">@color/app_bg</item>
+    <item name="colorControlNormal">@color/color_control_normal</item>
+    <item name="android:colorControlNormal">@color/color_control_normal</item>
   </style>
 
   <!-- Adds the splash screen definition -->

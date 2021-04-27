@@ -80,8 +80,7 @@ const AuthRoutes = (): JSX.Element => {
       initialRouteName="SignIn"
       screenOptions={{
         cardStyle: { backgroundColor: theme.colors.background },
-        cardStyleInterpolator:
-          CardStyleInterpolators.forRevealFromBottomAndroid,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
       <AuthStack.Screen name="SignIn" component={SignIn} />
       <AuthStack.Screen name="SignUp" component={SignUp} />

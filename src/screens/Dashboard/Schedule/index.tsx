@@ -150,9 +150,9 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={params.providerList}
-          getItemLayout={(_data, index) => ({
+          getItemLayout={(_, index) => ({
             length: 50,
-            offset: 175 * index,
+            offset: 170 * index,
             index,
           })}
           renderItem={({ item }) => (
@@ -212,6 +212,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
                     <Section flexWrap="wrap" flexDirection="row" mt="6px">
                       {morningAvailability.map(item => (
                         <AvailabilityCard
+                          key={item.hourFormatted}
                           availability={item}
                           selected={selectedHour === item.hour}
                           onPress={(): void => handleSelectHour(item)}
@@ -225,6 +226,7 @@ const Schedule: React.FC<Props> = ({ route, navigation }) => {
                     <Section flexWrap="wrap" flexDirection="row" mt="6px">
                       {afternoonAvailability.map(item => (
                         <AvailabilityCard
+                          key={item.hourFormatted}
                           selected={selectedHour === item.hour}
                           availability={item}
                           onPress={(): void => handleSelectHour(item)}

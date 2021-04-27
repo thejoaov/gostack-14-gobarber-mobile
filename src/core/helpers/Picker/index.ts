@@ -12,15 +12,16 @@ const Picker = {
         ImagePicker.showImagePicker(
           {
             ...options,
-            title: i18n.t('image.title', { ns: 'picker' }),
-            cancelButtonTitle: i18n.t('image.cancel_button', { ns: 'picker' }),
-            chooseFromLibraryButtonTitle: i18n.t('image.choose_from_library', {
-              ns: 'picker',
-            }),
-            chooseWhichLibraryTitle: i18n.t('image.choose_which_library', {
-              ns: 'picker',
-            }),
-            takePhotoButtonTitle: i18n.t('image.take_photo', { ns: 'picker' }),
+            noData: true,
+            title: i18n.t('picker:image.title'),
+            cancelButtonTitle: i18n.t('picker:image.cancel_button'),
+            chooseFromLibraryButtonTitle: i18n.t(
+              'picker:image.choose_from_library',
+            ),
+            chooseWhichLibraryTitle: i18n.t(
+              'picker:image.choose_which_library',
+            ),
+            takePhotoButtonTitle: i18n.t('picker:image.take_photo'),
           },
           image => {
             // if (image.didCancel) reject(new Error('user cancelled'))
