@@ -56,6 +56,7 @@ const ProviderCard: React.FC<Props> = ({
           marginX={10}
           fontSize={14}
           numberOfLines={1}
+          flex={1}
           color={selected ? colors.black.black : colors.white}>
           {provider.name}
         </Text>

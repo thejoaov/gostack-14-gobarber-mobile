@@ -22,4 +22,5 @@ export const ProviderCardContainerThin = styled(RectButton)<{
   margin-left: 16px;
   margin-right: 12px;
   align-items: center;
+  width: 160px;
 `
